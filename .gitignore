@@ -1,0 +1,16 @@
+# Created by https://www.gitignore.io
+
+### Composer ###
+vendor/
+
+### OS X ###
+.DS_Store
+
+### PhpStorm ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+## Directory-based project format:
+.idea/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
