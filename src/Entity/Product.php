@@ -13,6 +13,12 @@ use Mobly\SellerCenter\Collection\ProductAttributeCollection;
 class Product
 {
 
+    const CATEGORIES_SEPARATOR = ',';
+
+    const DESCRIPTION_MAX_LENGTH = 25000;
+
+    const DESCRIPTION_MIN_LENGTH = 6;
+
     /**
      * @var string
      */
@@ -123,6 +129,10 @@ class Product
      */
     public function setBrand($brand)
     {
+        if (!is_string($brand)) {
+            throw new \InvalidArgumentException('Brand name is not a valid string, ' . gettype($brand) . ' passed');
+        }
+
         $this->brand = $brand;
 
         return $this;
@@ -143,6 +153,17 @@ class Product
      */
     public function setCategories($categories)
     {
+        if (!is_string($categories)) {
+            throw new \InvalidArgumentException('Categories is not a valid string, ' . gettype($categories) . ' passed');
+        } elseif (strpos($categories, self::CATEGORIES_SEPARATOR) !== false) {
+            $parsedCategories = explode(self::CATEGORIES_SEPARATOR, $categories);
+            if (count($parsedCategories) > 3 || count(array_unique($parsedCategories)) < count($parsedCategories)) {
+                throw new \InvalidArgumentException(
+                    'Categories must be a comma separated list of 1 to 3 unique categories ids'
+                );
+            }
+        }
+
         $this->categories = $categories;
 
         return $this;
@@ -163,6 +184,10 @@ class Product
      */
     public function setCondition($condition)
     {
+        if (!is_string($condition)) {
+            throw new \InvalidArgumentException('Condition is not a valid string, ' . gettype($condition) . ' passed');
+        }
+
         $this->condition = $condition;
 
         return $this;
@@ -183,6 +208,16 @@ class Product
      */
     public function setDescription($description)
     {
+        if (!is_string($description)) {
+            throw new \InvalidArgumentException(
+                'Description is not a valid string, ' . gettype($description) . ' passed'
+            );
+        } elseif (strlen($description) < self::DESCRIPTION_MIN_LENGTH ||
+            strlen($description) > self::DESCRIPTION_MAX_LENGTH
+        ) {
+            throw new \InvalidArgumentException('Description should be a string between 6 and 25000 chars');
+        }
+
         $this->description = $description;
 
         return $this;
@@ -203,6 +238,10 @@ class Product
      */
     public function setName($name)
     {
+        if (!is_string($name)) {
+            throw new \InvalidArgumentException('Name is not a valid string, ' . gettype($name) . ' passed');
+        }
+
         $this->name = $name;
 
         return $this;
@@ -223,6 +262,10 @@ class Product
      */
     public function setParentSku($parentSku)
     {
+        if (!is_string($parentSku)) {
+            throw new \InvalidArgumentException('Parent SKU is not a valid string, ' . gettype($parentSku) . ' passed');
+        }
+
         $this->parentSku = $parentSku;
 
         return $this;
@@ -243,6 +286,12 @@ class Product
      */
     public function setPrice($price)
     {
+        if (!is_float($price)) {
+            throw new \InvalidArgumentException(
+                'Price is not a valid float, ' . gettype($price) . ' passed'
+            );
+        }
+
         $this->price = $price;
 
         return $this;
@@ -263,6 +312,12 @@ class Product
      */
     public function setPrimaryCategory($primaryCategory)
     {
+        if (!is_int($primaryCategory)) {
+            throw new \InvalidArgumentException(
+                'Primary category is not a valid integer, ' . gettype($primaryCategory) . ' passed'
+            );
+        }
+
         $this->primaryCategory = $primaryCategory;
 
         return $this;
@@ -283,6 +338,12 @@ class Product
      */
     public function setProductData($productData)
     {
+        if (!($productData instanceof ProductAttributeCollection)) {
+            throw new \InvalidArgumentException(
+                'Product data is not a valid instance of ProductAttributeCollection, ' . gettype($productData) . ' passed'
+            );
+        }
+
         $this->productData = $productData;
 
         return $this;
@@ -303,6 +364,10 @@ class Product
      */
     public function setProductId($productId)
     {
+        if (!is_string($productId)) {
+            throw new \InvalidArgumentException('Product ID is not a valid string, ' . gettype($productId) . ' passed');
+        }
+
         $this->productId = $productId;
 
         return $this;
@@ -323,6 +388,12 @@ class Product
      */
     public function setQuantity($quantity)
     {
+        if (!is_int($quantity)) {
+            throw new \InvalidArgumentException(
+                'Quantity is not a valid integer, ' . gettype($quantity) . ' passed'
+            );
+        }
+
         $this->quantity = $quantity;
 
         return $this;
@@ -343,6 +414,12 @@ class Product
      */
     public function setSaleEndDate($saleEndDate)
     {
+        if (!($saleEndDate instanceof \DateTime)) {
+            throw new \InvalidArgumentException(
+                'Sale end date is not a instance of DateTime, ' . gettype($saleEndDate) . ' passed'
+            );
+        }
+
         $this->saleEndDate = $saleEndDate;
 
         return $this;
@@ -363,6 +440,13 @@ class Product
      */
     public function setSalePrice($salePrice)
     {
+        if (!is_float($salePrice)) {
+            throw new \InvalidArgumentException(
+                'Sale price is not a valid float, ' . gettype($salePrice) . ' passed'
+            );
+        }
+
+
         $this->salePrice = $salePrice;
 
         return $this;
@@ -383,6 +467,12 @@ class Product
      */
     public function setSaleStartDate($saleStartDate)
     {
+        if (!($saleStartDate instanceof \DateTime)) {
+            throw new \InvalidArgumentException(
+                'Sale start date is not a instance of DateTime, ' . gettype($saleStartDate) . ' passed'
+            );
+        }
+
         $this->saleStartDate = $saleStartDate;
 
         return $this;
@@ -403,6 +493,10 @@ class Product
      */
     public function setSellerSku($sellerSku)
     {
+        if (!is_string($sellerSku)) {
+            throw new \InvalidArgumentException('Seller SKU is not a valid string, ' . gettype($sellerSku) . ' passed');
+        }
+
         $this->sellerSku = $sellerSku;
 
         return $this;
@@ -423,6 +517,12 @@ class Product
      */
     public function setShipmentType($shipmentType)
     {
+        if (!is_string($shipmentType)) {
+            throw new \InvalidArgumentException(
+                'Shipment type is not a valid string, ' . gettype($shipmentType) . ' passed'
+            );
+        }
+
         $this->shipmentType = $shipmentType;
 
         return $this;
@@ -443,6 +543,12 @@ class Product
      */
     public function setStatus($status)
     {
+        if (!is_string($status)) {
+            throw new \InvalidArgumentException(
+                'Status is not a valid string, ' . gettype($status) . ' passed'
+            );
+        }
+
         $this->status = $status;
 
         return $this;
@@ -463,6 +569,12 @@ class Product
      */
     public function setTaxClass($taxClass)
     {
+        if (!is_string($taxClass)) {
+            throw new \InvalidArgumentException(
+                'Tax class is not a valid string, ' . gettype($taxClass) . ' passed'
+            );
+        }
+
         $this->taxClass = $taxClass;
 
         return $this;
@@ -483,6 +595,10 @@ class Product
      */
     public function setVariation($variation)
     {
+        if (!is_string($variation)) {
+            throw new \InvalidArgumentException('Argument is not a valid string, ' . gettype($variation) . ' passed');
+        }
+
         $this->variation = $variation;
 
         return $this;
