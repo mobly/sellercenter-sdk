@@ -23,7 +23,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \InvalidArgumentException
      */
-    public function testSetInvalidSellerSkuv()
+    public function testSetInvalidSellerSkuShouldThrowInvalidArgumentException()
     {
         $product = new Product;
         $product->setSellerSku(1);
@@ -132,7 +132,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \OverflowException
      */
     public function testSetMoreThan3CategoriesShouldThrowInvalidArgumentException()
     {
@@ -141,7 +141,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \RuntimeException
      */
     public function testSetDuplicatedCategoriesShouldThrowInvalidArgumentException()
     {
@@ -167,18 +167,18 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \LengthException
      */
-    public function testSmallDescriptionSizeShouldThrowInvalidArgumentException()
+    public function testSmallDescriptionSizeShouldThrowLengthException()
     {
         $product = new Product;
         $product->setDescription(str_pad('', Product::DESCRIPTION_MIN_LENGTH - 1, 'x'));
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \LengthException
      */
-    public function testBigDescriptionSizeShouldThrowInvalidArgumentException()
+    public function testBigDescriptionSizeShouldThrowLengthException()
     {
         $product = new Product;
         $product->setDescription(str_pad('', Product::DESCRIPTION_MAX_LENGTH + 1, 'x'));

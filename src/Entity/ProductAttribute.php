@@ -10,7 +10,6 @@ namespace Mobly\SellerCenter\Entity;
  */
 class ProductAttribute
 {
-
     /**
      * @var string
      */

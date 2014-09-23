@@ -12,11 +12,24 @@ use Mobly\SellerCenter\Collection\ProductAttributeCollection;
  */
 class Product
 {
-
+    /**
+     * @type string
+     */
     const CATEGORIES_SEPARATOR = ',';
 
+    /**
+     * @type int
+     */
+    const CATEGORIES_MAX_UNIQUE = 3;
+
+    /**
+     * @type int
+     */
     const DESCRIPTION_MAX_LENGTH = 25000;
 
+    /**
+     * @type int
+     */
     const DESCRIPTION_MIN_LENGTH = 6;
 
     /**
@@ -154,13 +167,18 @@ class Product
     public function setCategories($categories)
     {
         if (!is_string($categories)) {
-            throw new \InvalidArgumentException('Categories is not a valid string, ' . gettype($categories) . ' passed');
+            throw new \InvalidArgumentException(
+                'Categories is not a valid string, ' . gettype($categories) . ' passed'
+            );
         } elseif (strpos($categories, self::CATEGORIES_SEPARATOR) !== false) {
             $parsedCategories = explode(self::CATEGORIES_SEPARATOR, $categories);
-            if (count($parsedCategories) > 3 || count(array_unique($parsedCategories)) < count($parsedCategories)) {
-                throw new \InvalidArgumentException(
-                    'Categories must be a comma separated list of 1 to 3 unique categories ids'
+            if (count($parsedCategories) > self::CATEGORIES_MAX_UNIQUE) {
+                throw new \OverflowException(
+                    'Categories must be a comma separated list of 1 to '
+                    . self::CATEGORIES_MAX_UNIQUE . ' unique categories ids'
                 );
+            } elseif (count(array_unique($parsedCategories)) < count($parsedCategories)) {
+                throw new \RuntimeException('Categories must be a comma separated list of unique categories ids');
             }
         }
 
@@ -215,7 +233,10 @@ class Product
         } elseif (strlen($description) < self::DESCRIPTION_MIN_LENGTH ||
             strlen($description) > self::DESCRIPTION_MAX_LENGTH
         ) {
-            throw new \InvalidArgumentException('Description should be a string between 6 and 25000 chars');
+            throw new \LengthException(
+                'Description should be a string between '
+                . self::DESCRIPTION_MIN_LENGTH . ' and ' . self::DESCRIPTION_MAX_LENGTH . ' chars'
+            );
         }
 
         $this->description = $description;
@@ -340,7 +361,9 @@ class Product
     {
         if (!($productData instanceof ProductAttributeCollection)) {
             throw new \InvalidArgumentException(
-                'Product data is not a valid instance of ProductAttributeCollection, ' . gettype($productData) . ' passed'
+                'Product data is not a valid instance of ProductAttributeCollection, ' . gettype(
+                    $productData
+                ) . ' passed'
             );
         }
 

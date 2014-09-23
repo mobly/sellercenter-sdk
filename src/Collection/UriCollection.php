@@ -3,24 +3,24 @@
 namespace Mobly\SellerCenter\Collection;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Mobly\SellerCenter\Entity\ProductAttribute;
+use Zend\Uri\Uri;
 
 /**
- * Class Product Attribute Collection
+ * Class Uri Collection
  *
  * @package Mobly\SellerCenter\Collection
  * @author  Daniel Costa
  */
-class ProductAttributeCollection extends ArrayCollection
+class UriCollection extends ArrayCollection
 {
     /**
      * {@inheritDoc}
      */
     public function add($value)
     {
-        if (!($value instanceof ProductAttribute)) {
+        if (!($value instanceof Uri)) {
             throw new \InvalidArgumentException(
-                'Value is not a valid instance of ProductAttribute, ' . gettype($value) . ' passed'
+                'Value is not a valid instance of Zend\Uri\Uri, ' . gettype($value) . ' passed'
             );
         }
 

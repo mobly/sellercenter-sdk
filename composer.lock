@@ -3,8 +3,203 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ef9f14ac59467c006e3012145a13270a",
-    "packages": [],
+    "hash": "48172baf61d91cb0e7e84748c27759bc",
+    "packages": [
+        {
+            "name": "zendframework/zend-escaper",
+            "version": "dev-develop",
+            "target-dir": "Zend/Escaper",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendEscaper.git",
+                "reference": "8b19a7f81fa0e56f6b8372442a06fb0a02c11864"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendEscaper/zipball/8b19a7f81fa0e56f6b8372442a06fb0a02c11864",
+                "reference": "8b19a7f81fa0e56f6b8372442a06fb0a02c11864",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Escaper\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "keywords": [
+                "escaper",
+                "zf2"
+            ],
+            "time": "2014-01-04 13:01:01"
+        },
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "dev-develop",
+            "target-dir": "Zend/Stdlib",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendStdlib.git",
+                "reference": "3acce3d524c5c5b7e92c90b0c2763068c1efaf2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/3acce3d524c5c5b7e92c90b0c2763068c1efaf2c",
+                "reference": "3acce3d524c5c5b7e92c90b0c2763068c1efaf2c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.23"
+            },
+            "require-dev": {
+                "zendframework/zend-eventmanager": "self.version",
+                "zendframework/zend-serializer": "self.version",
+                "zendframework/zend-servicemanager": "self.version"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
+                "zendframework/zend-serializer": "Zend\\Serializer component",
+                "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Stdlib\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "keywords": [
+                "stdlib",
+                "zf2"
+            ],
+            "time": "2014-03-13 16:12:22"
+        },
+        {
+            "name": "zendframework/zend-uri",
+            "version": "dev-develop",
+            "target-dir": "Zend/Uri",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendUri.git",
+                "reference": "888b27c4802b0e8970ec3e17c2e138db7f88c1ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendUri/zipball/888b27c4802b0e8970ec3e17c2e138db7f88c1ee",
+                "reference": "888b27c4802b0e8970ec3e17c2e138db7f88c1ee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zend-escaper": "self.version",
+                "zendframework/zend-validator": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Uri\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "a component that aids in manipulating and validating » Uniform Resource Identifiers (URIs)",
+            "keywords": [
+                "uri",
+                "zf2"
+            ],
+            "time": "2014-03-04 08:00:09"
+        },
+        {
+            "name": "zendframework/zend-validator",
+            "version": "dev-develop",
+            "target-dir": "Zend/Validator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendValidator.git",
+                "reference": "35634f8e82c0f64844bf71026502162d535f99c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/35634f8e82c0f64844bf71026502162d535f99c6",
+                "reference": "35634f8e82c0f64844bf71026502162d535f99c6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.23",
+                "zendframework/zend-stdlib": "self.version"
+            },
+            "require-dev": {
+                "zendframework/zend-db": "self.version",
+                "zendframework/zend-filter": "self.version",
+                "zendframework/zend-i18n": "self.version",
+                "zendframework/zend-math": "self.version",
+                "zendframework/zend-servicemanager": "self.version",
+                "zendframework/zend-session": "self.version",
+                "zendframework/zend-uri": "self.version"
+            },
+            "suggest": {
+                "zendframework/zend-db": "Zend\\Db component",
+                "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
+                "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
+                "zendframework/zend-math": "Zend\\Math component",
+                "zendframework/zend-resources": "Translations of validator messages",
+                "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
+                "zendframework/zend-session": "Zend\\Session component",
+                "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Validator\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides a set of commonly needed validators",
+            "keywords": [
+                "validator",
+                "zf2"
+            ],
+            "time": "2014-03-04 21:00:07"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/collections",
@@ -125,6 +320,76 @@
                 "instantiate"
             ],
             "time": "2014-08-25 15:09:25"
+        },
+        {
+            "name": "pdepend/pdepend",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pdepend/pdepend.git",
+                "reference": "1537f19d62d7b30c13ac173270106df7c6b9c459"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/1537f19d62d7b30c13ac173270106df7c6b9c459",
+                "reference": "1537f19d62d7b30c13ac173270106df7c6b9c459",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.3"
+            },
+            "bin": [
+                "src/bin/pdepend"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHP_": "src/main/php/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Official version of pdepend to be handled with Composer",
+            "time": "2013-12-04 17:46:00"
+        },
+        {
+            "name": "phpmd/phpmd",
+            "version": "1.5.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmd/phpmd.git",
+                "reference": "f2d47500f4c5f80ee442d95829c62c2ece2bbeb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/f2d47500f4c5f80ee442d95829c62c2ece2bbeb6",
+                "reference": "f2d47500f4c5f80ee442d95829c62c2ece2bbeb6",
+                "shasum": ""
+            },
+            "require": {
+                "pdepend/pdepend": "1.1.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.*@stable",
+                "squizlabs/php_codesniffer": "@stable"
+            },
+            "bin": [
+                "src/bin/phpmd"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "../../pdepend/pdepend/src/main/php",
+                "src/main/php"
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Official version of PHPMD handled with Composer.",
+            "time": "2014-09-16 14:26:49"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -771,18 +1036,93 @@
             "time": "2014-03-07 15:35:33"
         },
         {
+            "name": "squizlabs/php_codesniffer",
+            "version": "1.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "4097e2c106e4a32bc234ae880e5585a19137e435"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/4097e2c106e4a32bc234ae880e5585a19137e435",
+                "reference": "4097e2c106e4a32bc234ae880e5585a19137e435",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.1.2"
+            },
+            "suggest": {
+                "phpunit/php-timer": "dev-master"
+            },
+            "bin": [
+                "scripts/phpcs"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-phpcs-fixer": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "CodeSniffer.php",
+                    "CodeSniffer/CLI.php",
+                    "CodeSniffer/Exception.php",
+                    "CodeSniffer/File.php",
+                    "CodeSniffer/Report.php",
+                    "CodeSniffer/Reporting.php",
+                    "CodeSniffer/Sniff.php",
+                    "CodeSniffer/Tokens.php",
+                    "CodeSniffer/Reports/",
+                    "CodeSniffer/CommentParser/",
+                    "CodeSniffer/Tokenizers/",
+                    "CodeSniffer/DocGenerators/",
+                    "CodeSniffer/Standards/AbstractPatternSniff.php",
+                    "CodeSniffer/Standards/AbstractScopeSniff.php",
+                    "CodeSniffer/Standards/AbstractVariableSniff.php",
+                    "CodeSniffer/Standards/IncorrectPatternException.php",
+                    "CodeSniffer/Standards/Generic/Sniffs/",
+                    "CodeSniffer/Standards/MySource/Sniffs/",
+                    "CodeSniffer/Standards/PEAR/Sniffs/",
+                    "CodeSniffer/Standards/PSR1/Sniffs/",
+                    "CodeSniffer/Standards/PSR2/Sniffs/",
+                    "CodeSniffer/Standards/Squiz/Sniffs/",
+                    "CodeSniffer/Standards/Zend/Sniffs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2014-08-05 23:54:05"
+        },
+        {
             "name": "symfony/yaml",
             "version": "dev-master",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "9f94dc5d8d7b49a9cb789853278af2b07a0aa4fd"
+                "reference": "6644c5c6b395e63a55186dea1817eed0ceb1c075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/9f94dc5d8d7b49a9cb789853278af2b07a0aa4fd",
-                "reference": "9f94dc5d8d7b49a9cb789853278af2b07a0aa4fd",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/6644c5c6b395e63a55186dea1817eed0ceb1c075",
+                "reference": "6644c5c6b395e63a55186dea1817eed0ceb1c075",
                 "shasum": ""
             },
             "require": {
@@ -815,201 +1155,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-17 09:54:14"
-        },
-        {
-            "name": "zendframework/zend-escaper",
-            "version": "dev-develop",
-            "target-dir": "Zend/Escaper",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/Component_ZendEscaper.git",
-                "reference": "8b19a7f81fa0e56f6b8372442a06fb0a02c11864"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendEscaper/zipball/8b19a7f81fa0e56f6b8372442a06fb0a02c11864",
-                "reference": "8b19a7f81fa0e56f6b8372442a06fb0a02c11864",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Zend\\Escaper\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "keywords": [
-                "escaper",
-                "zf2"
-            ],
-            "time": "2014-01-04 13:01:01"
-        },
-        {
-            "name": "zendframework/zend-stdlib",
-            "version": "dev-develop",
-            "target-dir": "Zend/Stdlib",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/Component_ZendStdlib.git",
-                "reference": "3acce3d524c5c5b7e92c90b0c2763068c1efaf2c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/3acce3d524c5c5b7e92c90b0c2763068c1efaf2c",
-                "reference": "3acce3d524c5c5b7e92c90b0c2763068c1efaf2c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.23"
-            },
-            "require-dev": {
-                "zendframework/zend-eventmanager": "self.version",
-                "zendframework/zend-serializer": "self.version",
-                "zendframework/zend-servicemanager": "self.version"
-            },
-            "suggest": {
-                "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
-                "zendframework/zend-serializer": "Zend\\Serializer component",
-                "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Zend\\Stdlib\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "keywords": [
-                "stdlib",
-                "zf2"
-            ],
-            "time": "2014-03-13 16:12:22"
-        },
-        {
-            "name": "zendframework/zend-uri",
-            "version": "dev-develop",
-            "target-dir": "Zend/Uri",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/Component_ZendUri.git",
-                "reference": "888b27c4802b0e8970ec3e17c2e138db7f88c1ee"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendUri/zipball/888b27c4802b0e8970ec3e17c2e138db7f88c1ee",
-                "reference": "888b27c4802b0e8970ec3e17c2e138db7f88c1ee",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zend-escaper": "self.version",
-                "zendframework/zend-validator": "self.version"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Zend\\Uri\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "a component that aids in manipulating and validating » Uniform Resource Identifiers (URIs)",
-            "keywords": [
-                "uri",
-                "zf2"
-            ],
-            "time": "2014-03-04 08:00:09"
-        },
-        {
-            "name": "zendframework/zend-validator",
-            "version": "dev-develop",
-            "target-dir": "Zend/Validator",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/Component_ZendValidator.git",
-                "reference": "35634f8e82c0f64844bf71026502162d535f99c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/35634f8e82c0f64844bf71026502162d535f99c6",
-                "reference": "35634f8e82c0f64844bf71026502162d535f99c6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.23",
-                "zendframework/zend-stdlib": "self.version"
-            },
-            "require-dev": {
-                "zendframework/zend-db": "self.version",
-                "zendframework/zend-filter": "self.version",
-                "zendframework/zend-i18n": "self.version",
-                "zendframework/zend-math": "self.version",
-                "zendframework/zend-servicemanager": "self.version",
-                "zendframework/zend-session": "self.version",
-                "zendframework/zend-uri": "self.version"
-            },
-            "suggest": {
-                "zendframework/zend-db": "Zend\\Db component",
-                "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
-                "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
-                "zendframework/zend-math": "Zend\\Math component",
-                "zendframework/zend-resources": "Translations of validator messages",
-                "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
-                "zendframework/zend-session": "Zend\\Session component",
-                "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Zend\\Validator\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "provides a set of commonly needed validators",
-            "keywords": [
-                "validator",
-                "zf2"
-            ],
-            "time": "2014-03-04 21:00:07"
+            "time": "2014-09-22 11:59:59"
         }
     ],
     "aliases": [],

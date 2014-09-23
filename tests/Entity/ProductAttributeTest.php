@@ -3,7 +3,7 @@
 namespace Mobly\SellerCenter\Entity;
 
 /**
- * Class ProductTest
+ * Class ProductAttributeTest
  *
  * @package Mobly\SellerCenter\Entity
  * @author  Daniel Costa
