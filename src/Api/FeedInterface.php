@@ -1,11 +1,11 @@
 <?php
 
-namespace Mobly\SellerCenter;
+namespace Mobly\SellerCenterSDK\Api;
 
 /**
  * Interface FeedInterface
  *
- * @package Mobly\SellerCenter\Core
+ * @package Mobly\SellerCenterSDK\Core
  * @author  Daniel Costa
  */
 interface FeedInterface

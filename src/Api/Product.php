@@ -1,13 +1,11 @@
 <?php
 
-namespace Mobly\SellerCenter\Api;
-
-use Mobly\SellerCenter\ProductInterface;
+namespace Mobly\SellerCenterSDK\Api;
 
 /**
  * Class Product
  *
- * @package Mobly\SellerCenter\Api
+ * @package Mobly\SellerCenterSDK\Api
  * @author  Daniel Costa
  */
 class Product implements ProductInterface

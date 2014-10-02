@@ -1,11 +1,11 @@
 <?php
 
-namespace Mobly\SellerCenter\Collection;
+namespace Mobly\SellerCenterSDK\Collection;
 
 /**
  * Class UriCollectionTest
  *
- * @package Mobly\SellerCenter\Collection
+ * @package Mobly\SellerCenterSDK\Collection
  * @author Daniel Costa
  */
 class UriCollectionTest extends \PHPUnit_Framework_TestCase

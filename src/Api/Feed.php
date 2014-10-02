@@ -1,13 +1,11 @@
 <?php
 
-namespace Mobly\SellerCenter\Api;
-
-use Mobly\SellerCenter\FeedInterface;
+namespace Mobly\SellerCenterSDK\Api;
 
 /**
  * Class Feed
  *
- * @package Mobly\SellerCenter\Api
+ * @package Mobly\SellerCenterSDK\Api
  * @author  Daniel Costa
  */
 class Feed implements FeedInterface

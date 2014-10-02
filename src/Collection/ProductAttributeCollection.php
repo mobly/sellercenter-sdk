@@ -1,14 +1,14 @@
 <?php
 
-namespace Mobly\SellerCenter\Collection;
+namespace Mobly\SellerCenterSDK\Collection;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Mobly\SellerCenter\Entity\ProductAttribute;
+use Mobly\SellerCenterSDK\Entity\ProductAttribute;
 
 /**
  * Class Product Attribute Collection
  *
- * @package Mobly\SellerCenter\Collection
+ * @package Mobly\SellerCenterSDK\Collection
  * @author  Daniel Costa
  */
 class ProductAttributeCollection extends ArrayCollection
