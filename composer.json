@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "doctrine/collections": "1.2.x-dev",
+        "doctrine/collections": "1.*",
         "zendframework/zend-uri": "2.3.*"
     },
     "require-dev": {
