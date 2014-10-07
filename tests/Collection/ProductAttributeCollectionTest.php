@@ -1,11 +1,11 @@
 <?php
 
-namespace Mobly\SellerCenterSDK\Collection;
+namespace SellerCenter\SDK\Collection;
 
 /**
  * Class ProductAttributeCollectionTest
  *
- * @package Mobly\SellerCenterSDK\Collection
+ * @package SellerCenter\SDK\Collection
  * @author Daniel Costa
  */
 class ProductAttributeCollectionTest extends \PHPUnit_Framework_TestCase

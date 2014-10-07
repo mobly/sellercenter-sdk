@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobly\SellerCenterSDK\Entity;
+namespace SellerCenter\SDK\Entity;
 
-use Mobly\SellerCenterSDK\Collection\ProductAttributeCollection;
+use SellerCenter\SDK\Collection\ProductAttributeCollection;
 
 /**
  * Class Product

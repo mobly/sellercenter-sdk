@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobly\SellerCenterSDK\Collection;
+namespace SellerCenter\SDK\Collection;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Zend\Uri\Uri;
@@ -8,7 +8,7 @@ use Zend\Uri\Uri;
 /**
  * Class Uri Collection
  *
- * @package Mobly\SellerCenterSDK\Collection
+ * @package SellerCenter\SDK\Collection
  * @author  Daniel Costa
  */
 class UriCollection extends ArrayCollection

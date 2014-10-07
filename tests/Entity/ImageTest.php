@@ -1,14 +1,14 @@
 <?php
 
-namespace Mobly\SellerCenterSDK\Entity;
+namespace SellerCenter\SDK\Entity;
 
-use Mobly\SellerCenterSDK\Collection\UriCollection;
+use SellerCenter\SDK\Collection\UriCollection;
 use Zend\Uri\Uri;
 
 /**
  * Class ImageTest
  *
- * @package Mobly\SellerCenterSDK\Entity
+ * @package SellerCenter\SDK\Entity
  * @author  Daniel Costa
  */
 class ImageTest extends \PHPUnit_Framework_TestCase

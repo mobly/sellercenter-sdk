@@ -1,14 +1,14 @@
 <?php
 
-namespace Mobly\SellerCenterSDK\Entity;
+namespace SellerCenter\SDK\Entity;
 
 use Zend\Uri\Uri;
-use Mobly\SellerCenterSDK\Collection\UriCollection;
+use SellerCenter\SDK\Collection\UriCollection;
 
 /**
  * Class Image
  *
- * @package Mobly\SellerCenterSDK\Entity
+ * @package SellerCenter\SDK\Entity
  * @author  Daniel Costa
  */
 class Image

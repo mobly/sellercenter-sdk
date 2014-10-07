@@ -1,11 +1,11 @@
 <?php
 
-namespace Mobly\SellerCenterSDK\Entity;
+namespace SellerCenter\SDK\Entity;
 
 /**
  * Class ProductAttributeTest
  *
- * @package Mobly\SellerCenterSDK\Entity
+ * @package SellerCenter\SDK\Entity
  * @author  Daniel Costa
  */
 class ProductAttributeTest extends \PHPUnit_Framework_TestCase

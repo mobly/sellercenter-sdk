@@ -1,11 +1,11 @@
 <?php
 
-namespace Mobly\SellerCenterSDK\Api;
+namespace SellerCenter\SDK;
 
 /**
- * Interface ProductInterface
+ * Product Interface
  *
- * @package Mobly\SellerCenterSDK\Core
+ * @package SellerCenter\SDK
  * @author  Daniel Costa
  */
 interface ProductInterface
