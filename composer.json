@@ -1,8 +1,10 @@
 {
     "name": "mobly/sellercenter-sdk",
     "description": "SellerCenter PHP SDK",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "license": "proprietary",
+    "homepage": "https://bitbucket.org/mobly/sellercenter-sdk",
+    "issues": "https://bitbucket.org/mobly/sellercenter-sdk/issues",
     "authors": [
         {
             "name": "Mobly Developers",
@@ -17,12 +19,12 @@
     "require": {
         "php": ">=5.4",
         "doctrine/collections": "1.*",
-        "zendframework/zend-uri": "2.3.*",
-        "guzzlehttp/guzzle": "~4.0"
+        "zendframework/zend-uri": "2.*",
+        "guzzlehttp/guzzle": "4.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.2.*",
-        "phpmd/phpmd": "1.5.*",
-        "squizlabs/php_codesniffer": "1.5.*"
+        "phpunit/phpunit": "4.*",
+        "phpmd/phpmd": "1.*",
+        "squizlabs/php_codesniffer": "1.*"
     }
 }
