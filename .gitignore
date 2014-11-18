@@ -14,3 +14,6 @@ vendor/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
+
+# Generated build files
+build/

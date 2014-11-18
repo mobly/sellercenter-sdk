@@ -2,27 +2,27 @@
 
 namespace SellerCenter\SDK\Common\Credentials;
 
+use GuzzleHttp\ToArrayInterface;
+
 /**
  * Interface CredentialsInterface
  *
  * @package SellerCenter\SDK\Common\Credentials
  * @author  Daniel Costa
  */
-interface CredentialsInterface
+interface CredentialsInterface extends ToArrayInterface
 {
     /**
      * Return the API key
      *
      * @return mixed
      */
-    public function getApiKey();
+    public function getKey();
 
     /**
-     * Set the API key
+     * Return the API User ID
      *
-     * @param string $key
-     *
-     * @return CredentialsInterface
+     * @return string
      */
-    public function setApiKey($key);
+    public function getId();
 }

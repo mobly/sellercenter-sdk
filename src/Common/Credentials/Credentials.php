@@ -2,7 +2,8 @@
 
 namespace SellerCenter\SDK\Common\Credentials;
 
-use SellerCenter\SDK\Exception\InvalidArgumentException;
+use \InvalidArgumentException;
+use SellerCenter\SDK\Common\Enum\ConfigEnum;
 
 /**
  * Basic implementation of the SellerCenter API credentials that
@@ -14,26 +15,74 @@ use SellerCenter\SDK\Exception\InvalidArgumentException;
 class Credentials implements CredentialsInterface
 {
     /**
-     * SellerCenter API key
+     * SellerCenter API Key
      *
      * @var string with 40 characters
      */
     protected $key;
 
     /**
-     * @param string $key
+     * SellerCenter API User ID
+     *
+     * @var string
      */
-    public function __construct($key)
+    protected $id;
+
+    /**
+     * Get the available keys for the factory method
+     *
+     * @return array
+     */
+    public static function getConfigDefaults()
     {
-        $this->setApiKey($key);
+        return array(
+            ConfigEnum::KEY => null,
+            ConfigEnum::ID => null,
+        );
     }
 
     /**
-     * Return the API key
+     * Factory method for creating new credentials
      *
-     * @return string
+     * This factory method will create the appropriate credentials object with appropriate decorators
+     * based on the passed configuration options
+     *
+     * @static
+     *
+     * @param array $config Options to use when instantiating the credentials
+     *
+     * @return CredentialsInterface
+     * @throws InvalidArgumentException
      */
-    public function getApiKey()
+    public static function factory(array $config = array())
+    {
+        // Add default key values
+        $config = array_intersect_key($config, self::getConfigDefaults(), array_merge(self::getConfigDefaults()));
+
+        // Use explicitly configured credentials, if provided
+        if (isset($config[ConfigEnum::ID]) && isset($config[ConfigEnum::KEY])) {
+            return new self(
+                $config[ConfigEnum::ID],
+                $config[ConfigEnum::KEY]
+            );
+        }
+
+        return new NullCredentials();
+    }
+
+    /**
+     * @param $id
+     * @param $key
+     *
+     * @throws InvalidArgumentException
+     */
+    public function __construct($id, $key)
+    {
+        $this->setId($id);
+        $this->setKey($key);
+    }
+
+    public function getKey()
     {
         return $this->key;
     }
@@ -44,8 +93,9 @@ class Credentials implements CredentialsInterface
      * @param string $key
      *
      * @return CredentialsInterface
+     * @throws InvalidArgumentException
      */
-    public function setApiKey($key)
+    public function setKey($key)
     {
         if (!is_string($key) || strlen($key) != 40) {
             throw new InvalidArgumentException('API key should be a string with 40 characters');
@@ -54,5 +104,37 @@ class Credentials implements CredentialsInterface
         $this->key = $key;
 
         return $this;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the API User ID
+     *
+     * @param string $id
+     *
+     * @return CredentialsInterface
+     * @throws InvalidArgumentException
+     */
+    public function setId($id)
+    {
+        if (!is_string($id) || filter_var($id, FILTER_VALIDATE_EMAIL) === false) {
+            throw new InvalidArgumentException('API User ID should be a valid email');
+        }
+
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function toArray()
+    {
+        return [
+            ConfigEnum::ID => $this->id,
+            ConfigEnum::KEY => $this->key
+        ];
     }
 }
