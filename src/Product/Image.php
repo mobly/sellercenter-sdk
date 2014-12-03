@@ -2,6 +2,7 @@
 
 namespace SellerCenter\SDK\Product;
 
+use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
 use Zend\Uri\Uri;
 
@@ -11,7 +12,7 @@ use Zend\Uri\Uri;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class Image
+class Image implements ToArrayInterface
 {
     use SellerSkuTrait;
 
@@ -75,5 +76,17 @@ class Image
         $this->images = $images;
 
         return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray()
+    {
+        return [
+            'sellerSku' => $this->getSellerSku(),
+            'image' => $this->getImage()->toString(),
+            'images' => $this->getImages()->toArray()
+        ];
     }
 }

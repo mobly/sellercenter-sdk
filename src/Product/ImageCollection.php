@@ -3,6 +3,7 @@
 namespace SellerCenter\SDK\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
 
 /**
@@ -11,7 +12,7 @@ use InvalidArgumentException;
  * @package SellerCenter\SDK\Collection
  * @author  Daniel Costa
  */
-class ImageCollection extends ArrayCollection
+class ImageCollection extends ArrayCollection implements ToArrayInterface
 {
     /**
      * {@inheritDoc}
@@ -25,5 +26,20 @@ class ImageCollection extends ArrayCollection
         }
 
         return parent::add($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray()
+    {
+        $data = [];
+
+        /* @var Image $image */
+        foreach ($this->getValues() as $image) {
+            $data[] = $image->toArray();
+        }
+
+        return $data;
     }
 }

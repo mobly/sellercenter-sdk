@@ -3,6 +3,7 @@
 namespace SellerCenter\SDK\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
 use Zend\Uri\Uri;
 
@@ -12,7 +13,7 @@ use Zend\Uri\Uri;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class ImageUriCollection extends ArrayCollection
+class ImageUriCollection extends ArrayCollection implements ToArrayInterface
 {
     /**
      * {@inheritDoc}
@@ -26,5 +27,20 @@ class ImageUriCollection extends ArrayCollection
         }
 
         return parent::add($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray()
+    {
+        $data = [];
+
+        /* @var \Zend\Uri\Uri $image */
+        foreach ($this->getValues() as $image) {
+            $data[] = $image->toString();
+        }
+
+        return $data;
     }
 }
