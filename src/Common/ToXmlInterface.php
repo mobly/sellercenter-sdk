@@ -11,7 +11,7 @@ namespace SellerCenter\SDK\Common;
 interface ToXmlInterface
 {
     /**
-     * Get the array representation of an object
+     * Get the array representation of an object to be transformed in XML nodes
      *
      * @return string
      */
