@@ -5,7 +5,7 @@ namespace SellerCenter\SDK\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
-use Zend\Uri\Uri;
+use SellerCenter\SDK\Common\ToXmlArrayInterface;
 
 /**
  * Images Uri Collection
@@ -13,16 +13,16 @@ use Zend\Uri\Uri;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class ImageUriCollection extends ArrayCollection implements ToArrayInterface
+class ImageUriCollection extends ArrayCollection implements ToArrayInterface, ToXmlArrayInterface
 {
     /**
      * {@inheritDoc}
      */
     public function add($value)
     {
-        if (!($value instanceof Uri)) {
+        if (!($value instanceof ImageUri)) {
             throw new InvalidArgumentException(
-                'Value is not an instance of Zend\Uri\Uri'
+                'Value is not an instance of ImageUri'
             );
         }
 
@@ -36,9 +36,24 @@ class ImageUriCollection extends ArrayCollection implements ToArrayInterface
     {
         $data = [];
 
-        /* @var \Zend\Uri\Uri $image */
+        /* @var ImageUri $image */
         foreach ($this->getValues() as $image) {
             $data[] = $image->toString();
+        }
+
+        return $data;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toXmlArray()
+    {
+        $data = [];
+
+        /* @var ImageUri $image */
+        foreach ($this->getValues() as $image) {
+            $data[] = ['Image' => $image->toString()];
         }
 
         return $data;

@@ -15,15 +15,15 @@ class ImageCollectionTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddInvalidItemShouldThrowInvalidArgumentException()
     {
-        $collection = new ImageCollection();
+        $collection = new ProductImageCollection();
         $collection->add(1);
     }
 
     public function testAddImageToCollection()
     {
-        $image = new Image;
+        $image = new ProductImage;
         $image->setSellerSku('12345');
-        $collection = new ImageCollection;
+        $collection = new ProductImageCollection;
         $collection->add($image);
         $this->assertEquals($collection->count(), 1);
     }

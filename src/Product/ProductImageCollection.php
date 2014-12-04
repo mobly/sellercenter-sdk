@@ -12,14 +12,14 @@ use InvalidArgumentException;
  * @package SellerCenter\SDK\Collection
  * @author  Daniel Costa
  */
-class ImageCollection extends ArrayCollection implements ToArrayInterface
+class ProductImageCollection extends ArrayCollection implements ToArrayInterface
 {
     /**
      * {@inheritDoc}
      */
     public function add($value)
     {
-        if (!($value instanceof Image)) {
+        if (!($value instanceof ProductImage)) {
             throw new InvalidArgumentException(
                 'Value is not an instance of Image'
             );
@@ -35,7 +35,7 @@ class ImageCollection extends ArrayCollection implements ToArrayInterface
     {
         $data = [];
 
-        /* @var Image $image */
+        /* @var ProductImage $image */
         foreach ($this->getValues() as $image) {
             $data[] = $image->toArray();
         }

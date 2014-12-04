@@ -3,7 +3,9 @@
 namespace SellerCenter\SDK\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
+use SellerCenter\SDK\Common\ToXmlArrayInterface;
 
 /**
  * Attribute Collection
@@ -11,7 +13,7 @@ use InvalidArgumentException;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class AttributeCollection extends ArrayCollection
+class AttributeCollection extends ArrayCollection implements ToArrayInterface, ToXmlArrayInterface
 {
     /**
      * {@inheritDoc}
@@ -25,5 +27,28 @@ class AttributeCollection extends ArrayCollection
         }
 
         return parent::add($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray()
+    {
+        $data = [];
+
+        /* @var Attribute $attribute */
+        foreach ($this->getValues() as $attribute) {
+            $data[] = $attribute->toArray();
+        }
+
+        return $data;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toXmlArray()
+    {
+        return $this->toArray();
     }
 }

@@ -3,17 +3,17 @@
 namespace SellerCenter\SDK\Common;
 
 /**
- * Interface ToXmlInterface
+ * ToXmlArray Interface
  *
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-interface ToXmlInterface
+interface ToXmlArrayInterface
 {
     /**
      * Get the array representation of an object to be transformed in XML nodes
      *
      * @return string
      */
-    public function toXml();
+    public function toXmlArray();
 }

@@ -7,6 +7,7 @@ use InvalidArgumentException;
 use LengthException;
 use OverflowException;
 use RuntimeException;
+use SellerCenter\SDK\Common\ToXmlArrayInterface;
 
 /**
  * Class Product
@@ -14,7 +15,7 @@ use RuntimeException;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class Product implements ToArrayInterface
+class Product implements ToArrayInterface, ToXmlArrayInterface
 {
     use SellerSkuTrait;
 
@@ -520,6 +521,92 @@ class Product implements ToArrayInterface
             'SellerSku' => $this->getSellerSku(),
         ];
 
+        if (!empty($this->parentSku)) {
+            $data['ParentSku'] = $this->getParentSku();
+        }
+
+        if (!empty($this->status)) {
+            $data['Status'] = $this->getStatus();
+        }
+
+        if (!empty($this->name)) {
+            $data['Name'] = $this->getName();
+        }
+
+        if (!empty($this->variation)) {
+            $data['Variation'] = $this->getVariation();
+        }
+
+        if (!empty($this->primaryCategory)) {
+            $data['PrimaryCategory'] = $this->getPrimaryCategory();
+        }
+
+        if (!empty($this->categories)) {
+            $data['Categories'] = $this->getCategories();
+        }
+
+        if (!empty($this->description)) {
+            $data['Description'] = $this->getDescription();
+        }
+
+        if (!empty($this->brand)) {
+            $data['Brand'] = $this->getBrand();
+        }
+
+        if (!empty($this->price)) {
+            $data['Price'] = $this->getPrice();
+        }
+
+        if (!empty($this->salePrice)) {
+            $data['SalePrice'] = $this->getSalePrice();
+        }
+
+        if ($this->saleStartDate instanceof \DateTime) {
+            $data['SaleFromDate'] = $this->getSaleStartDate()->format(\DateTime::ISO8601);
+        }
+
+        if ($this->saleEndDate instanceof \DateTime) {
+            $data['SaleToDate'] = $this->getSaleEndDate()->format(\DateTime::ISO8601);
+        }
+
+        if (!empty($this->taxClass)) {
+            $data['TaxClass'] = $this->getTaxClass();
+        }
+
+        if (!empty($this->shipmentType)) {
+            $data['ShipmentType'] = $this->getShipmentType();
+        }
+
+        if (!empty($this->productId)) {
+            $data['ProductId'] = $this->getProductId();
+        }
+
+        if (!empty($this->condition)) {
+            $data['Condition'] = $this->getCondition();
+        }
+
+        if ($this->productData instanceof AttributeCollection) {
+            $data['ProductData'] = $this->getProductData()->toArray();
+        }
+
+        if (!empty($this->quantity)) {
+            $data['Quantity'] = $this->getQuantity();
+        }
+
         return $data;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toXmlArray()
+    {
+        $data = $this->toArray();
+
+        if ($this->productData instanceof AttributeCollection) {
+            $data['ProductData'] = $this->getProductData()->toXmlArray();
+        }
+
+        return ['Product' => $data];
     }
 }

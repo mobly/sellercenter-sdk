@@ -42,18 +42,18 @@ class XmlBody
         return $xml->outputMemory();
     }
 
-    private function format($name, $struct, \XMLWriter $xml)
+    private function format($name, $struct, \XMLWriter $xml, $previousNode = null)
     {
-        $xml->startElement($name);
+        $xml->startElement($name ?: $previousNode);
 
         if (is_array($struct)) {
             foreach ($struct as $key => $value) {
                 if (is_int($key) && is_array($value)) {
                     foreach ($value as $loopKey => $loopValue) {
-                        $this->format($loopKey, $loopValue, $xml);
+                        $this->format($loopKey, $loopValue, $xml, $name);
                     }
                 } else {
-                    $this->format($key, $value, $xml);
+                    $this->format($key, $value, $xml, $name);
                 }
             }
         } else {

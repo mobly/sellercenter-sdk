@@ -4,6 +4,7 @@ namespace SellerCenter\SDK\Product;
 
 use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
+use SellerCenter\SDK\Common\ToXmlArrayInterface;
 
 /**
  * Class ProductAttribute
@@ -11,7 +12,7 @@ use InvalidArgumentException;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class Attribute implements ToArrayInterface
+class Attribute implements ToArrayInterface, ToXmlArrayInterface
 {
     /**
      * @var string
@@ -98,9 +99,14 @@ class Attribute implements ToArrayInterface
      */
     public function toArray()
     {
-        return [
-            'name' => $this->getName(),
-            'value' => $this->getValue(),
-        ];
+        return [$this->getName() => $this->getValue()];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toXmlArray()
+    {
+        return $this->toArray();
     }
 }

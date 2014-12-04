@@ -12,9 +12,9 @@ use GuzzleHttp\Command\ServiceClientInterface;
  */
 interface ProductInterface extends ServiceClientInterface
 {
-    public function price(Product $product);
+    public function price(Price $product);
 
-    public function image(Image $image);
+    public function image(ProductImage $image);
 
     public function productAdd(Product $product);
 

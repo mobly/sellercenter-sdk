@@ -26,7 +26,7 @@ class ProductClient extends SdkClient implements ProductInterface
     public function inventory(Product $product)
     {
         $data = [
-            'Request' => $product->toArray()
+            'Request' => $product->toXmlArray()
         ];
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
@@ -36,10 +36,10 @@ class ProductClient extends SdkClient implements ProductInterface
      *
      * @return ResultInterface
      */
-    public function price(Product $product)
+    public function price(Price $product)
     {
         $data = [
-            'Request' => $product->toArray()
+            'Request' => $product->toXmlArray()
         ];
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
@@ -52,7 +52,7 @@ class ProductClient extends SdkClient implements ProductInterface
     public function productAdd(Product $product)
     {
         $data = [
-            'Request' => $product->toArray()
+            'Request' => $product->toXmlArray()
         ];
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
@@ -65,7 +65,7 @@ class ProductClient extends SdkClient implements ProductInterface
     public function productUpdate(ProductCollection $collection)
     {
         $data = [
-            'Request' => $collection->toArray()
+            'Request' => $collection->toXmlArray()
         ];
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
@@ -78,20 +78,20 @@ class ProductClient extends SdkClient implements ProductInterface
     public function productRemove(ProductCollection $collection)
     {
         $data = [
-            'Request' => $collection->toArray()
+            'Request' => $collection->toXmlArray()
         ];
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
 
     /**
-     * @param Image $image
+     * @param ProductImage $image
      *
      * @return ResultInterface
      */
-    public function image(Image $image)
+    public function image(ProductImage $image)
     {
         $data = [
-            'Request' => $image->toArray()
+            'Request' => $image->toXmlArray()
         ];
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }

@@ -4,7 +4,7 @@ namespace SellerCenter\SDK\Product;
 
 use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
-use Zend\Uri\Uri;
+use SellerCenter\SDK\Common\ToXmlArrayInterface;
 
 /**
  * Class Image
@@ -12,7 +12,7 @@ use Zend\Uri\Uri;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class Image implements ToArrayInterface
+class ProductImage implements ToArrayInterface, ToXmlArrayInterface
 {
     use SellerSkuTrait;
 
@@ -20,37 +20,6 @@ class Image implements ToArrayInterface
      * @var ImageUriCollection
      */
     protected $images;
-
-    /**
-     * @var Uri
-     */
-    protected $image;
-
-    /**
-     * @return Uri
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param Uri $image
-     *
-     * @return $this
-     */
-    public function setImage($image)
-    {
-        if (!($image instanceof Uri)) {
-            throw new InvalidArgumentException(
-                'Image is not an instance of Zend\Uri\Uri'
-            );
-        }
-
-        $this->image = $image;
-
-        return $this;
-    }
 
     /**
      * @return ImageUriCollection
@@ -84,9 +53,21 @@ class Image implements ToArrayInterface
     public function toArray()
     {
         return [
-            'sellerSku' => $this->getSellerSku(),
-            'image' => $this->getImage()->toString(),
-            'images' => $this->getImages()->toArray()
+            'SellerSku' => $this->getSellerSku(),
+            'Images' => $this->getImages()->toArray()
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toXmlArray()
+    {
+        return [
+            'ProductImage' => [
+                'SellerSku' => $this->getSellerSku(),
+                'Images' => $this->getImages()->toXmlArray()
+            ]
         ];
     }
 }

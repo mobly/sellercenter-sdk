@@ -34,7 +34,7 @@ class ProductCollectionTest extends \PHPUnit_Framework_TestCase
         $collection->add($product);
         $expected = [
             [
-                'SellerSku' => '123ABCMOB'
+                'SellerSku' => '123ABCMOB',
             ]
         ];
         $this->assertEquals($expected, $collection->toArray());

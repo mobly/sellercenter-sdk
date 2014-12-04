@@ -42,4 +42,19 @@ class ProductCollection extends ArrayCollection implements ToArrayInterface
 
         return $data;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toXmlArray()
+    {
+        $data = [];
+
+        /* @var Product $product */
+        foreach ($this->getValues() as $product) {
+            $data[] = $product->toXmlArray();
+        }
+
+        return $data;
+    }
 }
