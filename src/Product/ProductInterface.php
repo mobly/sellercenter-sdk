@@ -16,7 +16,7 @@ interface ProductInterface extends ServiceClientInterface
 
     public function image(ProductImage $image);
 
-    public function productAdd(Product $product);
+    public function productCreate(Product $product);
 
     public function productUpdate(ProductCollection $product);
 

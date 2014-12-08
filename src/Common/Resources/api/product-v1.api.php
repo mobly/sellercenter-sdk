@@ -35,8 +35,8 @@
                 ]
             ]
         ],
-        'ProductAdd' => [
-            'name' => 'ProductAdd',
+        'ProductCreate' => [
+            'name' => 'ProductCreate',
             'description' => 'Performs product insertions',
             'http' => [
                 'method' => 'POST',

@@ -49,7 +49,7 @@ class ProductClient extends SdkClient implements ProductInterface
      *
      * @return ResultInterface
      */
-    public function productAdd(Product $product)
+    public function productCreate(Product $product)
     {
         $data = [
             'Request' => $product->toXmlArray()
