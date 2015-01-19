@@ -1,7 +1,9 @@
 <?php
-namespace SellerCenter\SDK;
+namespace SellerCenter\SDK\Test;
 
 use GuzzleHttp\Event\EmitterInterface;
+use SellerCenter\SDK\Sdk;
+
 //use JmesPath\Env as JmesPath;
 
 class SdkTest extends \PHPUnit_Framework_TestCase

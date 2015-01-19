@@ -1,8 +1,9 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Api;
+namespace SellerCenter\SDK\Test\Common\Api;
 
-use SellerCenter\SDK\UsesServiceTrait;
+use SellerCenter\SDK\Common\Api\Service;
+use SellerCenter\SDK\Test\UsesServiceTrait;
 
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {

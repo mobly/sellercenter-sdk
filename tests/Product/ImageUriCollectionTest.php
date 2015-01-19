@@ -1,6 +1,8 @@
 <?php
 
-namespace SellerCenter\SDK\Product;
+namespace SellerCenter\SDK\Test\Product;
+
+use SellerCenter\SDK\Product\ImageUriCollection;
 
 /**
  * ImageUriCollection Test

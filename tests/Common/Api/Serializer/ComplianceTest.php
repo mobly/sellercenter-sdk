@@ -1,6 +1,6 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Api\Serializer;
+namespace SellerCenter\SDK\Test\Common\Api\Serializer;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\CommandTransaction;
@@ -8,7 +8,7 @@ use SellerCenter\SDK\Common\Api\Service;
 use SellerCenter\SDK\Common\ClientFactory;
 use SellerCenter\SDK\Common\Credentials\NullCredentials;
 use SellerCenter\SDK\Common\SdkClient;
-use SellerCenter\SDK\UsesServiceTrait;
+use SellerCenter\SDK\Test\UsesServiceTrait;
 
 /**
  * Class ComplianceTest

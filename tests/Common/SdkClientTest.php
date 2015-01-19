@@ -1,6 +1,6 @@
 <?php
 
-namespace SellerCenter\SDK\Common;
+namespace SellerCenter\SDK\Test\Common;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Event\PreparedEvent;
@@ -10,8 +10,9 @@ use GuzzleHttp\Subscriber\Mock;
 use SellerCenter\SDK\Common\Api\Service;
 use SellerCenter\SDK\Common\Credentials\Credentials;
 use SellerCenter\SDK\Common\Exception\SdkException;
+use SellerCenter\SDK\Common\SdkClient;
 use SellerCenter\SDK\Common\Signature\SignatureV1;
-use SellerCenter\SDK\UsesServiceTrait;
+use SellerCenter\SDK\Test\UsesServiceTrait;
 
 /**
  * Class SdkClientTest

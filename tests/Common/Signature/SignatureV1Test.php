@@ -1,12 +1,13 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Signature;
+namespace SellerCenter\SDK\Test\Common\Signature;
 
 require_once __DIR__ . '/sig_hack.php';
 
 use GuzzleHttp\Command\Command;
 use SellerCenter\SDK\Common\Credentials\Credentials;
 use GuzzleHttp\Message\MessageFactory;
+use SellerCenter\SDK\Common\Signature\SignatureV1;
 
 /**
  * Class SignatureV1Test
@@ -33,7 +34,6 @@ class SignatureV1Test extends \PHPUnit_Framework_TestCase
         $credentials = new Credentials(self::DEFAULT_KEY, self::DEFAULT_SECRET);
         $signature = new SignatureV1();
         $signature->signRequest($request, $credentials);
-//        var_dump($request->getBody()); die;
         $request->getBody()->applyRequestHeaders($request);
 
         $expected = "POST /?Action=test&Timestamp=Fri%2C%2020%20Jul%202014%2023%3A36%3A00%20GMT"

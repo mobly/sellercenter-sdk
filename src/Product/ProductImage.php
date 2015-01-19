@@ -21,6 +21,11 @@ class ProductImage implements ToArrayInterface, ToXmlArrayInterface
      */
     protected $images;
 
+    public function __construct()
+    {
+        $this->setImages(new ImageUriCollection);
+    }
+
     /**
      * @return ImageUriCollection
      */

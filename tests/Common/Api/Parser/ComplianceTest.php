@@ -1,12 +1,12 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Api\Parser;
+namespace SellerCenter\SDK\Test\Common\Api\Parser;
 
 use GuzzleHttp\Command\Command;
 use GuzzleHttp\Message\Response;
 use GuzzleHttp\Stream\Stream;
 use SellerCenter\SDK\Common\Api\Service;
-use SellerCenter\SDK\UsesServiceTrait;
+use SellerCenter\SDK\Test\UsesServiceTrait;
 
 /**
  * Class ComplianceTest

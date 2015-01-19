@@ -1,11 +1,12 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Exception;
+namespace SellerCenter\SDK\Test\Common\Exception;
 
 use GuzzleHttp\Command\Command;
 use GuzzleHttp\Command\CommandTransaction;
 use GuzzleHttp\Message\Response;
-use SellerCenter\SDK\UsesServiceTrait;
+use SellerCenter\SDK\Common\Exception\SdkException;
+use SellerCenter\SDK\Test\UsesServiceTrait;
 
 /**
  * Class SdkExceptionTest

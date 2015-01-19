@@ -1,6 +1,9 @@
 <?php
 
-namespace SellerCenter\SDK\Product;
+namespace SellerCenter\SDK\Test\Product;
+
+use SellerCenter\SDK\Product\ProductCollection;
+use SellerCenter\SDK\Product\Product;
 
 /**
  * ProductCollection Test
@@ -38,5 +41,21 @@ class ProductCollectionTest extends \PHPUnit_Framework_TestCase
             ]
         ];
         $this->assertEquals($expected, $collection->toArray());
+    }
+
+    public function testToXmlArray()
+    {
+        $collection = new ProductCollection();
+        $product = new Product();
+        $product->setSellerSku('123ABCMOB');
+        $collection->add($product);
+        $expected = [
+            [
+                'Product' => [
+                    'SellerSku' => '123ABCMOB',
+                ]
+            ]
+        ];
+        $this->assertEquals($expected, $collection->toXmlArray());
     }
 }

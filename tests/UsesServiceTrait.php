@@ -1,6 +1,6 @@
 <?php
 
-namespace SellerCenter\SDK;
+namespace SellerCenter\SDK\Test;
 
 use SellerCenter\SDK\Common\SdkClientInterface;
 use SellerCenter\SDK\Common\Result;
@@ -12,10 +12,8 @@ use GuzzleHttp\Command\Event\PreparedEvent;
 use GuzzleHttp\Command\Exception\CommandException;
 use GuzzleHttp\Message\Response;
 use GuzzleHttp\Subscriber\Mock;
+use SellerCenter\SDK\Sdk;
 
-/**
- * @internal
- */
 trait UsesServiceTrait
 {
     /**

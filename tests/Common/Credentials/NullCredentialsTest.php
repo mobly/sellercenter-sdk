@@ -1,7 +1,8 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Credentials;
+namespace SellerCenter\SDK\Test\Common\Credentials;
 
+use SellerCenter\SDK\Common\Credentials\NullCredentials;
 use SellerCenter\SDK\Common\Enum\ConfigEnum;
 
 /**

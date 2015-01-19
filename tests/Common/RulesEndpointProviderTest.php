@@ -1,6 +1,7 @@
 <?php
 
-namespace SellerCenter\SDK\Common;
+namespace SellerCenter\SDK\Test\Common;
+use SellerCenter\SDK\Common\RulesEndpointProvider;
 
 /**
  * Class RulesEndpointProviderTest

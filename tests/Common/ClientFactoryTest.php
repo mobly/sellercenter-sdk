@@ -1,10 +1,11 @@
 <?php
 
-namespace SellerCenter\SDK\Common;
+namespace SellerCenter\SDK\Test\Common;
 
+use SellerCenter\SDK\Common\ClientFactory;
 use SellerCenter\SDK\Common\Credentials\NullCredentials;
 use SellerCenter\SDK\Product\ProductCollection;
-use SellerCenter\SDK\UsesServiceTrait;
+use SellerCenter\SDK\Test\UsesServiceTrait;
 
 /**
  * Class ClientFactoryTest

@@ -1,6 +1,8 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Api;
+namespace SellerCenter\SDK\Test\Common\Api;
+
+use SellerCenter\SDK\Common\Api\FilesystemApiProvider;
 
 class FilesystemApiProviderTest extends \PHPUnit_Framework_TestCase
 {

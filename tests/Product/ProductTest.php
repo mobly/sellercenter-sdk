@@ -1,6 +1,10 @@
 <?php
 
-namespace SellerCenter\SDK\Product;
+namespace SellerCenter\SDK\Test\Product;
+
+use SellerCenter\SDK\Product\Attribute;
+use SellerCenter\SDK\Product\AttributeCollection;
+use SellerCenter\SDK\Product\Product;
 
 /**
  * Class ProductTest
@@ -373,5 +377,35 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     {
         $product = new Product;
         $product->setQuantity('1');
+    }
+
+    public function testToArray()
+    {
+        $productData = new AttributeCollection;
+        $productAttribute1 = new Attribute('attribute_one', 'value_one');
+        $productAttribute2 = new Attribute('attribute_two', 'value_two');
+        $productData->add($productAttribute1);
+        $productData->add($productAttribute2);
+        $product = new Product;
+        $product->setSellerSku('MOB123456');
+        $product->setProductData($productData);
+
+        $expected = [
+            'SellerSku' => 'MOB123456',
+            'ProductData' => [
+                [
+                    'attribute_one' => 'value_one'
+                ],
+                [
+                    'attribute_two' => 'value_two'
+                ],
+            ]
+        ];
+        $this->assertEquals($expected, $product->toArray());
+
+        $expected = [
+            'Product' => $expected
+        ];
+        $this->assertEquals($expected, $product->toXmlArray());
     }
 }

@@ -1,11 +1,12 @@
 <?php
 
-namespace SellerCenter\SDK\Common\Subscriber;
+namespace SellerCenter\SDK\Test\Common\Subscriber;
 
 use SellerCenter\SDK\Common\Credentials\Credentials;
 use GuzzleHttp\Client;
 use GuzzleHttp\Subscriber\Mock;
 use GuzzleHttp\Message\Response;
+use SellerCenter\SDK\Common\Subscriber\Signature;
 
 /**
  * Class SignatureTest

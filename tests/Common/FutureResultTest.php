@@ -1,8 +1,10 @@
 <?php
 
-namespace SellerCenter\SDK\Common;
+namespace SellerCenter\SDK\Test\Common;
 
 use React\Promise\FulfilledPromise;
+use SellerCenter\SDK\Common\FutureResult;
+use SellerCenter\SDK\Common\Result;
 
 /**
  * Class FutureResultTest
