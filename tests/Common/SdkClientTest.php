@@ -12,6 +12,7 @@ use SellerCenter\SDK\Common\Credentials\Credentials;
 use SellerCenter\SDK\Common\Exception\SdkException;
 use SellerCenter\SDK\Common\SdkClient;
 use SellerCenter\SDK\Common\Signature\SignatureV1;
+use SellerCenter\SDK\Product\ProductClient;
 use SellerCenter\SDK\Test\UsesServiceTrait;
 
 /**
@@ -302,5 +303,19 @@ class SdkClientTest extends \PHPUnit_Framework_TestCase
                 'version'      => 'latest',
                 'endpoint'     => 'https://api-staging.sellercenter.net'
             ]);
+    }
+
+    /**
+     * @covers SellerCenter\SDK\Common\SdkClient::factory
+     */
+    public function testFactoryInitializesClient()
+    {
+        /* @var \SellerCenter\SDK\Product\ProductClient $client */
+        $client = ProductClient::factory([
+            'store' => 'mobly',
+            'environment' => 'staging'
+        ]);
+        $this->assertInstanceOf('SellerCenter\SDK\Product\ProductClient', $client);
+        $this->assertEquals('mobly', $client->getStore());
     }
 }

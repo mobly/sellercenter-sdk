@@ -389,9 +389,42 @@ class ProductTest extends \PHPUnit_Framework_TestCase
         $product = new Product;
         $product->setSellerSku('MOB123456');
         $product->setProductData($productData);
+        $product->setParentSku('ABC998877');
+        $product->setStatus('active');
+        $product->setName('Product Name');
+        $product->setVariation('VariationX');
+        $product->setPrimaryCategory(1);
+        $product->setCategories('1,2,3');
+        $product->setDescription('Product description goes here...');
+        $product->setBrand('Major Brand');
+        $product->setPrice(129.99);
+        $product->setSalePrice(99.99);
+        $product->setSaleStartDate(\DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 10:00:00'));
+        $product->setSaleEndDate(\DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-10 23:59:59'));
+        $product->setTaxClass('default');
+        $product->setShipmentType('dropshipping');
+        $product->setProductId('78900112233');
+        $product->setCondition('new');
+        $product->setQuantity(1);
 
         $expected = [
             'SellerSku' => 'MOB123456',
+            'ParentSku' => 'ABC998877',
+            'Status' => 'active',
+            'Name' => 'Product Name',
+            'Variation' => 'VariationX',
+            'PrimaryCategory' => '1',
+            'Categories' => '1,2,3',
+            'Description' => 'Product description goes here...',
+            'Brand' => 'Major Brand',
+            'Price' => '129.99',
+            'SalePrice' => '99.99',
+            'SaleFromDate' => '2015-01-01T10:00:00+0000',
+            'SaleToDate' => '2015-01-10T23:59:59+0000',
+            'TaxClass' => 'default',
+            'ShipmentType' => 'dropshipping',
+            'ProductId' => '78900112233',
+            'Condition' => 'new',
             'ProductData' => [
                 [
                     'attribute_one' => 'value_one'
@@ -399,7 +432,8 @@ class ProductTest extends \PHPUnit_Framework_TestCase
                 [
                     'attribute_two' => 'value_two'
                 ],
-            ]
+            ],
+            'Quantity' => 1
         ];
         $this->assertEquals($expected, $product->toArray());
 

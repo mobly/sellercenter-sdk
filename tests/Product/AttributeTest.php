@@ -65,6 +65,8 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     public function testToArray()
     {
         $attribute = new Attribute('attr_name', 'attr_value');
-        $this->assertEquals(['attr_name' => 'attr_value'], $attribute->toArray());
+        $expected = ['attr_name' => 'attr_value'];
+        $this->assertEquals($expected, $attribute->toArray());
+        $this->assertEquals($expected, $attribute->toXmlArray());
     }
 }
