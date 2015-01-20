@@ -32,7 +32,7 @@ class ProductClient extends SdkClient implements ProductInterface
     }
 
     /**
-     * @param Product $product
+     * @param Price $product
      *
      * @return ResultInterface
      */

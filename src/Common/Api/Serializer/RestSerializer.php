@@ -11,7 +11,7 @@ use SellerCenter\SDK\Common\Api\Service;
  * Class RestSerializer
  *
  * @package SellerCenter\SDK\Common\Api\Serializer
- * @author Daniel Costa
+ * @author  Daniel Costa
  */
 abstract class RestSerializer
 {
@@ -94,7 +94,6 @@ abstract class RestSerializer
      */
     private function buildEndpoint($operation, array $args)
     {
-//        var_dump('('.__LINE__.')'.__FUNCTION__, $operation, $args); die;
         $uri = (string) $this->endpoint;
         $varspecs = [];
 
@@ -105,13 +104,12 @@ abstract class RestSerializer
             if (isset($operation['parameters'])) {
                 foreach ($operation['parameters'] as $name => $member) {
                     if ($member['location'] == 'uri') {
-                        $varspecs[isset($member['locationName']) ? $member['locationName'] : $name] = isset($args[$name]) ? $args[$name] : null;
+                        $varspecs[isset($member['locationName']) ? $member['locationName'] : $name] =
+                            isset($args[$name]) ? $args[$name] : null;
                     }
                 }
             }
         }
-
-//        var_dump('('.__LINE__.')'.__FUNCTION__, $varspecs, $uri); die;
 
         return preg_replace_callback(
             '/%7B([^\}]+)%7D/',

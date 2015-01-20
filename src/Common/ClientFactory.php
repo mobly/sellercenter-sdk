@@ -294,7 +294,7 @@ class ClientFactory
 
     /**
      * Creates a signature object based on the service description
-     * @param $version Signature version
+     * @param $version string version
      *
      * @return SignatureInterface
      * @throws InvalidArgumentException if the signature cannot be created

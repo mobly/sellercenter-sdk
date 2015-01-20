@@ -1,19 +1,13 @@
-all: clean coverage
+all: clean coverage coverage-show
 
 clean:
-	rm -rf build/artifacts/*
+	@rm -rf build/artifacts/*
 
 test:
-	vendor/bin/phpunit --colors
-
-testsuite:
-	vendor/bin/phpunit --testsuite=unit $(TEST)
-
-travis:
-	vendor/bin/phpunit --colors --coverage-text
+	@vendor/bin/phpunit --colors
 
 coverage:
-	vendor/bin/phpunit --colors --coverage-html=build/artifacts/coverage
+	@vendor/bin/phpunit --colors --coverage-html=build/artifacts/coverage
 
 coverage-show:
-	open build/artifacts/coverage/index.html
+	@open build/artifacts/coverage/index.html
