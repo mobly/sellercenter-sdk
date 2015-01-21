@@ -20,7 +20,7 @@ use SellerCenter\SDK\Product\ProductClient;
  */
 class Sdk
 {
-    const VERSION = '1.0.0-beta.1';
+    const VERSION = Version::VERSION_NUMBER;
 
     /**
      * Map of service lowercase names to service class names.
@@ -28,7 +28,9 @@ class Sdk
      * @var array
      */
     private static $services = [
-        'product' => 'Product'
+        'product' => 'Product',
+        'order' => 'Order',
+        'feed' => 'Feed',
     ];
 
     private static $factories = [];
