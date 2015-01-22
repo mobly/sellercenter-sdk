@@ -23,12 +23,12 @@ class SignatureV1 extends AbstractSignature
      */
     public function signRequest(RequestInterface $request, CredentialsInterface $credentials)
     {
-        $parameters = [
-            'UserID' => $credentials->getId(),
-            'Version' => '1.0',
-            'Action' => $request->getConfig()->get('command')->getName(),
-            'Timestamp' => gmdate(DateTime::ISO8601),
-        ];
+        $parameters = $request->getQuery()->toArray();
+
+        $parameters['UserID'] = $credentials->getId();
+        $parameters['Version'] = '1.0';
+        $parameters['Action'] = $request->getConfig()->get('command')->getName();
+        $parameters['Timestamp'] = gmdate(DateTime::ISO8601);
 
         // the keys MUST be in alphabetical order to correct signature calculation
         ksort($parameters);
@@ -42,6 +42,6 @@ class SignatureV1 extends AbstractSignature
             )
         );
 
-        $request->getQuery()->merge($parameters);
+        $request->setQuery($parameters);
     }
 }

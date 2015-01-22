@@ -1,6 +1,6 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common\Signature;
+namespace SellerCenter\Test\SDK\Common\Signature;
 
 require_once __DIR__ . '/sig_hack.php';
 
@@ -8,6 +8,7 @@ use GuzzleHttp\Command\Command;
 use SellerCenter\SDK\Common\Credentials\Credentials;
 use GuzzleHttp\Message\MessageFactory;
 use SellerCenter\SDK\Common\Signature\SignatureV1;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class SignatureV1Test
@@ -15,7 +16,7 @@ use SellerCenter\SDK\Common\Signature\SignatureV1;
  * @package SellerCenter\SDK\Common\Signature
  * @author  Daniel Costa
  */
-class SignatureV1Test extends \PHPUnit_Framework_TestCase
+class SignatureV1Test extends SdkTestCase
 {
     const DEFAULT_KEY = 'admin@sellercenter.net';
     const DEFAULT_SECRET = 'abc16cfd7e7fa8263b8b83eb3b4467e60ca0638b';

@@ -1,12 +1,13 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common\Subscriber;
+namespace SellerCenter\Test\SDK\Common\Subscriber;
 
 use SellerCenter\SDK\Common\Credentials\Credentials;
 use GuzzleHttp\Client;
 use GuzzleHttp\Subscriber\Mock;
 use GuzzleHttp\Message\Response;
 use SellerCenter\SDK\Common\Subscriber\Signature;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class SignatureTest
@@ -14,7 +15,7 @@ use SellerCenter\SDK\Common\Subscriber\Signature;
  * @package SellerCenter\SDK\Common\Subscriber
  * @author  Daniel Costa
  */
-class SignatureTest extends \PHPUnit_Framework_TestCase
+class SignatureTest extends SdkTestCase
 {
     public function testSignsRequests()
     {

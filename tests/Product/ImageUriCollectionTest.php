@@ -1,8 +1,10 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Product;
+namespace SellerCenter\Test\SDK\Product;
 
+use SellerCenter\SDK\Product\ImageUri;
 use SellerCenter\SDK\Product\ImageUriCollection;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * ImageUriCollection Test
@@ -10,14 +12,14 @@ use SellerCenter\SDK\Product\ImageUriCollection;
  * @package SellerCenter\SDK\Product
  * @author Daniel Costa
  */
-class ImageUriCollectionTest extends \PHPUnit_Framework_TestCase
+class ImageUriCollectionTest extends SdkTestCase
 {
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testAddInvalidItemShouldThrowInvalidArgumentException()
+    public function testToArray()
     {
         $collection = new ImageUriCollection;
-        $collection->add(1);
+        $collection->add(new ImageUri('http://host.com/img.jpg'));
+
+        $expected = ['http://host.com/img.jpg'];
+        $this->assertEquals($expected, $collection->toArray());
     }
 }

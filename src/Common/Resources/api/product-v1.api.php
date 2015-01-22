@@ -7,42 +7,28 @@
         'protocol' => 'rest-xml',
     ],
     'operations' => [
-        'Inventory' => [
-            'name' => 'Inventory',
-            'description' => 'Performs inventory (stock) updates',
+        'GetProducts' => [
+            'name' => 'GetProducts',
+            'description' => 'GetProducts returns a list of all products. The following optional parameters can
+                                be used to control which products are returned',
+            'deserialize' => 'SellerCenter\SDK\Product\Products',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/',
             ],
             'parameters' => [
-                'Request' => [
-                    'location' => 'xml',
-                    'required' => true,
-                ]
             ]
         ],
-        'Price' => [
-            'name' => 'Price',
-            'description' => 'Performs price updates, including rebates',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/',
-            ],
-            'parameters' => [
-                'Request' => [
-                    'location' => 'xml',
-                    'required' => true,
-                ]
-            ]
-        ],
-        'ProductAdd' => [
-            'name' => 'ProductAdd',
-            'description' => 'Performs product insertions',
+        'ProductCreate' => [
+            'name' => 'ProductCreate',
+            'description' => 'This action allows the creation of new products',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
             'http' => [
                 'method' => 'POST',
             ],
             'parameters' => [
-                'Request' => [
+                'ProductRequest' => [
+                    'type' => 'SellerCenter\SDK\Product\ProductCollection',
                     'location' => 'xml',
                     'required' => true,
                 ]
@@ -50,25 +36,29 @@
         ],
         'ProductUpdate' => [
             'name' => 'ProductUpdate',
-            'description' => 'Performs product updates',
+            'description' => 'This action provides a mechanism to update product information',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
             'http' => [
                 'method' => 'POST',
             ],
             'parameters' => [
-                'Request' => [
+                'ProductRequest' => [
+                    'type' => 'SellerCenter\SDK\Product\ProductCollection',
                     'location' => 'xml',
                     'required' => true,
                 ]
             ],
         ],
         'ProductRemove' => [
-            'name' => 'ProductUpdate',
-            'description' => 'Performs product removals',
+            'name' => 'ProductRemove',
+            'description' => 'This action enables the removal of products',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
             'http' => [
                 'method' => 'POST',
             ],
             'parameters' => [
-                'Request' => [
+                'ProductRequest' => [
+                    'type' => 'SellerCenter\SDK\Product\ProductCollection',
                     'location' => 'xml',
                     'required' => true,
                 ]
@@ -76,13 +66,16 @@
         ],
         'Image' => [
             'name' => 'Image',
-            'description' => 'Performs upload of product images',
+            'description' => 'This action provides URLs for the images of products. All existing images
+                                will be replaced. The first entry will be used as a default image',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
             'http' => [
                 'method' => 'POST',
                 'requestUri' => '/',
             ],
             'parameters' => [
-                'Request' => [
+                'ProductImageRequest' => [
+                    'type' => 'SellerCenter\SDK\Product\ProductImageCollection',
                     'location' => 'xml',
                     'required' => true,
                 ]

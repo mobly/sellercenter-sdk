@@ -1,12 +1,12 @@
 <?php
-namespace SellerCenter\SDK\Test;
+namespace SellerCenter\Test\SDK;
 
 use GuzzleHttp\Event\EmitterInterface;
 use SellerCenter\SDK\Sdk;
 
 //use JmesPath\Env as JmesPath;
 
-class SdkTest extends \PHPUnit_Framework_TestCase
+class SdkTest extends SdkTestCase
 {
     /**
      * Check if the given emitter has the provided event listener

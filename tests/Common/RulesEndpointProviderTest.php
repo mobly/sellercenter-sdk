@@ -1,7 +1,9 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common;
+namespace SellerCenter\Test\SDK\Common;
+
 use SellerCenter\SDK\Common\RulesEndpointProvider;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class RulesEndpointProviderTest
@@ -9,7 +11,7 @@ use SellerCenter\SDK\Common\RulesEndpointProvider;
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-class RulesEndpointProviderTest extends \PHPUnit_Framework_TestCase
+class RulesEndpointProviderTest extends SdkTestCase
 {
     /**
      * @expectedException \SellerCenter\SDK\Common\Exception\UnresolvedEndpointException

@@ -26,11 +26,14 @@ class RestXmlParser extends AbstractRestParser
         $this->parser = $parser ?: new XmlParser();
     }
 
-    protected function payload(
-        ResponseInterface $response,
-        array &$result
-    ) {
-        $result['body'] = $this->parser->parse($response->xml());
-        $result['payload'] = $response->xml();
+    /**
+     * @param ResponseInterface $response
+     * @param string            $deserialize
+     *
+     * @return mixed
+     */
+    protected function parse(ResponseInterface $response, $deserialize)
+    {
+        return $this->parser->parse($response->xml(), $deserialize);
     }
 }

@@ -56,30 +56,27 @@ abstract class RestSerializer
      *
      * @param RequestInterface $request Request to apply.
      * @param string           $name    Member to serialize
-     * @param array            $args    Value to serialize
+     * @param mixed            $args    Value to serialize
      *
      * @return \GuzzleHttp\Stream\StreamInterface
      */
-    abstract protected function payload(
-        RequestInterface $request,
-        $name,
-        array $args
-    );
+    abstract protected function payload(RequestInterface $request, $name, $args);
 
-    private function serialize(
-        RequestInterface $request,
-        $operation,
-        array $args
-    ) {
-//        var_dump('('.__LINE__.')'.__FUNCTION__, $operation, $args); die;
+    /**
+     * @param RequestInterface $request
+     * @param string           $operation
+     * @param array            $args
+     *
+     * @return RequestInterface
+     */
+    private function serialize(RequestInterface $request, $operation, array $args)
+    {
         foreach ($operation['parameters'] as $name => $value) {
             $location = $value['location'];
-            if (!in_array($location, ['header', 'querystring', 'headers', 'uri'])) {
+            if (!in_array($location, ['header', 'query', 'headers', 'uri'])) {
                 $this->payload($request, $name, $args[$name]);
             }
         }
-
-//        var_dump('('.__LINE__.')'.__FUNCTION__, $request->getBody()->getContents()); die;
 
         return $request;
     }
@@ -106,10 +103,14 @@ abstract class RestSerializer
                     if ($member['location'] == 'uri') {
                         $varspecs[isset($member['locationName']) ? $member['locationName'] : $name] =
                             isset($args[$name]) ? $args[$name] : null;
+                    } elseif ($member['location'] == 'query' && !empty($args[$name])) {
+                        $this->endpoint->getQuery()->add($name, $args[$name]);
                     }
                 }
             }
         }
+
+        $uri = (string) $this->endpoint;
 
         return preg_replace_callback(
             '/%7B([^\}]+)%7D/',

@@ -3,6 +3,7 @@
 namespace SellerCenter\SDK\Product;
 
 use InvalidArgumentException;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Price Trait
@@ -16,6 +17,8 @@ trait PriceTrait
      * A optional numeric value with the price of the product
      *
      * @var float
+     * @JMS\SerializedName("Price")
+     * @JMS\Type("double")
      */
     protected $price;
 
@@ -23,6 +26,8 @@ trait PriceTrait
      * Sale price
      *
      * @var float
+     * @JMS\SerializedName("SalePrice")
+     * @JMS\Type("double")
      */
     protected $salePrice;
 
@@ -30,6 +35,8 @@ trait PriceTrait
      * The start date for the sale price
      *
      * @var \DateTime
+     * @JMS\SerializedName("DateTime")
+     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
      */
     protected $saleStartDate;
 
@@ -37,6 +44,8 @@ trait PriceTrait
      * The end date for the sale price
      *
      * @var \DateTime
+     * @JMS\SerializedName("DateTime")
+     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
      */
     protected $saleEndDate;
 

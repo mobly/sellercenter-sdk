@@ -1,10 +1,11 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Product;
+namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\ImageUri;
 use SellerCenter\SDK\Product\ProductImageCollection;
 use SellerCenter\SDK\Product\ProductImage;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * ImageCollection Test
@@ -12,17 +13,8 @@ use SellerCenter\SDK\Product\ProductImage;
  * @package SellerCenter\SDK\Product
  * @author Daniel Costa
  */
-class ProductImageCollectionTest extends \PHPUnit_Framework_TestCase
+class ProductImageCollectionTest extends SdkTestCase
 {
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testAddInvalidItemShouldThrowInvalidArgumentException()
-    {
-        $collection = new ProductImageCollection();
-        $collection->add(1);
-    }
-
     public function testAddImageToCollection()
     {
         $image = new ProductImage;

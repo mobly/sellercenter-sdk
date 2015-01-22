@@ -1,10 +1,11 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Product;
+namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\Attribute;
 use SellerCenter\SDK\Product\AttributeCollection;
 use SellerCenter\SDK\Product\Product;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class ProductTest
@@ -12,7 +13,7 @@ use SellerCenter\SDK\Product\Product;
  * @package SellerCenter\SDK\Entity
  * @author  Daniel Costa
  */
-class ProductTest extends \PHPUnit_Framework_TestCase
+class ProductTest extends SdkTestCase
 {
     public function testSetGetSellerSku()
     {
@@ -436,10 +437,5 @@ class ProductTest extends \PHPUnit_Framework_TestCase
             'Quantity' => 1
         ];
         $this->assertEquals($expected, $product->toArray());
-
-        $expected = [
-            'Product' => $expected
-        ];
-        $this->assertEquals($expected, $product->toXmlArray());
     }
 }

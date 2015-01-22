@@ -4,29 +4,57 @@ namespace SellerCenter\SDK\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
-use InvalidArgumentException;
-use SellerCenter\SDK\Common\ToXmlArrayInterface;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Images Uri Collection
  *
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
+ * @JMS\XmlRoot("Images")
  */
-class ImageUriCollection extends ArrayCollection implements ToArrayInterface, ToXmlArrayInterface
+class ImageUriCollection implements ToArrayInterface
 {
+    /**
+     * @var ImageUriCollection
+     * @JMS\XmlList(inline = true, entry = "Image")
+     */
+    protected $images;
+
+    public function __construct(ArrayCollection $products = null)
+    {
+        if (empty($products)) {
+            $products = new ArrayCollection();
+        }
+        $this->setImages($products);
+    }
+
     /**
      * {@inheritDoc}
      */
-    public function add($value)
+    public function add(ImageUri $image)
     {
-        if (!($value instanceof ImageUri)) {
-            throw new InvalidArgumentException(
-                'Value is not an instance of ImageUri'
-            );
-        }
+        return $this->getImages()->add($image);
+    }
 
-        return parent::add($value);
+    /**
+     * @return ImageUriCollection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param ImageUriCollection $images
+     *
+     * @return ImageUriCollection
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+
+        return $this;
     }
 
     /**
@@ -37,23 +65,8 @@ class ImageUriCollection extends ArrayCollection implements ToArrayInterface, To
         $data = [];
 
         /* @var ImageUri $image */
-        foreach ($this->getValues() as $image) {
+        foreach ($this->getImages()->getValues() as $image) {
             $data[] = $image->toString();
-        }
-
-        return $data;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function toXmlArray()
-    {
-        $data = [];
-
-        /* @var ImageUri $image */
-        foreach ($this->getValues() as $image) {
-            $data[] = ['Image' => $image->toString()];
         }
 
         return $data;

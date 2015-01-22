@@ -2,6 +2,9 @@
 
 namespace SellerCenter\SDK\Common\Api\Parser;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
+use Exception;
+use JMS\Serializer\SerializerBuilder;
 use SimpleXMLElement;
 
 /**
@@ -12,8 +15,20 @@ use SimpleXMLElement;
  */
 class XmlParser
 {
-    public function parse(SimpleXMLElement $value)
+    /**
+     * @param SimpleXMLElement $value
+     * @param string           $deserialize
+     *
+     * @return mixed
+     */
+    public function parse(SimpleXMLElement $value, $deserialize)
     {
-        return json_decode(json_encode(simplexml_load_string($value->asXML())), true);
+        AnnotationRegistry::registerAutoloadNamespace(
+            'JMS\Serializer\Annotation',
+            getcwd() . '/vendor/jms/serializer/src'
+        );
+        $serializer = SerializerBuilder::create()->build();
+
+        return $serializer->deserialize($value->asXML(), $deserialize, 'xml');
     }
 }

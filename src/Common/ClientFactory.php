@@ -2,6 +2,7 @@
 
 namespace SellerCenter\SDK\Common;
 
+use Exception;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Command\Subscriber\Debug;
 use InvalidArgumentException;
@@ -335,8 +336,9 @@ class ClientFactory
      */
     protected function applyParser(SdkClientInterface $client)
     {
-        $parser = Service::createParser($client->getApi());
-        $errorParser = Service::createErrorParser($client->getApi()->getProtocol());
+        $api = $client->getApi();
+        $parser = Service::createParser($api);
+        $errorParser = Service::createErrorParser($api->getProtocol());
 
         $client->getEmitter()->on(
             'process',
@@ -347,8 +349,11 @@ class ClientFactory
                     throw new \RuntimeException('No response was received.');
                 }
 
-                $result = $errorParser($response, $e->getCommand());
-                if ($result instanceof ErrorResult) {
+                /* @var \SellerCenter\SDK\Common\Api\ErrorParser\XmlErrorParser $errorParser */
+                $result = $errorParser($response, $e);
+
+                // @todo: maybe we should throw exception on error response
+                if ($result instanceof Api\ErrorResponse) {
                     $e->setResult($result);
                     $e->stopPropagation();
                 }
@@ -357,7 +362,7 @@ class ClientFactory
 
         $client->getEmitter()->on(
             'process',
-            function (ProcessEvent $e) use ($parser) {
+            function (ProcessEvent $e) use ($parser, $api) {
                 // Guard against exceptions and injected results.
                 if ($e->getException() || $e->getResult()) {
                     return;
@@ -369,7 +374,10 @@ class ClientFactory
                     throw new \RuntimeException('No response was received.');
                 }
 
-                $e->setResult($parser($e->getCommand(), $response));
+                $operation = $api->getOperation($e->getCommand()->getName());
+                $result = $parser($response, $operation['deserialize']);
+
+                $e->setResult($result);
             }
         );
     }

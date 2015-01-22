@@ -37,6 +37,9 @@ class SdkClient extends AbstractClient implements SdkClientInterface
     private $store;
 
     /** @var string */
+    private $environment;
+
+    /** @var string */
     private $endpoint;
 
     /** @var Service */
@@ -77,6 +80,8 @@ class SdkClient extends AbstractClient implements SdkClientInterface
             'error_parser',
             'endpoint',
             'serializer',
+            'store',
+            'environment'
         ];
 
         foreach ($required as $r) {
@@ -92,6 +97,7 @@ class SdkClient extends AbstractClient implements SdkClientInterface
         $this->signature = $config['signature'];
         $this->errorParser = $config['error_parser'];
         $this->store = isset($config['store']) ? $config['store'] : null;
+        $this->environment = isset($config['environment']) ? $config['environment'] : null;
         $this->defaults = isset($config['defaults']) ? $config['defaults'] : [];
             $this->commandException = isset($config['exception_class'])
                 ? $config['exception_class']
@@ -130,6 +136,11 @@ class SdkClient extends AbstractClient implements SdkClientInterface
     public function getStore()
     {
         return $this->store;
+    }
+
+    public function getEnvironment()
+    {
+        return $this->environment;
     }
 
     public function getEndpoint()

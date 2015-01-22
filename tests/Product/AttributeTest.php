@@ -1,8 +1,9 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Product;
+namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\Attribute;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Attribute Test
@@ -10,7 +11,7 @@ use SellerCenter\SDK\Product\Attribute;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class AttributeTest extends \PHPUnit_Framework_TestCase
+class AttributeTest extends SdkTestCase
 {
     /**
      * @expectedException \InvalidArgumentException
@@ -67,6 +68,5 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $attribute = new Attribute('attr_name', 'attr_value');
         $expected = ['attr_name' => 'attr_value'];
         $this->assertEquals($expected, $attribute->toArray());
-        $this->assertEquals($expected, $attribute->toXmlArray());
     }
 }

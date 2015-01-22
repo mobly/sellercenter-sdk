@@ -1,9 +1,10 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common\Credentials;
+namespace SellerCenter\Test\SDK\Common\Credentials;
 
 use SellerCenter\SDK\Common\Credentials\Credentials;
 use SellerCenter\SDK\Common\Enum\ConfigEnum;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class CredentialsTest
@@ -11,7 +12,7 @@ use SellerCenter\SDK\Common\Enum\ConfigEnum;
  * @package SellerCenter\SDK\Common\Credentials
  * @author  Daniel Costa
  */
-class CredentialsTest extends \PHPUnit_Framework_TestCase
+class CredentialsTest extends SdkTestCase
 {
     /**
      * @var Credentials
@@ -20,24 +21,26 @@ class CredentialsTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        parent::setUp();
+
         $this->credentials = new Credentials('admin@sellercenter.com', '1b10a679643763478e1a14511024e8b6e971b6c7');
     }
 
     public function testConfigDefaults()
     {
-        $expected = array(
+        $expected = [
             ConfigEnum::KEY => null,
             ConfigEnum::ID => null,
-        );
+        ];
         $this->assertEquals($expected, Credentials::getConfigDefaults());
     }
 
     public function testFactory()
     {
-        $config = array(
+        $config = [
             ConfigEnum::KEY => '1b10a679643763478e1a14511024e8b6e971b6c7',
             ConfigEnum::ID => 'admin@sellercenter.com',
-        );
+        ];
         Credentials::factory($config);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace SellerCenter\SDK\Test;
+namespace SellerCenter\Test\SDK;
 
 use SellerCenter\SDK\Common\SdkClientInterface;
 use SellerCenter\SDK\Common\Result;

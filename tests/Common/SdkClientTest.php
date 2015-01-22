@@ -1,6 +1,6 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common;
+namespace SellerCenter\Test\SDK\Common;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Event\PreparedEvent;
@@ -13,7 +13,8 @@ use SellerCenter\SDK\Common\Exception\SdkException;
 use SellerCenter\SDK\Common\SdkClient;
 use SellerCenter\SDK\Common\Signature\SignatureV1;
 use SellerCenter\SDK\Product\ProductClient;
-use SellerCenter\SDK\Test\UsesServiceTrait;
+use SellerCenter\Test\SDK\SdkTestCase;
+use SellerCenter\Test\SDK\UsesServiceTrait;
 
 /**
  * Class SdkClientTest
@@ -21,7 +22,7 @@ use SellerCenter\SDK\Test\UsesServiceTrait;
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-class SdkClientTest extends \PHPUnit_Framework_TestCase
+class SdkClientTest extends SdkTestCase
 {
     use UsesServiceTrait;
 

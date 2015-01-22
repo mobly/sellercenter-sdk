@@ -1,10 +1,11 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common;
+namespace SellerCenter\Test\SDK\Common;
 
 use React\Promise\FulfilledPromise;
 use SellerCenter\SDK\Common\FutureResult;
 use SellerCenter\SDK\Common\Result;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class FutureResultTest
@@ -12,7 +13,7 @@ use SellerCenter\SDK\Common\Result;
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-class FutureResultTest extends \PHPUnit_Framework_TestCase
+class FutureResultTest extends SdkTestCase
 {
     public function testHasData()
     {

@@ -1,9 +1,10 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Product;
+namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\Attribute;
 use SellerCenter\SDK\Product\AttributeCollection;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * AttributeCollection Test
@@ -11,7 +12,7 @@ use SellerCenter\SDK\Product\AttributeCollection;
  * @package SellerCenter\SDK\Product
  * @author Daniel Costa
  */
-class AttributeCollectionTest extends \PHPUnit_Framework_TestCase
+class AttributeCollectionTest extends SdkTestCase
 {
     /**
      * @expectedException \InvalidArgumentException

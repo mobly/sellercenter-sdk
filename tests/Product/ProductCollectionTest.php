@@ -1,9 +1,10 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Product;
+namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\ProductCollection;
 use SellerCenter\SDK\Product\Product;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * ProductCollection Test
@@ -11,17 +12,8 @@ use SellerCenter\SDK\Product\Product;
  * @package SellerCenter\SDK\Product
  * @author Daniel Costa
  */
-class ProductCollectionTest extends \PHPUnit_Framework_TestCase
+class ProductCollectionTest extends SdkTestCase
 {
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testAddInvalidItemShouldThrowInvalidArgumentException()
-    {
-        $collection = new ProductCollection();
-        $collection->add(1);
-    }
-
     public function testAdd()
     {
         $collection = new ProductCollection();
@@ -41,21 +33,5 @@ class ProductCollectionTest extends \PHPUnit_Framework_TestCase
             ]
         ];
         $this->assertEquals($expected, $collection->toArray());
-    }
-
-    public function testToXmlArray()
-    {
-        $collection = new ProductCollection();
-        $product = new Product();
-        $product->setSellerSku('123ABCMOB');
-        $collection->add($product);
-        $expected = [
-            [
-                'Product' => [
-                    'SellerSku' => '123ABCMOB',
-                ]
-            ]
-        ];
-        $this->assertEquals($expected, $collection->toXmlArray());
     }
 }

@@ -2,30 +2,79 @@
 
 namespace SellerCenter\SDK\Product;
 
+use Countable;
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
-use InvalidArgumentException;
+use JMS\Serializer\Annotation as JMS;
 
 /**
- * Product Collection
+ * Class ProductCollection
  *
- * @package SellerCenter\SDK\Collection
- * @author  Daniel Costa
+ * @package SellerCenter\SDK\Product
+ * @author Daniel Costa
+ * @JMS\XmlRoot("Request")
  */
-class ProductCollection extends ArrayCollection implements ToArrayInterface
+class ProductCollection implements ToArrayInterface, Countable
 {
     /**
-     * {@inheritDoc}
+     * @JMS\XmlList(inline = true, entry = "Product")
      */
-    public function add($value)
-    {
-        if (!($value instanceof Product)) {
-            throw new InvalidArgumentException(
-                'Value is not an instance of Product'
-            );
-        }
+    protected $products;
 
-        return parent::add($value);
+    /**
+     * @param ArrayCollection $products
+     */
+    public function __construct(ArrayCollection $products = null)
+    {
+        if (empty($products)) {
+            $products = new ArrayCollection();
+        }
+        $this->setProducts($products);
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return bool
+     */
+    public function add(Product $product)
+    {
+        return $this->getProducts()->add($product);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param ArrayCollection $products
+     *
+     * @return ProductCollection
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+
+        return $this;
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * Count elements of an object
+     *
+     * @link http://php.net/manual/en/countable.count.php
+     * @return int The custom count as an integer.
+     *       </p>
+     *       <p>
+     *       The return value is cast to an integer.
+     */
+    public function count()
+    {
+        return count($this->products);
     }
 
     /**
@@ -36,23 +85,8 @@ class ProductCollection extends ArrayCollection implements ToArrayInterface
         $data = [];
 
         /* @var Product $product */
-        foreach ($this->getValues() as $product) {
+        foreach ($this->getProducts()->getValues() as $product) {
             $data[] = $product->toArray();
-        }
-
-        return $data;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function toXmlArray()
-    {
-        $data = [];
-
-        /* @var Product $product */
-        foreach ($this->getValues() as $product) {
-            $data[] = $product->toXmlArray();
         }
 
         return $data;

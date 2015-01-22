@@ -1,11 +1,12 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common;
+namespace SellerCenter\Test\SDK\Common;
 
 use SellerCenter\SDK\Common\ClientFactory;
 use SellerCenter\SDK\Common\Credentials\NullCredentials;
 use SellerCenter\SDK\Product\ProductCollection;
-use SellerCenter\SDK\Test\UsesServiceTrait;
+use SellerCenter\Test\SDK\SdkTestCase;
+use SellerCenter\Test\SDK\UsesServiceTrait;
 
 /**
  * Class ClientFactoryTest
@@ -13,7 +14,7 @@ use SellerCenter\SDK\Test\UsesServiceTrait;
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-class ClientFactoryTest extends \PHPUnit_Framework_TestCase
+class ClientFactoryTest extends SdkTestCase
 {
     use UsesServiceTrait;
 

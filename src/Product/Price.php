@@ -3,7 +3,6 @@
 namespace SellerCenter\SDK\Product;
 
 use GuzzleHttp\ToArrayInterface;
-use SellerCenter\SDK\Common\ToXmlArrayInterface;
 
 /**
  * Class Price
@@ -11,7 +10,7 @@ use SellerCenter\SDK\Common\ToXmlArrayInterface;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class Price implements ToArrayInterface, ToXmlArrayInterface
+class Price implements ToArrayInterface
 {
     use SellerSkuTrait;
 
@@ -37,18 +36,6 @@ class Price implements ToArrayInterface, ToXmlArrayInterface
         if ($this->saleEndDate instanceof \DateTime) {
             $data['SaleToDate'] = $this->getSaleEndDate()->format(\DateTime::ISO8601);
         }
-
-        return $data;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function toXmlArray()
-    {
-        $data = [
-            'Price' => $this->toArray()
-        ];
 
         return $data;
     }

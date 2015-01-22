@@ -2,8 +2,8 @@
 
 namespace SellerCenter\SDK\Product;
 
-use SellerCenter\SDK\Common\ResultInterface;
 use SellerCenter\SDK\Common\SdkClient;
+use SellerCenter\SDK\Product\Contract\ProductInterface;
 
 /**
  * Class ProductClient
@@ -19,80 +19,69 @@ class ProductClient extends SdkClient implements ProductInterface
     protected $action = 'Product';
 
     /**
-     * @param Product $product
-     *
-     * @return ResultInterface
+     * @return \SellerCenter\SDK\Product\Products
      */
-    public function inventory(Product $product)
+    public function getProducts()
     {
-        $data = [
-            'Request' => $product->toXmlArray()
-        ];
-        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
-    }
-
-    /**
-     * @param Price $product
-     *
-     * @return ResultInterface
-     */
-    public function price(Price $product)
-    {
-        $data = [
-            'Request' => $product->toXmlArray()
-        ];
-        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), []));
     }
 
     /**
      * @param Product $product
      *
-     * @return ResultInterface
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
      */
-    public function productAdd(Product $product)
+    public function productCreate(Product $product)
     {
+        $request = new ProductCollection();
+        $request->add($product);
+
         $data = [
-            'Request' => $product->toXmlArray()
+            'ProductRequest' => $request
         ];
+
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
 
     /**
      * @param ProductCollection $collection
      *
-     * @return ResultInterface
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
      */
     public function productUpdate(ProductCollection $collection)
     {
         $data = [
-            'Request' => $collection->toXmlArray()
+            'ProductRequest' => $collection
         ];
+
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
 
     /**
      * @param ProductCollection $collection
      *
-     * @return ResultInterface
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
      */
     public function productRemove(ProductCollection $collection)
     {
         $data = [
-            'Request' => $collection->toXmlArray()
+            'ProductRequest' => $collection
         ];
+
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
 
     /**
-     * @param ProductImage $image
+     * @param ProductImageCollection $collection
      *
-     * @return ResultInterface
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
      */
-    public function image(ProductImage $image)
+    public function image(ProductImageCollection $collection)
     {
         $data = [
-            'Request' => $image->toXmlArray()
+            'ProductImageRequest' => $collection
         ];
+
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
 }

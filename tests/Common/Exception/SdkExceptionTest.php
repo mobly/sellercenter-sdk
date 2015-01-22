@@ -1,12 +1,13 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common\Exception;
+namespace SellerCenter\Test\SDK\Common\Exception;
 
 use GuzzleHttp\Command\Command;
 use GuzzleHttp\Command\CommandTransaction;
 use GuzzleHttp\Message\Response;
 use SellerCenter\SDK\Common\Exception\SdkException;
-use SellerCenter\SDK\Test\UsesServiceTrait;
+use SellerCenter\Test\SDK\SdkTestCase;
+use SellerCenter\Test\SDK\UsesServiceTrait;
 
 /**
  * Class SdkExceptionTest
@@ -14,7 +15,7 @@ use SellerCenter\SDK\Test\UsesServiceTrait;
  * @package SellerCenter\SDK\Common\Exception
  * @author  Daniel Costa
  */
-class SdkExceptionTest extends \PHPUnit_Framework_TestCase
+class SdkExceptionTest extends SdkTestCase
 {
     use UsesServiceTrait;
 

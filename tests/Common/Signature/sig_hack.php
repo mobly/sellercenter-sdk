@@ -2,7 +2,7 @@
 
 namespace SellerCenter\SDK\Common\Signature
 {
-    use SellerCenter\SDK\Test\Common\Signature\SignatureV1Test;
+    use SellerCenter\Test\SDK\Common\Signature\SignatureV1Test;
 
     // Hack gmdate() to returned the canned result.
     function gmdate()

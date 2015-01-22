@@ -2,30 +2,79 @@
 
 namespace SellerCenter\SDK\Product;
 
+use Countable;
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
-use InvalidArgumentException;
+use JMS\Serializer\Annotation as JMS;
 
 /**
- * Image Collection
+ * Class ProductImageCollection
  *
- * @package SellerCenter\SDK\Collection
- * @author  Daniel Costa
+ * @package SellerCenter\SDK\Product
+ * @author Daniel Costa
+ * @JMS\XmlRoot("Request")
  */
-class ProductImageCollection extends ArrayCollection implements ToArrayInterface
+class ProductImageCollection implements ToArrayInterface, Countable
 {
     /**
-     * {@inheritDoc}
+     * @JMS\XmlList(inline = true, entry = "ProductImage")
      */
-    public function add($value)
-    {
-        if (!($value instanceof ProductImage)) {
-            throw new InvalidArgumentException(
-                'Value is not an instance of Image'
-            );
-        }
+    protected $products;
 
-        return parent::add($value);
+    /**
+     * @param ArrayCollection $products
+     */
+    public function __construct(ArrayCollection $products = null)
+    {
+        if (empty($products)) {
+            $products = new ArrayCollection();
+        }
+        $this->setProducts($products);
+    }
+
+    /**
+     * @param ProductImage $product
+     *
+     * @return bool
+     */
+    public function add(ProductImage $product)
+    {
+        return $this->getProducts()->add($product);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param ArrayCollection $products
+     *
+     * @return ProductCollection
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+
+        return $this;
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * Count elements of an object
+     *
+     * @link http://php.net/manual/en/countable.count.php
+     * @return int The custom count as an integer.
+     *       </p>
+     *       <p>
+     *       The return value is cast to an integer.
+     */
+    public function count()
+    {
+        return count($this->products);
     }
 
     /**
@@ -36,7 +85,7 @@ class ProductImageCollection extends ArrayCollection implements ToArrayInterface
         $data = [];
 
         /* @var ProductImage $image */
-        foreach ($this->getValues() as $image) {
+        foreach ($this->getProducts()->getValues() as $image) {
             $data[] = $image->toArray();
         }
 

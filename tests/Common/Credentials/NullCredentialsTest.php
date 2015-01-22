@@ -1,9 +1,10 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common\Credentials;
+namespace SellerCenter\Test\SDK\Common\Credentials;
 
 use SellerCenter\SDK\Common\Credentials\NullCredentials;
 use SellerCenter\SDK\Common\Enum\ConfigEnum;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class CredentialsTest
@@ -11,7 +12,7 @@ use SellerCenter\SDK\Common\Enum\ConfigEnum;
  * @package SellerCenter\SDK\Common\Credentials
  * @author  Daniel Costa
  */
-class NullCredentialsTest extends \PHPUnit_Framework_TestCase
+class NullCredentialsTest extends SdkTestCase
 {
     /**
      * @var Credentials
@@ -20,6 +21,8 @@ class NullCredentialsTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        parent::setUp();
+
         $this->credentials = new NullCredentials();
     }
 

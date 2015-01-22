@@ -1,10 +1,11 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common\Api;
+namespace SellerCenter\Test\SDK\Common\Api;
 
 use SellerCenter\SDK\Common\Api\FilesystemApiProvider;
+use SellerCenter\Test\SDK\SdkTestCase;
 
-class FilesystemApiProviderTest extends \PHPUnit_Framework_TestCase
+class FilesystemApiProviderTest extends SdkTestCase
 {
     /**
      * @expectedException \InvalidArgumentException

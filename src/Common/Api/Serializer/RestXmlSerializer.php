@@ -10,33 +10,32 @@ use SellerCenter\SDK\Common\Api\Service;
  * Class RestXmlSerializer
  *
  * @package SellerCenter\SDK\Common\Api\Serializer
- * @author Daniel Costa
+ * @author  Daniel Costa
  */
 class RestXmlSerializer extends RestSerializer
 {
-    /** @var XmlBody */
-    private $xmlBody;
+    /** @var XmlSerializer */
+    private $serializer;
 
     /**
-     * @param Service $api      Service API description
-     * @param string  $endpoint Endpoint to connect to
-     * @param XmlBody $xmlBody  Optional XML formatter to use
+     * @param Service       $api        Service API description
+     * @param string        $endpoint   Endpoint to connect to
+     * @param XmlSerializer $serializer Optional XML formatter to use
      */
-    public function __construct(
-        Service $api,
-        $endpoint,
-        XmlBody $xmlBody = null
-    ) {
+    public function __construct(Service $api, $endpoint, XmlSerializer $serializer = null)
+    {
         parent::__construct($api, $endpoint);
-        $this->xmlBody = $xmlBody ?: new XmlBody($api);
+        $this->serializer = $serializer ?: new XmlSerializer($api);
     }
 
-    protected function payload(
-        RequestInterface $request,
-        $name,
-        array $args
-    ) {
+    /**
+     * @param RequestInterface $request
+     * @param string           $name
+     * @param mixed            $args
+     */
+    protected function payload(RequestInterface $request, $name, $args)
+    {
         $request->setHeader('Content-Type', 'application/xml');
-        $request->setBody(Stream::factory($this->xmlBody->build($name, $args)));
+        $request->setBody(Stream::factory($this->serializer->serialize($args)));
     }
 }

@@ -7,15 +7,16 @@ use InvalidArgumentException;
 use LengthException;
 use OverflowException;
 use RuntimeException;
-use SellerCenter\SDK\Common\ToXmlArrayInterface;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Product
  *
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
+ * @JMS\XmlRoot("Product")
  */
-class Product implements ToArrayInterface, ToXmlArrayInterface
+class Product implements ToArrayInterface
 {
     use SellerSkuTrait;
 
@@ -45,6 +46,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * SellerSKU of a parent product – a variation to be attached to the product
      *
      * @var string
+     * @JMS\SerializedName("ParentSku")
+     * @JMS\Type("string")
      */
     protected $parentSku;
 
@@ -52,6 +55,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * Can be one for the following values: 'enabled', 'disabled' or 'deleted', default is 'enabled'
      *
      * @var string
+     * @JMS\SerializedName("Status")
+     * @JMS\Type("string")
      */
     protected $status;
 
@@ -59,6 +64,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * A string between 2 and 255 characters containing the product name
      *
      * @var string
+     * @JMS\SerializedName("Name")
+     * @JMS\Type("string")
      */
     protected $name;
 
@@ -66,6 +73,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * A string that identi2es the variation e.g. “XXL”.
      *
      * @var string
+     * @JMS\SerializedName("Variation")
+     * @JMS\Type("string")
      */
     protected $variation;
 
@@ -73,6 +82,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * Id of the main category of your product
      *
      * @var int
+     * @JMS\SerializedName("PrimaryCategory")
+     * @JMS\Type("integer")
      */
     protected $primaryCategory;
 
@@ -80,6 +91,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * A comma separated list of 1 to 3 unique categories ids.
      *
      * @var string
+     * @JMS\SerializedName("Categories")
+     * @JMS\Type("string")
      */
     protected $categories;
 
@@ -87,6 +100,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * A string between 6 and 25000 characters containing the product description. HTML tags are allowed
      *
      * @var string
+     * @JMS\SerializedName("Description")
+     * @JMS\Type("string")
      */
     protected $description;
 
@@ -94,6 +109,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * A string containing the product brand
      *
      * @var string
+     * @JMS\SerializedName("Brand")
+     * @JMS\Type("string")
      */
     protected $brand;
 
@@ -101,6 +118,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * Tax Class identi2cation string. Usually 'default'
      *
      * @var string
+     * @JMS\SerializedName("TaxClass")
+     * @JMS\Type("string")
      */
     protected $taxClass;
 
@@ -110,6 +129,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * Only the allowed shipping types for the seller will be accepted
      *
      * @var string
+     * @JMS\SerializedName("ShipmentType")
+     * @JMS\Type("string")
      */
     protected $shipmentType;
 
@@ -117,6 +138,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * EAN/UPC/ISBN of the product
      *
      * @var string
+     * @JMS\SerializedName("ProductId")
+     * @JMS\Type("string")
      */
     protected $productId;
 
@@ -124,6 +147,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * An identification string of product condition: 'new', 'used' or 'refurbished'
      *
      * @var string
+     * @JMS\SerializedName("Condition")
+     * @JMS\Type("string")
      */
     protected $condition;
 
@@ -133,6 +158,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * Which attributes are available depends on the primary category.
      *
      * @var AttributeCollection
+     * @JMS\SerializedName("array")
+     * @JMS\Type("array")
      */
     protected $productData;
 
@@ -140,6 +167,8 @@ class Product implements ToArrayInterface, ToXmlArrayInterface
      * The available inventory for the product
      *
      * @var int
+     * @JMS\SerializedName("Quantity")
+     * @JMS\Type("string")
      */
     protected $quantity;
 

@@ -1,12 +1,13 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common\Api\Parser;
+namespace SellerCenter\Test\SDK\Common\Api\Parser;
 
 use GuzzleHttp\Command\Command;
 use GuzzleHttp\Message\Response;
 use GuzzleHttp\Stream\Stream;
 use SellerCenter\SDK\Common\Api\Service;
-use SellerCenter\SDK\Test\UsesServiceTrait;
+use SellerCenter\Test\SDK\SdkTestCase;
+use SellerCenter\Test\SDK\UsesServiceTrait;
 
 /**
  * Class ComplianceTest
@@ -14,7 +15,7 @@ use SellerCenter\SDK\Test\UsesServiceTrait;
  * @package SellerCenter\SDK\Common\Api\Parser
  * @author  Daniel Costa
  */
-class ComplianceTest extends \PHPUnit_Framework_TestCase
+class ComplianceTest extends SdkTestCase
 {
     use UsesServiceTrait;
 
@@ -60,6 +61,8 @@ class ComplianceTest extends \PHPUnit_Framework_TestCase
         array $expectedResult,
         $res
     ) {
+        $this->markTestSkipped();
+
         $parser = Service::createParser($service);
         $command = new Command($name);
 

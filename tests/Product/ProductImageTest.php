@@ -1,10 +1,11 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Product;
+namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\ProductImage;
 use SellerCenter\SDK\Product\ImageUri;
 use SellerCenter\SDK\Product\ImageUriCollection;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Image Test
@@ -12,7 +13,7 @@ use SellerCenter\SDK\Product\ImageUriCollection;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  */
-class ProductImageTest extends \PHPUnit_Framework_TestCase
+class ProductImageTest extends SdkTestCase
 {
     public function testSetGetSellerSku()
     {
@@ -71,32 +72,5 @@ class ProductImageTest extends \PHPUnit_Framework_TestCase
             ]
         ];
         $this->assertEquals($expected, $image->toArray());
-    }
-
-    public function testToXmlArray()
-    {
-        $image = new ProductImage();
-        $image->setSellerSku('MOB12345');
-        $image->getImages()->add(new ImageUri('http://host/img.jpg'));
-        $image->getImages()->add(new ImageUri('http://host/img.gif'));
-        $image->getImages()->add(new ImageUri('http://host/img.png'));
-
-        $expected = [
-            'ProductImage' => [
-                'SellerSku' => 'MOB12345',
-                'Images' => [
-                    [
-                        'Image' => 'http://host/img.jpg'
-                    ],
-                    [
-                        'Image' => 'http://host/img.gif'
-                    ],
-                    [
-                        'Image' => 'http://host/img.png'
-                    ],
-                ]
-            ]
-        ];
-        $this->assertEquals($expected, $image->toXmlArray());
     }
 }

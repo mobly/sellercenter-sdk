@@ -1,7 +1,9 @@
 <?php
 
-namespace SellerCenter\SDK\Test\Common;
+namespace SellerCenter\Test\SDK\Common;
+
 use SellerCenter\SDK\Common\Result;
+use SellerCenter\Test\SDK\SdkTestCase;
 
 /**
  * Class ResultTest
@@ -9,7 +11,7 @@ use SellerCenter\SDK\Common\Result;
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-class ResultTest extends \PHPUnit_Framework_TestCase
+class ResultTest extends SdkTestCase
 {
     public function testHasData()
     {

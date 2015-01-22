@@ -4,20 +4,24 @@ namespace SellerCenter\SDK\Product;
 
 use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
-use SellerCenter\SDK\Common\ToXmlArrayInterface;
+use JMS\Serializer\Annotation as JMS;
+
 
 /**
  * Class Image
  *
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
+ * @JMS\XmlRoot("ProductImage")
  */
-class ProductImage implements ToArrayInterface, ToXmlArrayInterface
+class ProductImage implements ToArrayInterface
 {
     use SellerSkuTrait;
 
     /**
      * @var ImageUriCollection
+     * @JMS\SerializedName("Images")
+     * @JMS\Type("SellerCenter\SDK\Product\ImageUriCollection")
      */
     protected $images;
 
@@ -60,19 +64,6 @@ class ProductImage implements ToArrayInterface, ToXmlArrayInterface
         return [
             'SellerSku' => $this->getSellerSku(),
             'Images' => $this->getImages()->toArray()
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function toXmlArray()
-    {
-        return [
-            'ProductImage' => [
-                'SellerSku' => $this->getSellerSku(),
-                'Images' => $this->getImages()->toXmlArray()
-            ]
         ];
     }
 }

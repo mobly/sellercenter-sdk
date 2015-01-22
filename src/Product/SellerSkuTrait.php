@@ -3,6 +3,7 @@
 namespace SellerCenter\SDK\Product;
 
 use InvalidArgumentException;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * SellerSku Trait
@@ -16,8 +17,11 @@ trait SellerSkuTrait
      * The unique seller SKU for the product
      *
      * @var string
+     * @JMS\SerializedName("SellerSku")
+     * @JMS\Type("string")
      */
     protected $sellerSku;
+
     /**
      * @return string
      */
