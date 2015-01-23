@@ -136,7 +136,7 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
     {
         $data = [
             'OrderItemIds' => json_encode($order->getOrderItemIds()),
-            'DeliveryType' => $order->getDeliveryType(),
+            'DeliveryType' => $order->getDeliveryType()->getValue(),
             'ShippingProvider' => $order->getShippingProvider(),
             'TrackingNumber' => $order->getTrackingNumber(),
         ];
