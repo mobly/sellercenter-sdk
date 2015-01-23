@@ -6,6 +6,12 @@ use DateTime;
 use SellerCenter\SDK\Common\SdkClient;
 use SellerCenter\SDK\Order\Contract\OrderInterface;
 use SellerCenter\SDK\Order\Contract\RetrieveInterface;
+use SellerCenter\SDK\Order\Contract\StatusInterface;
+use SellerCenter\SDK\Order\Status\ToCancel;
+use SellerCenter\SDK\Order\Status\ToDelivered;
+use SellerCenter\SDK\Order\Status\ToFailedDelivery;
+use SellerCenter\SDK\Order\Status\ToReadyToShip;
+use SellerCenter\SDK\Order\Status\ToShipped;
 
 /**
  * Class StatusClient
@@ -13,7 +19,7 @@ use SellerCenter\SDK\Order\Contract\RetrieveInterface;
  * @package SellerCenter\SDK\Status
  * @author  Daniel Costa
  */
-class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
+class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface, StatusInterface
 {
     /**
      * @var string
@@ -103,5 +109,82 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
     public function getShipmentProviders()
     {
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), []));
+    }
+
+    /**
+     * @param ToCancel $order
+     *
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     */
+    public function setStatusToCanceled(ToCancel $order)
+    {
+        $data = [
+            'OrderItemId' => $order->getOrderItemId(),
+            'Reason' => $order->getReason(),
+            'ReasonDetail' => $order->getReasonDetail(),
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * @param ToReadyToShip $order
+     *
+     * @return \SellerCenter\SDK\Order\StatusToReadyToShip
+     */
+    public function setStatusToReadyToShip(ToReadyToShip $order)
+    {
+        $data = [
+            'OrderItemIds' => json_encode($order->getOrderItemIds()),
+            'DeliveryType' => $order->getDeliveryType(),
+            'ShippingProvider' => $order->getShippingProvider(),
+            'TrackingNumber' => $order->getTrackingNumber(),
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * @param ToShipped $order
+     *
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     */
+    public function setStatusToShipped(ToShipped $order)
+    {
+        $data = [
+            'OrderItemId' => $order->getOrderItemId(),
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * @param ToFailedDelivery $order
+     *
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     */
+    public function setStatusToFailedDelivery(ToFailedDelivery $order)
+    {
+        $data = [
+            'OrderItemId' => $order->getOrderItemId(),
+            'Reason' => $order->getReason(),
+            'ReasonDetail' => $order->getReasonDetail(),
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * @param ToDelivered $order
+     *
+     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     */
+    public function setStatusToDelivered(ToDelivered $order)
+    {
+        $data = [
+            'OrderItemId' => $order->getOrderItemId(),
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
 }

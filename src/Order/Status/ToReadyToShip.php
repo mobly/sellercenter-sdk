@@ -45,7 +45,7 @@ class ToReadyToShip
      *
      * @return ToReadyToShip
      */
-    public function setOrderItemIds($orderItemIds)
+    public function setOrderItemIds(array $orderItemIds)
     {
         $this->orderItemIds = $orderItemIds;
 
