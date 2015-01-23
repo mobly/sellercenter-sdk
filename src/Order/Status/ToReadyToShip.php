@@ -9,7 +9,7 @@ class ToReadyToShip
     /** @var array */
     protected $orderItemIds;
 
-    /** @var string */
+    /** @var DeliveryTypeEnum */
     protected $deliveryType;
 
     /** @var string */
@@ -53,7 +53,7 @@ class ToReadyToShip
     }
 
     /**
-     * @return string
+     * @return DeliveryTypeEnum
      */
     public function getDeliveryType()
     {
@@ -61,7 +61,7 @@ class ToReadyToShip
     }
 
     /**
-     * @param string $deliveryType
+     * @param DeliveryTypeEnum $deliveryType
      *
      * @return ToReadyToShip
      */
