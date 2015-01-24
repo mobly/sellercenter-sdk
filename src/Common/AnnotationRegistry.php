@@ -13,7 +13,7 @@ class AnnotationRegistry
             $serializerDirectory = implode(DIRECTORY_SEPARATOR, $directoryTree);
         }
 
-        AnnotationRegistry::registerAutoloadNamespace(
+        \Doctrine\Common\Annotations\AnnotationRegistry::registerAutoloadNamespace(
             'JMS\Serializer\Annotation',
             $serializerDirectory . implode(DIRECTORY_SEPARATOR, ['', 'vendor', 'jms', 'serializer', 'src'])
         );
