@@ -2,7 +2,6 @@
 
 namespace SellerCenter\SDK\Common\Api\Serializer;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerBuilder;
 use SellerCenter\SDK\Common\Api\Service;
 
@@ -34,10 +33,7 @@ class XmlSerializer
      */
     public function serialize($class)
     {
-        AnnotationRegistry::registerAutoloadNamespace(
-            'JMS\Serializer\Annotation',
-            getcwd() . '/vendor/jms/serializer/src'
-        );
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace();
         $serializer = SerializerBuilder::create()->build();
 
         return $serializer->serialize($class, 'xml');

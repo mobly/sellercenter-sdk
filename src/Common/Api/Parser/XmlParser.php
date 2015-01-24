@@ -2,8 +2,6 @@
 
 namespace SellerCenter\SDK\Common\Api\Parser;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use Exception;
 use JMS\Serializer\SerializerBuilder;
 use SimpleXMLElement;
 
@@ -23,10 +21,7 @@ class XmlParser
      */
     public function parse(SimpleXMLElement $value, $deserialize)
     {
-        AnnotationRegistry::registerAutoloadNamespace(
-            'JMS\Serializer\Annotation',
-            getcwd() . '/vendor/jms/serializer/src'
-        );
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace();
         $serializer = SerializerBuilder::create()->build();
 
         return $serializer->deserialize($value->asXML(), $deserialize, 'xml');
