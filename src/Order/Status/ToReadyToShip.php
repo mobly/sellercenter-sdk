@@ -27,6 +27,11 @@ class ToReadyToShip
         $this->orderItemIds = $orderItemIds;
         $this->deliveryType = $deliveryType;
         if (DeliveryTypeEnum::DROPSHIP == $deliveryType->getValue()) {
+            if (empty($shippingProvider) || empty($trackingNumber)) {
+                throw new \InvalidArgumentException(
+                    'Shipping Provider and Tracking Number must be filled for delivery type dropship'
+                );
+            }
             $this->shippingProvider = (string) $shippingProvider;
             $this->trackingNumber = (string) $trackingNumber;
         }
