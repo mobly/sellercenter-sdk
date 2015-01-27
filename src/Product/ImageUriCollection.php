@@ -13,10 +13,10 @@ use JMS\Serializer\Annotation as JMS;
  * @author  Daniel Costa
  * @JMS\XmlRoot("Images")
  */
-class ImageUriCollection implements ToArrayInterface
+class ImageUriCollection implements ToArrayInterface, \Countable
 {
     /**
-     * @var ImageUriCollection
+     * @var ArrayCollection
      * @JMS\XmlList(inline = true, entry = "Image")
      */
     protected $images;
@@ -38,7 +38,7 @@ class ImageUriCollection implements ToArrayInterface
     }
 
     /**
-     * @return ImageUriCollection
+     * @return ArrayCollection
      */
     public function getImages()
     {
@@ -46,9 +46,9 @@ class ImageUriCollection implements ToArrayInterface
     }
 
     /**
-     * @param ImageUriCollection $images
+     * @param ArrayCollection $images
      *
-     * @return ImageUriCollection
+     * @return ArrayCollection
      */
     public function setImages($images)
     {
@@ -70,5 +70,20 @@ class ImageUriCollection implements ToArrayInterface
         }
 
         return $data;
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * Count elements of an object
+     *
+     * @link http://php.net/manual/en/countable.count.php
+     * @return int The custom count as an integer.
+     *       </p>
+     *       <p>
+     *       The return value is cast to an integer.
+     */
+    public function count()
+    {
+        return $this->getImages()->count();
     }
 }
