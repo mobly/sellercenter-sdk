@@ -8,6 +8,7 @@ use LengthException;
 use OverflowException;
 use RuntimeException;
 use JMS\Serializer\Annotation as JMS;
+use SellerCenter\SDK\Product\Enum\StatusEnum;
 
 /**
  * Class Product
@@ -52,9 +53,9 @@ class Product implements ToArrayInterface
     protected $parentSku;
 
     /**
-     * Can be one for the following values: 'enabled', 'disabled' or 'deleted', default is 'enabled'
+     * Can be one for the following values: 'active', 'inactive' or 'deleted', default is 'active'
      *
-     * @var string
+     * @var StatusEnum
      * @JMS\SerializedName("Status")
      * @JMS\Type("string")
      */
@@ -474,18 +475,12 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @param string $status
+     * @param StatusEnum $status
      *
      * @return Product
      */
-    public function setStatus($status)
+    public function setStatus(StatusEnum $status)
     {
-        if (!is_string($status)) {
-            throw new InvalidArgumentException(
-                'Status is not a valid string, ' . gettype($status) . ' passed'
-            );
-        }
-
         $this->status = $status;
 
         return $this;
