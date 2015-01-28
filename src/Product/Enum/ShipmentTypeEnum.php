@@ -3,7 +3,7 @@
 use DanielCosta\Enum\Enum;
 
 /**
- * Class StatusEnum
+ * Class ShipmentTypeEnum
  *
  * @package SellerCenter\SDK\Product\Enum
  * @method static ShipmentTypeEnum CROSSDOCKING()

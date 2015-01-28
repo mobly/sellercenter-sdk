@@ -8,7 +8,6 @@ use LengthException;
 use OverflowException;
 use RuntimeException;
 use JMS\Serializer\Annotation as JMS;
-use SellerCenter\SDK\Product\Enum\StatusEnum;
 
 /**
  * Class Product
@@ -55,7 +54,7 @@ class Product implements ToArrayInterface
     /**
      * Can be one for the following values: 'active', 'inactive' or 'deleted', default is 'active'
      *
-     * @var StatusEnum
+     * @var Enum\StatusEnum
      * @JMS\SerializedName("Status")
      * @JMS\Type("string")
      */
@@ -118,7 +117,7 @@ class Product implements ToArrayInterface
     /**
      * Tax Class identi2cation string. Usually 'default'
      *
-     * @var string
+     * @var Enum\TaxClassEnum
      * @JMS\SerializedName("TaxClass")
      * @JMS\Type("string")
      */
@@ -129,7 +128,7 @@ class Product implements ToArrayInterface
      *
      * Only the allowed shipping types for the seller will be accepted
      *
-     * @var string
+     * @var Enum\ShipmentTypeEnum
      * @JMS\SerializedName("ShipmentType")
      * @JMS\Type("string")
      */
@@ -147,7 +146,7 @@ class Product implements ToArrayInterface
     /**
      * An identification string of product condition: 'new', 'used' or 'refurbished'
      *
-     * @var string
+     * @var Enum\ConditionEnum
      * @JMS\SerializedName("Condition")
      * @JMS\Type("string")
      */
@@ -234,7 +233,7 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @return string
+     * @return Enum\ConditionEnum
      */
     public function getCondition()
     {
@@ -242,16 +241,12 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @param string $condition
+     * @param Enum\ConditionEnum $condition
      *
      * @return Product
      */
-    public function setCondition($condition)
+    public function setCondition(Enum\ConditionEnum $condition)
     {
-        if (!is_string($condition)) {
-            throw new InvalidArgumentException('Condition is not a valid string, ' . gettype($condition) . ' passed');
-        }
-
         $this->condition = $condition;
 
         return $this;
@@ -441,7 +436,7 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @return string
+     * @return Enum\ShipmentTypeEnum
      */
     public function getShipmentType()
     {
@@ -449,25 +444,19 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @param string $shipmentType
+     * @param Enum\ShipmentTypeEnum $shipmentType
      *
      * @return Product
      */
-    public function setShipmentType($shipmentType)
+    public function setShipmentType(Enum\ShipmentTypeEnum $shipmentType)
     {
-        if (!is_string($shipmentType)) {
-            throw new InvalidArgumentException(
-                'Shipment type is not a valid string, ' . gettype($shipmentType) . ' passed'
-            );
-        }
-
         $this->shipmentType = $shipmentType;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return Enum\StatusEnum
      */
     public function getStatus()
     {
@@ -475,11 +464,11 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @param StatusEnum $status
+     * @param Enum\StatusEnum $status
      *
      * @return Product
      */
-    public function setStatus(StatusEnum $status)
+    public function setStatus(Enum\StatusEnum $status)
     {
         $this->status = $status;
 
@@ -487,7 +476,7 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @return string
+     * @return Enum\TaxClassEnum
      */
     public function getTaxClass()
     {
@@ -495,18 +484,12 @@ class Product implements ToArrayInterface
     }
 
     /**
-     * @param string $taxClass
+     * @param Enum\TaxClassEnum $taxClass
      *
      * @return Product
      */
-    public function setTaxClass($taxClass)
+    public function setTaxClass(Enum\TaxClassEnum $taxClass)
     {
-        if (!is_string($taxClass)) {
-            throw new InvalidArgumentException(
-                'Tax class is not a valid string, ' . gettype($taxClass) . ' passed'
-            );
-        }
-
         $this->taxClass = $taxClass;
 
         return $this;
@@ -550,7 +533,7 @@ class Product implements ToArrayInterface
         }
 
         if (!empty($this->status)) {
-            $data['Status'] = $this->getStatus();
+            $data['Status'] = (string) $this->getStatus();
         }
 
         if (!empty($this->name)) {
@@ -594,11 +577,11 @@ class Product implements ToArrayInterface
         }
 
         if (!empty($this->taxClass)) {
-            $data['TaxClass'] = $this->getTaxClass();
+            $data['TaxClass'] = (string) $this->getTaxClass();
         }
 
         if (!empty($this->shipmentType)) {
-            $data['ShipmentType'] = $this->getShipmentType();
+            $data['ShipmentType'] = (string) $this->getShipmentType();
         }
 
         if (!empty($this->productId)) {
@@ -606,7 +589,7 @@ class Product implements ToArrayInterface
         }
 
         if (!empty($this->condition)) {
-            $data['Condition'] = $this->getCondition();
+            $data['Condition'] = (string) $this->getCondition();
         }
 
         if ($this->productData instanceof AttributeCollection) {
@@ -618,19 +601,5 @@ class Product implements ToArrayInterface
         }
 
         return $data;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function toXmlArray()
-    {
-        $data = $this->toArray();
-
-        if ($this->productData instanceof AttributeCollection) {
-            $data['ProductData'] = $this->getProductData()->toXmlArray();
-        }
-
-        return ['Product' => $data];
     }
 }
