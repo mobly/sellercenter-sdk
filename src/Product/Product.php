@@ -158,8 +158,10 @@ class Product implements ToArrayInterface
      * Which attributes are available depends on the primary category.
      *
      * @var AttributeCollection
-     * @JMS\SerializedName("array")
+     * @JMS\SerializedName("ProductData")
      * @JMS\Type("array")
+     * @JMS\Accessor(getter="getProductDataArray")
+     * @JMS\XmlKeyValuePairs
      */
     protected $productData;
 
@@ -372,14 +374,8 @@ class Product implements ToArrayInterface
      *
      * @return Product
      */
-    public function setProductData($productData)
+    public function setProductData(AttributeCollection $productData)
     {
-        if (!($productData instanceof AttributeCollection)) {
-            throw new InvalidArgumentException(
-                'Product data is not an instance of ProductAttributeCollection'
-            );
-        }
-
         $this->productData = $productData;
 
         return $this;
@@ -517,6 +513,14 @@ class Product implements ToArrayInterface
         $this->variation = $variation;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProductDataArray()
+    {
+        return $this->getProductData()->toArray();
     }
 
     /**

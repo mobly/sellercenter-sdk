@@ -37,7 +37,7 @@ class AttributeCollection extends ArrayCollection implements ToArrayInterface
 
         /* @var Attribute $attribute */
         foreach ($this->getValues() as $attribute) {
-            $data[] = $attribute->toArray();
+            $data[$attribute->getName()] = $attribute->getValue();
         }
 
         return $data;

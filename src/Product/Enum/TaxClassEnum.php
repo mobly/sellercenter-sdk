@@ -6,7 +6,7 @@ use DanielCosta\Enum\Enum;
  * Class TaxClassEnum
  *
  * @package SellerCenter\SDK\Product\Enum
- * @method static TaxClassEnum DEFAULT()
+ * @method static TaxClassEnum DEFAULT_CLASS()
  */
 class TaxClassEnum extends Enum
 {

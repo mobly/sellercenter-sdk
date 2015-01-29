@@ -10,7 +10,7 @@ namespace SellerCenter\SDK;
 class Version
 {
 
-    const VERSION_NUMBER = '1.4.11';
+    const VERSION_NUMBER = '1.4.12';
 
 
 }
