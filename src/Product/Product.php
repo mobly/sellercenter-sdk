@@ -174,6 +174,11 @@ class Product implements ToArrayInterface
      */
     protected $quantity;
 
+    public function __construct()
+    {
+        $this->productData = new AttributeCollection;
+    }
+
     /**
      * @return string
      */
