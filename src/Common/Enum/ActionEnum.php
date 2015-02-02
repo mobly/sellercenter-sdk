@@ -2,7 +2,7 @@
 
 namespace SellerCenter\SDK\Common\Enum;
 
-use DanielCosta\Enum\Enum;
+use MyCLabs\Enum\Enum;
 
 /**
  * Class ActionEnum

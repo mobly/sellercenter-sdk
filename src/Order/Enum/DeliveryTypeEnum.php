@@ -2,7 +2,7 @@
 
 namespace SellerCenter\SDK\Order\Enum;
 
-use DanielCosta\Enum\Enum;
+use MyCLabs\Enum\Enum;
 
 /**
  * Class DeliveryTypeEnum

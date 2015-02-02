@@ -16,9 +16,6 @@ use SellerCenter\Test\SDK\UsesServiceTrait;
  *
  * @package SellerCenter\SDK\Common\Api\Serializer
  * @author  Daniel Costa
- * @covers SellerCenter\SDK\Common\Api\Serializer\RestSerializer
- * @covers SellerCenter\SDK\Common\Api\Serializer\RestXmlSerializer
- * @covers SellerCenter\SDK\Common\Api\Serializer\XmlBody
  */
 class ComplianceTest extends SdkTestCase
 {

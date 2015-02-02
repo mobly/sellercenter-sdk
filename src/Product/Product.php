@@ -601,7 +601,7 @@ class Product implements ToArrayInterface
             $data['Condition'] = (string) $this->getCondition();
         }
 
-        if ($this->productData instanceof AttributeCollection) {
+        if ($this->productData instanceof AttributeCollection && count($this->productData)) {
             $data['ProductData'] = $this->getProductData()->toArray();
         }
 

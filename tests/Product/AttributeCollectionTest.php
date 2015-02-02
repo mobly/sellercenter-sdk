@@ -34,12 +34,8 @@ class AttributeCollectionTest extends SdkTestCase
         $collection->add($attribute2);
 
         $expected = [
-            [
-                'name1' => 'value1'
-            ],
-            [
-                'name2' => 'value2'
-            ],
+            'name1' => 'value1',
+            'name2' => 'value2'
         ];
         $this->assertEquals($expected, $collection->toArray());
     }

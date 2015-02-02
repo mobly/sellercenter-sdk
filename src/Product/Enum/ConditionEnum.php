@@ -1,6 +1,6 @@
 <?php namespace SellerCenter\SDK\Product\Enum;
 
-use DanielCosta\Enum\Enum;
+use MyCLabs\Enum\Enum;
 
 /**
  * Class ConditionEnum

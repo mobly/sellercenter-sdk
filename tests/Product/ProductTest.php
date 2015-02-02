@@ -4,6 +4,10 @@ namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\Attribute;
 use SellerCenter\SDK\Product\AttributeCollection;
+use SellerCenter\SDK\Product\Enum\ConditionEnum;
+use SellerCenter\SDK\Product\Enum\ShipmentTypeEnum;
+use SellerCenter\SDK\Product\Enum\StatusEnum;
+use SellerCenter\SDK\Product\Enum\TaxClassEnum;
 use SellerCenter\SDK\Product\Product;
 use SellerCenter\Test\SDK\SdkTestCase;
 
@@ -52,18 +56,9 @@ class ProductTest extends SdkTestCase
     public function testSetGetStatus()
     {
         $product = new Product;
-        $product->setStatus('enabled');
-        $this->assertAttributeEquals('enabled', 'status', $product);
-        $this->assertEquals('enabled', $product->getStatus());
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetInvalidStatusShouldThrowInvalidArgumentException()
-    {
-        $product = new Product;
-        $product->setStatus(1);
+        $product->setStatus(StatusEnum::ACTIVE());
+        $this->assertAttributeEquals('active', 'status', $product);
+        $this->assertEquals('active', $product->getStatus());
     }
 
     public function testSetGetName()
@@ -275,35 +270,17 @@ class ProductTest extends SdkTestCase
     public function testSetGetTaxClass()
     {
         $product = new Product;
-        $product->setTaxClass('default');
+        $product->setTaxClass(TaxClassEnum::DEFAULT_CLASS());
         $this->assertAttributeEquals('default', 'taxClass', $product);
         $this->assertEquals('default', $product->getTaxClass());
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetInvalidTaxClassShouldThrowInvalidArgumentException()
-    {
-        $product = new Product;
-        $product->setTaxClass(1);
     }
 
     public function testSetGetShipmentType()
     {
         $product = new Product;
-        $product->setShipmentType('crossdocking');
+        $product->setShipmentType(ShipmentTypeEnum::CROSSDOCKING());
         $this->assertAttributeEquals('crossdocking', 'shipmentType', $product);
         $this->assertEquals('crossdocking', $product->getShipmentType());
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetInvalidShipmentTypeShouldThrowInvalidArgumentException()
-    {
-        $product = new Product;
-        $product->setShipmentType(1);
     }
 
     public function testSetGetProductId()
@@ -326,18 +303,9 @@ class ProductTest extends SdkTestCase
     public function testSetGetCondition()
     {
         $product = new Product;
-        $product->setCondition('new');
+        $product->setCondition(ConditionEnum::NEW_PRODUCT());
         $this->assertAttributeEquals('new', 'condition', $product);
         $this->assertEquals('new', $product->getCondition());
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetInvalidConditionShouldThrowInvalidArgumentException()
-    {
-        $product = new Product;
-        $product->setCondition(1);
     }
 
     public function testSetGetProductData()
@@ -351,16 +319,6 @@ class ProductTest extends SdkTestCase
         $product->setProductData($productData);
         $this->assertAttributeEquals($productData, 'productData', $product);
         $this->assertEquals($productData, $product->getProductData());
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetInvalidProductDataShouldThrowInvalidArgumentException()
-    {
-        $product = new Product;
-        /** @noinspection PhpParamsInspection */
-        $product->setProductData(1);
     }
 
     public function testSetGetQuantity()
@@ -391,7 +349,7 @@ class ProductTest extends SdkTestCase
         $product->setSellerSku('MOB123456');
         $product->setProductData($productData);
         $product->setParentSku('ABC998877');
-        $product->setStatus('active');
+        $product->setStatus(StatusEnum::ACTIVE());
         $product->setName('Product Name');
         $product->setVariation('VariationX');
         $product->setPrimaryCategory(1);
@@ -402,10 +360,10 @@ class ProductTest extends SdkTestCase
         $product->setSalePrice(99.99);
         $product->setSaleStartDate(\DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 10:00:00'));
         $product->setSaleEndDate(\DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-10 23:59:59'));
-        $product->setTaxClass('default');
-        $product->setShipmentType('dropshipping');
+        $product->setTaxClass(TaxClassEnum::DEFAULT_CLASS());
+        $product->setShipmentType(ShipmentTypeEnum::DROPSHIPPING());
         $product->setProductId('78900112233');
-        $product->setCondition('new');
+        $product->setCondition(ConditionEnum::NEW_PRODUCT());
         $product->setQuantity(1);
 
         $expected = [
@@ -427,12 +385,8 @@ class ProductTest extends SdkTestCase
             'ProductId' => '78900112233',
             'Condition' => 'new',
             'ProductData' => [
-                [
-                    'attribute_one' => 'value_one'
-                ],
-                [
-                    'attribute_two' => 'value_two'
-                ],
+                'attribute_one' => 'value_one',
+                'attribute_two' => 'value_two'
             ],
             'Quantity' => 1
         ];
