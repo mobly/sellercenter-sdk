@@ -32,10 +32,14 @@
         "myclabs/php-enum": "1.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.*",
-        "phpmd/phpmd": "1.*",
-        "squizlabs/php_codesniffer": "1.*",
+        "phpunit/phpunit": "~4.0",
+        "phpmd/phpmd": "~2.0",
+        "squizlabs/php_codesniffer": "~2.0",
         "symfony/console": "~2.6",
-        "zendframework/zend-code": "2.*"
+        "zendframework/zend-code": "~2.0",
+        "phplint/phplint": "~0.0",
+        "phploc/phploc": "~2.0",
+        "pdepend/pdepend": "~2.0",
+        "sebastian/phpcpd": "~2.0"
     }
 }

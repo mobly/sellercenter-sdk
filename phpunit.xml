@@ -18,7 +18,6 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src/</directory>
             <exclude>
-                <directory suffix=".php">./src/Feed</directory>
                 <directory suffix=".php">./src/Common/Waiter</directory>
                 <file>./src/Common/ResultPaginator.php</file>
             </exclude>
