@@ -40,6 +40,13 @@
   <property name="prepare.done" value="true"/>
  </target>
 
+ <target name="composer" unless="composer.done" depends="prepare" description="Download composer dependencies">
+     <exec executable="composer">
+         <arg value="install"/>
+     </exec>
+  <property name="composer.done" value="true"/>
+ </target>
+
  <target name="lint" description="Perform syntax check of sourcecode files">
   <apply executable="php" failonerror="true">
    <arg value="-l"/>
