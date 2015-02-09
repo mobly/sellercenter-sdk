@@ -7,7 +7,7 @@
         <list>
           <RulesetDescriptor>
             <option name="name" value="SellerCenter PHP-SDK" />
-            <option name="path" value="$PROJECT_DIR$/phpmd.xml" />
+            <option name="path" value="$PROJECT_DIR$/build/phpmd.xml" />
           </RulesetDescriptor>
         </list>
       </option>

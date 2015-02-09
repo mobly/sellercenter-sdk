@@ -17,4 +17,6 @@ vendor/
 atlassian-ide-plugin.xml
 
 # Generated build files
-build/
+/build/api
+/build/coverage
+/build/logs
