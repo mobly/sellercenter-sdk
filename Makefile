@@ -50,7 +50,7 @@ coverage-show:
 	@open build/coverage/index.html
 
 phpdox:
-	@phpdox
+	@phpdox --file build/phpdox.xml
 
 phpdox-show:
 	@open build/api/index.html

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns="http://phpdox.net/config">
-    <project name="SellerCenter PHP-SDK" source="src" workdir="build/phpdox">
+    <project name="SellerCenter PHP-SDK" source="../src" workdir="phpdox">
         <collector publiconly="false">
             <include mask="*.php" />
         </collector>
 
-        <generator output="build">
-            <enrich base="${basedir}/build/logs">
+        <generator output=".">
+            <enrich base="${basedir}/logs">
                 <source type="build" />
                 <source type="git" />
                 <source type="phploc" />
