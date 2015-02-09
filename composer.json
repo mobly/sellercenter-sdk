@@ -40,6 +40,7 @@
         "phplint/phplint": "~0.0",
         "phploc/phploc": "~2.0",
         "pdepend/pdepend": "~2.0",
-        "sebastian/phpcpd": "~2.0"
+        "sebastian/phpcpd": "~2.0",
+        "theseer/phpdox": "0.7.*"
     }
 }
