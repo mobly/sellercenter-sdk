@@ -55,7 +55,7 @@ class FeedClient extends SdkClient implements FeedInterface
     public function feedStatus($feedId)
     {
         $data = [
-            'FeedId' => $feedId
+            'FeedID' => $feedId
         ];
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
@@ -64,7 +64,7 @@ class FeedClient extends SdkClient implements FeedInterface
     public function feedCancel($feedId)
     {
         $data = [
-            'FeedId' => $feedId
+            'FeedID' => $feedId
         ];
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));

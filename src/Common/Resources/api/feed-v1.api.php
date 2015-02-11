@@ -84,7 +84,7 @@
                 'requestUri' => '/',
             ],
             'parameters' => [
-                'FeedId' => [
+                'FeedID' => [
                     'type' => 'string',
                     'location' => 'query',
                     'required' => true,

@@ -20,3 +20,4 @@ atlassian-ide-plugin.xml
 /build/api
 /build/coverage
 /build/logs
+/build/phpdox
