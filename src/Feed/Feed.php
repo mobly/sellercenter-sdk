@@ -3,6 +3,7 @@
 namespace SellerCenter\SDK\Feed;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -75,6 +76,14 @@ class Feed
      * @JMS\Type("integer")
      */
     protected $failedRecords;
+
+    /**
+     * @var ArrayCollection
+     * @JMS\SerializedName("FeedErrors")
+     * @JMS\Type("ArrayCollection<SellerCenter\SDK\Feed\FeedError>")
+     * @JMS\XmlList(entry="Error")
+     */
+    protected $feedErrors;
 
     /**
      * @return string
@@ -252,6 +261,26 @@ class Feed
     public function setFailedRecords($failedRecords)
     {
         $this->failedRecords = $failedRecords;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getFeedErrors()
+    {
+        return $this->feedErrors;
+    }
+
+    /**
+     * @param ArrayCollection $feedErrors
+     *
+     * @return Feed
+     */
+    public function setFeedErrors($feedErrors)
+    {
+        $this->feedErrors = $feedErrors;
 
         return $this;
     }
