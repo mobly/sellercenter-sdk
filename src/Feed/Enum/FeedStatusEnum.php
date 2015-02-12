@@ -1,5 +1,7 @@
 <?php namespace SellerCenter\SDK\Feed\Enum;
 
+use MyCLabs\Enum\Enum;
+
 /**
  * Class FeedStatusEnum
  *
@@ -9,7 +11,7 @@
  * @method static FeedStatusEnum PROCESSING()
  * @method static FeedStatusEnum FINISHED()
  */
-class FeedStatusEnum
+class FeedStatusEnum extends Enum
 {
     const QUEUED = 'Queued';
     const PROCESSING = 'Processing';
