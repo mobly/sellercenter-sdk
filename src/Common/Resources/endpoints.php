@@ -2,11 +2,11 @@
 return [
     'version' => 1,
     'endpoints' => [
-        'mobly/*' => [
+        'mobly/production' => [
             'endpoint' => 'sellercenter-api.mobly.com.br',
             'signatureVersion' => 'v1'
         ],
-        'mobly/staging' => [
+        'mobly/*' => [
             'endpoint' => 'sellercenter-api-staging.mobly.com.br',
             'signatureVersion' => 'v1'
         ]
