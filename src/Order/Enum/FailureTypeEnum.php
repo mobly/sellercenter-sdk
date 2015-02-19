@@ -9,9 +9,9 @@ use MyCLabs\Enum\Enum;
  *
  * @package SellerCenter\SDK\Status\Enum
  * @author  Daniel Costa
- * @method static DeliveryTypeEnum CANCELED()
- * @method static DeliveryTypeEnum FAILED()
- * @method static DeliveryTypeEnum RETURNED()
+ * @method static FailureTypeEnum CANCELED()
+ * @method static FailureTypeEnum FAILED()
+ * @method static FailureTypeEnum RETURNED()
  */
 class FailureTypeEnum extends Enum
 {
