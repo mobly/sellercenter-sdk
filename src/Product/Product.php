@@ -20,6 +20,8 @@ class Product implements ToArrayInterface
 {
     use SellerSkuTrait;
 
+    use ShopSkuTrait;
+
     use PriceTrait;
 
     /**
@@ -43,7 +45,7 @@ class Product implements ToArrayInterface
     const DESCRIPTION_MIN_LENGTH = 6;
 
     /**
-     * SellerSKU of a parent product – a variation to be attached to the product
+     * SellerSKU of a parent product – another product, which the current product will be associated with
      *
      * @var string
      * @JMS\SerializedName("ParentSku")
@@ -52,7 +54,7 @@ class Product implements ToArrayInterface
     protected $parentSku;
 
     /**
-     * Can be one for the following values: 'active', 'inactive' or 'deleted', default is 'active'
+     * One of the following values: 'active', 'inactive' or 'deleted'. Default is 'active'
      *
      * @var Enum\StatusEnum
      * @JMS\SerializedName("Status")
@@ -61,7 +63,7 @@ class Product implements ToArrayInterface
     protected $status;
 
     /**
-     * A string between 2 and 255 characters containing the product name
+     * Product's name, 2 to 255 characters
      *
      * @var string
      * @JMS\SerializedName("Name")
@@ -70,7 +72,7 @@ class Product implements ToArrayInterface
     protected $name;
 
     /**
-     * A string that identi2es the variation e.g. “XXL”.
+     * Identifier for the variation (e.g. “XXL”)
      *
      * @var string
      * @JMS\SerializedName("Variation")
@@ -79,7 +81,7 @@ class Product implements ToArrayInterface
     protected $variation;
 
     /**
-     * Id of the main category of your product
+     * Identification of the main category of the product
      *
      * @var int
      * @JMS\SerializedName("PrimaryCategory")
@@ -88,7 +90,7 @@ class Product implements ToArrayInterface
     protected $primaryCategory;
 
     /**
-     * A comma separated list of 1 to 3 unique categories ids.
+     * A list of 1 to 3 unique categories identifications (separated with ',') to which the product belongs
      *
      * @var string
      * @JMS\SerializedName("Categories")
@@ -97,7 +99,16 @@ class Product implements ToArrayInterface
     protected $categories;
 
     /**
-     * A string between 6 and 25000 characters containing the product description. HTML tags are allowed
+     * A list of 1 to 2 unique category identifications (separated with ',')
+     *
+     * @var string
+     * @JMS\SerializedName("BrowseNodes")
+     * @JMS\Type("string")
+     */
+    protected $browseNodes;
+
+    /**
+     * A text of 6 to 25000 characters describing the product. HTML tags are allowed.
      *
      * @var string
      * @JMS\SerializedName("Description")
@@ -106,7 +117,7 @@ class Product implements ToArrayInterface
     protected $description;
 
     /**
-     * A string containing the product brand
+     * The product's brand
      *
      * @var string
      * @JMS\SerializedName("Brand")
@@ -115,7 +126,7 @@ class Product implements ToArrayInterface
     protected $brand;
 
     /**
-     * Tax Class identi2cation string. Usually 'default'
+     * Tax classification. Usually 'default'
      *
      * @var Enum\TaxClassEnum
      * @JMS\SerializedName("TaxClass")
@@ -124,9 +135,9 @@ class Product implements ToArrayInterface
     protected $taxClass;
 
     /**
-     * A string identifying shipping type; either 'crossdocking' or 'dropshipping'
+     * A string identifying shipping type, either 'crossdocking' or 'dropshipping'.
      *
-     * Only the allowed shipping types for the seller will be accepted
+     * Only the allowed shipping types for the seller will be accepted.
      *
      * @var Enum\ShipmentTypeEnum
      * @JMS\SerializedName("ShipmentType")
@@ -144,7 +155,7 @@ class Product implements ToArrayInterface
     protected $productId;
 
     /**
-     * An identification string of product condition: 'new', 'used' or 'refurbished'
+     * Product's condition: 'new', 'used' or 'refurbished'
      *
      * @var Enum\ConditionEnum
      * @JMS\SerializedName("Condition")
@@ -153,9 +164,7 @@ class Product implements ToArrayInterface
     protected $condition;
 
     /**
-     * Section holding the variable number of additional product attributes
-     *
-     * Which attributes are available depends on the primary category.
+     * Additional product attributes, depends on the primary category.
      *
      * @var AttributeCollection
      * @JMS\SerializedName("ProductData")
@@ -166,7 +175,7 @@ class Product implements ToArrayInterface
     protected $productData;
 
     /**
-     * The available inventory for the product
+     * The available inventory
      *
      * @var int
      * @JMS\SerializedName("Quantity")
@@ -521,6 +530,26 @@ class Product implements ToArrayInterface
     }
 
     /**
+     * @return string
+     */
+    public function getBrowseNodes()
+    {
+        return $this->browseNodes;
+    }
+
+    /**
+     * @param string $browseNodes
+     *
+     * @return Product
+     */
+    public function setBrowseNodes($browseNodes)
+    {
+        $this->browseNodes = $browseNodes;
+
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getProductDataArray()
@@ -541,6 +570,10 @@ class Product implements ToArrayInterface
             $data['ParentSku'] = $this->getParentSku();
         }
 
+        if (!empty($this->shopSku)) {
+            $data['ShopSku'] = $this->getShopSku();
+        }
+
         if (!empty($this->status)) {
             $data['Status'] = (string) $this->getStatus();
         }
@@ -555,6 +588,10 @@ class Product implements ToArrayInterface
 
         if (!empty($this->primaryCategory)) {
             $data['PrimaryCategory'] = $this->getPrimaryCategory();
+        }
+
+        if (!empty($this->browseNodes)) {
+            $data['BrowseNodes'] = $this->getBrowseNodes();
         }
 
         if (!empty($this->categories)) {

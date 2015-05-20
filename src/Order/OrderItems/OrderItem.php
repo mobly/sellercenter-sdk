@@ -42,6 +42,13 @@ class OrderItem
 
     /**
      * @var string
+     * @JMS\SerializedName("ShopSku")
+     * @JMS\Type("string")
+     */
+    protected $shopSku;
+
+    /**
+     * @var string
      * @JMS\SerializedName("ShippingType")
      * @JMS\Type("string")
      */
@@ -95,13 +102,6 @@ class OrderItem
      * @JMS\Type("string")
      */
     protected $shipmentProvider;
-
-    /**
-     * @var string
-     * @JMS\SerializedName("TrackingCode")
-     * @JMS\Type("string")
-     */
-    protected $trackingCode;
 
     /**
      * @var string
