@@ -4,8 +4,8 @@ namespace SellerCenter\SDK\Console;
 
 use SellerCenter\SDK\Sdk;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\DocBlockGenerator;
@@ -13,67 +13,148 @@ use Zend\Code\Generator\PropertyGenerator;
 
 class VersionCommand extends Command
 {
+    /**
+     * @var InputInterface
+     */
+    protected $input;
+
+    /**
+     * @var OutputInterface
+     */
+    protected $output;
+
     protected function configure()
     {
         $this
             ->setName('sdk:version')
-            ->setDescription('Update SDK version number')
-            ->addArgument(
-                'update',
-                InputArgument::OPTIONAL,
-                'What kind of version do you want to update? [major,minor,patch]'
+            ->setDescription('Update SellerCenter SDK version numbers')
+            ->addOption(
+                'part',
+                'p',
+                InputOption::VALUE_REQUIRED,
+                'Part of version to update [major,minor,patch]'
+            )
+            ->addOption(
+                'api',
+                'a',
+                InputOption::VALUE_OPTIONAL,
+                'Current SellerCenter API version',
+                Sdk::API
             )
         ;
     }
 
+    /**
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $currentVersion = Sdk::VERSION;
+        $this->input = $input;
+        $this->output = $output;
 
-        list($major, $minor, $patch) = explode('.', $currentVersion);
+        $sdkVersion = $this->processSdkVersion();
+        $apiVersion = $this->processApiVersion();
 
-        // add this to retrieve tag details from git command: git describe --abbrev=4 --dirty --always --tags
-        // list($patch, $pendingCommits, $lastCommit, $dirty) = explode('-', $patch);
-
-        if ($input->getArgument('update') == 'major') {
-            $major++;
-            $minor = 0;
-            $patch = 0;
-        } elseif ($input->getArgument('update') == 'minor') {
-            $minor++;
-            $patch = 0;
-        } elseif ($input->getArgument('update') == 'patch') {
-            $patch++;
-        }
-        $finalVersion = implode('.', [$major, $minor, $patch]);
-
-        $output->writeln('<info>Updating <comment>' . $input->getArgument('update') . '</comment> version</info>');
-        $output->writeln('Previous version: <comment>'.$currentVersion.'</comment>');
-        $output->writeln('Next version: <comment>'.$finalVersion.'</comment>');
-
-        $bytes = file_put_contents(
-            getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Version.php',
-            '<?php' . PHP_EOL . PHP_EOL . $this->generateFileContent($finalVersion)
-        );
-        if ($bytes) {
-            $output->writeln('<info>Class <comment>SellerCenter\SDK\Version</comment> updated</info>');
-        }
+        $this->writeClassFile($sdkVersion, $apiVersion);
     }
 
     /**
      * @param $version
+     * @param $api
      *
      * @return string
      */
-    protected function generateFileContent($version)
+    private function generateFileContent($version, $api)
     {
         $docBlock = new DocBlockGenerator(
             'SellerCenter SDK Version Class',
             'This file is auto generated, please do not edit it manually!!!'
         );
-        $property = new PropertyGenerator('VERSION_NUMBER', $version, PropertyGenerator::FLAG_CONSTANT);
-        $class = new ClassGenerator('Version', 'SellerCenter\SDK', null, null, [], [$property], [], $docBlock);
+
+        $properties = [
+            new PropertyGenerator('VERSION_NUMBER', $version, PropertyGenerator::FLAG_CONSTANT),
+            new PropertyGenerator('API', $api, PropertyGenerator::FLAG_CONSTANT)
+        ];
+
+        $class = new ClassGenerator('Version', 'SellerCenter\SDK', null, null, [], $properties, [], $docBlock);
 
         return $class->generate();
+    }
+
+    /**
+     * @return string
+     */
+    private function processSdkVersion()
+    {
+        $sdkVersion = Sdk::VERSION;
+        $updateSdk = true;
+
+        list($major, $minor, $patch) = explode('.', $sdkVersion);
+
+        // add this to retrieve tag details from git command: git describe --abbrev=4 --dirty --always --tags
+        // list($patch, $pendingCommits, $lastCommit, $dirty) = explode('-', $patch);
+
+        if ($this->input->getOption('part') == 'major') {
+            $major++;
+            $minor = 0;
+            $patch = 0;
+        } elseif ($this->input->getOption('part') == 'minor') {
+            $minor++;
+            $patch = 0;
+        } elseif ($this->input->getOption('part') == 'patch') {
+            $patch++;
+        } else {
+            $updateSdk = false;
+        }
+
+        if ($updateSdk) {
+            $previousSdkVersion = $sdkVersion;
+            $sdkVersion = implode('.', [$major, $minor, $patch]);
+
+            $this->output->writeln('<info>Updating <comment>' . $this->input->getOption('part') . '</comment> SDK version</info>');
+            $this->output->writeln('Previous SDK version: <comment>'.$previousSdkVersion.'</comment>');
+            $this->output->writeln('Current SDK updated version: <comment>'.$sdkVersion.'</comment>');
+        }
+
+        return $sdkVersion;
+    }
+
+    /**
+     * @return string
+     */
+    private function processApiVersion()
+    {
+        $apiVersion = Sdk::API;
+
+        if ($this->input->getOption('api') !== null && $this->input->getOption('api') != $apiVersion) {
+            $previousApiVersion = $apiVersion;
+            $apiVersion = $this->input->getOption('api');
+
+            $this->output->writeln('<info>Updating <comment>API</comment> version</info>');
+            $this->output->writeln('Previous API version: <comment>'.$previousApiVersion.'</comment>');
+            $this->output->writeln('Current API version: <comment>'.$apiVersion.'</comment>');
+        }
+
+        return $apiVersion;
+    }
+
+    private function writeClassFile($sdkVersion, $apiVersion)
+    {
+        if ($sdkVersion == Sdk::VERSION && $apiVersion == Sdk::API) {
+            $this->output->writeln('Current SDK version: <comment>'.$sdkVersion.'</comment>');
+            $this->output->writeln('Current API version: <comment>'.$apiVersion.'</comment>');
+            $this->output->writeln('<info>Nothing to change</info>');
+            return false;
+        }
+
+        $fileName = getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Version.php';
+        $data = '<?php' . PHP_EOL . PHP_EOL . $this->generateFileContent($sdkVersion, $apiVersion);
+
+        if (file_put_contents($fileName, $data)) {
+            $this->output->writeln('<info>Class <comment>SellerCenter\SDK\Version</comment> updated</info>');
+        } else {
+            $this->output->writeln('<error>Class <comment>SellerCenter\SDK\Version</comment> was not changed</error>');
+        }
     }
 }

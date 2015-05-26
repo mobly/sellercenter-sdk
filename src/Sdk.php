@@ -21,6 +21,7 @@ use SellerCenter\SDK\Product\ProductClient;
 class Sdk
 {
     const VERSION = Version::VERSION_NUMBER;
+    const API = Version::API;
 
     /**
      * Map of service lowercase names to service class names.
