@@ -40,7 +40,7 @@
                     'required' => false,
                 ],
                 'Status' => [
-                    'type' => 'int',
+                    'type' => 'string',
                     'location' => 'query',
                     'required' => false,
                 ],

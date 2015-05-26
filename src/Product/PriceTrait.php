@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation as JMS;
 trait PriceTrait
 {
     /**
-     * A optional numeric value with the price of the product
+     * An optional number with the price of the product
      *
      * @var float
      * @JMS\SerializedName("Price")
@@ -23,7 +23,7 @@ trait PriceTrait
     protected $price;
 
     /**
-     * Sale price
+     * A special sale price
      *
      * @var float
      * @JMS\SerializedName("SalePrice")
@@ -32,7 +32,7 @@ trait PriceTrait
     protected $salePrice;
 
     /**
-     * The start date for the sale price
+     * Starting date for the sale
      *
      * @var \DateTime
      * @JMS\SerializedName("DateTime")
@@ -41,7 +41,7 @@ trait PriceTrait
     protected $saleStartDate;
 
     /**
-     * The end date for the sale price
+     * Ending date for the sale
      *
      * @var \DateTime
      * @JMS\SerializedName("DateTime")

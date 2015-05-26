@@ -17,6 +17,36 @@
                 'requestUri' => '/',
             ],
             'parameters' => [
+                'CreatedAfter' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
+                'CreatedBefore' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
+                'Search' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
+                'Filter' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
+                'Limit' => [
+                    'type' => 'int',
+                    'location' => 'query',
+                    'required' => false,
+                ],
+                'Offset' => [
+                    'type' => 'int',
+                    'location' => 'query',
+                    'required' => false,
+                ],
             ]
         ],
         'ProductCreate' => [

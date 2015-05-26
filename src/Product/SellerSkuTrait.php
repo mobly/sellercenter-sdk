@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation as JMS;
 trait SellerSkuTrait
 {
     /**
-     * The unique seller SKU for the product
+     * Seller's unique identifier
      *
      * @var string
      * @JMS\SerializedName("SellerSku")
