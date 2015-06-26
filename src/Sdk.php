@@ -6,14 +6,15 @@ use BadMethodCallException;
 use InvalidArgumentException;
 use SellerCenter\SDK\Common\ClientFactory;
 use SellerCenter\SDK\Common\SdkClientInterface;
-use SellerCenter\SDK\Product\ProductClient;
 
 /**
  * Class Sdk
  *
  * Builds SellerCenter API clients based on configuration settings.
  *
- * @method ProductClient getProduct(array $args = [])
+ * @method \SellerCenter\SDK\Feed\FeedClient getFeed(array $args = [])
+ * @method \SellerCenter\SDK\Order\OrderClient getOrder(array $args = [])
+ * @method \SellerCenter\SDK\Product\ProductClient getProduct(array $args = [])
  *
  * @package SellerCenter\SDK
  * @author  Daniel Costa

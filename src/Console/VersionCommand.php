@@ -92,9 +92,6 @@ class VersionCommand extends Command
 
         list($major, $minor, $patch) = explode('.', $sdkVersion);
 
-        // add this to retrieve tag details from git command: git describe --abbrev=4 --dirty --always --tags
-        // list($patch, $pendingCommits, $lastCommit, $dirty) = explode('-', $patch);
-
         if ($this->input->getOption('part') == 'major') {
             $major++;
             $minor = 0;
@@ -112,7 +109,9 @@ class VersionCommand extends Command
             $previousSdkVersion = $sdkVersion;
             $sdkVersion = implode('.', [$major, $minor, $patch]);
 
-            $this->output->writeln('<info>Updating <comment>' . $this->input->getOption('part') . '</comment> SDK version</info>');
+            $this->output->writeln(
+                '<info>Updating <comment>' . $this->input->getOption('part') . '</comment> SDK version</info>'
+            );
             $this->output->writeln('Previous SDK version: <comment>'.$previousSdkVersion.'</comment>');
             $this->output->writeln('Current SDK updated version: <comment>'.$sdkVersion.'</comment>');
         }
@@ -149,7 +148,9 @@ class VersionCommand extends Command
         }
 
         $fileName = getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Version.php';
-        $data = '<?php' . PHP_EOL . PHP_EOL . $this->generateFileContent($sdkVersion, $apiVersion);
+        $data = '<?php' . PHP_EOL .
+            '//@codingStandardsIgnoreFile' . PHP_EOL . PHP_EOL .
+            $this->generateFileContent($sdkVersion, $apiVersion);
 
         if (file_put_contents($fileName, $data)) {
             $this->output->writeln('<info>Class <comment>SellerCenter\SDK\Version</comment> updated</info>');

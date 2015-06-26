@@ -2,7 +2,6 @@
 
 namespace SellerCenter\SDK\Feed;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
 
 /**

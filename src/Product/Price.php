@@ -25,16 +25,16 @@ class Price implements ToArrayInterface
             'SellerSku' => $this->getSellerSku(),
             'Price' => $this->getPrice(),
             'SalePrice' => $this->getSalePrice(),
-            'SaleFromDate' => null,
-            'SaleToDate' => null,
+            'SaleStartDate' => null,
+            'SaleEndDate' => null,
         ];
 
         if ($this->saleStartDate instanceof \DateTime) {
-            $data['SaleFromDate'] = $this->getSaleStartDate()->format(\DateTime::ISO8601);
+            $data['SaleStartDate'] = $this->getSaleStartDate()->format(\DateTime::ISO8601);
         }
 
         if ($this->saleEndDate instanceof \DateTime) {
-            $data['SaleToDate'] = $this->getSaleEndDate()->format(\DateTime::ISO8601);
+            $data['SaleEndDate'] = $this->getSaleEndDate()->format(\DateTime::ISO8601);
         }
 
         return $data;

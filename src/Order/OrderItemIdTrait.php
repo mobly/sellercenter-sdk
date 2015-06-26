@@ -2,8 +2,6 @@
 
 namespace SellerCenter\SDK\Order;
 
-use SellerCenter\SDK\Order\Status\ToCancel;
-
 trait OrderItemIdTrait
 {
     /** @var int */

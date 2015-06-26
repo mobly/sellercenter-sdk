@@ -1,4 +1,5 @@
 <?php
+//@codingStandardsIgnoreFile
 
 namespace SellerCenter\SDK;
 
@@ -10,7 +11,7 @@ namespace SellerCenter\SDK;
 class Version
 {
 
-    const VERSION_NUMBER = '1.7.0';
+    const VERSION_NUMBER = '1.8.0';
 
     const API = '2.6';
 

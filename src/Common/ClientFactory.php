@@ -2,7 +2,6 @@
 
 namespace SellerCenter\SDK\Common;
 
-use Exception;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Command\Subscriber\Debug;
 use InvalidArgumentException;
@@ -98,7 +97,8 @@ class ClientFactory
         foreach ($this->validArguments as $key => $type) {
             if (isset($args[$key])) {
                 if ($type === 1) {
-                    $this->{"handle_{$key}"}($args[$key], $args);
+                    $normalizedMethod = ucfirst($this->underlineToCamelCase($key));
+                    $this->{"handle{$normalizedMethod}"}($args[$key], $args);
                 } elseif ($type === 2) {
                     $deferred[$key] = $args[$key];
                 }
@@ -111,7 +111,7 @@ class ClientFactory
             $this->{"handle_{$key}"}($value, $args, $client);
         }
 
-        $this->postCreate($client, $args);
+        $this->postCreate($client);
 
         return $client;
     }
@@ -152,7 +152,7 @@ class ClientFactory
         }
     }
 
-    protected function handle_debug(
+    protected function handleDebug(
         $value,
         array &$args,
         SdkClientInterface $client
@@ -164,7 +164,7 @@ class ClientFactory
         $client->getEmitter()->attach(new Debug($value === true ? [] : $value));
     }
 
-    private function handle_class_name($value, array &$args)
+    private function handleClassName($value, array &$args)
     {
         if ($value !== false) {
             // An explicitly provided class_name must be found.
@@ -213,7 +213,7 @@ class ClientFactory
         return $value;
     }
 
-    private function handle_credentials($value, array &$args)
+    private function handleCredentials($value, array &$args)
     {
         // set basic or digest authentication, if needed
         if (isset($args['defaults']['auth']) && count($args['defaults']['auth']) >= 2) {
@@ -233,7 +233,7 @@ class ClientFactory
         }
     }
 
-    private function handle_client($value, array &$args)
+    private function handleClient($value, array &$args)
     {
         if (!($value instanceof ClientInterface)) {
             throw new InvalidArgumentException(
@@ -248,7 +248,7 @@ class ClientFactory
         );
     }
 
-    private function handle_api_provider($value, array &$args)
+    private function handleApiProvider($value, array &$args)
     {
         if (!is_callable($value)) {
             throw new InvalidArgumentException('api_provider must be callable');
@@ -260,7 +260,7 @@ class ClientFactory
         $args['serializer'] = Service::createSerializer($api, $args['endpoint']);
     }
 
-    private function handle_endpoint_provider($value, array &$args)
+    private function handleEndpointProvider($value, array &$args)
     {
         if (!is_callable($value)) {
             throw new InvalidArgumentException(
@@ -282,7 +282,7 @@ class ClientFactory
         }
     }
 
-    private function handle_signature($value, array &$args)
+    private function handleSignature($value, array &$args)
     {
         $version = $value ?: $args['api']->getMetadata('signatureVersion');
 
@@ -310,7 +310,7 @@ class ClientFactory
         throw new InvalidArgumentException('Unable to create the signature.');
     }
 
-    protected function postCreate(SdkClientInterface $client, array $args)
+    protected function postCreate(SdkClientInterface $client)
     {
         // Apply the protocol of the service description to the client.
         $this->applyParser($client);
@@ -380,5 +380,24 @@ class ClientFactory
                 $e->setResult($result);
             }
         );
+    }
+
+    /**
+     * Transform under_lined string to CamelCase
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    private function underlineToCamelCase($string)
+    {
+        $words = explode('_', strtolower($string));
+
+        $return = '';
+        foreach ($words as $word) {
+            $return .= ucfirst(trim($word));
+        }
+
+        return $return;
     }
 }

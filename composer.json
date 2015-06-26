@@ -4,9 +4,9 @@
     "type": "library",
     "license": "proprietary",
     "minimum-stability": "stable",
-    "homepage": "https://bitbucket.org/mobly/sellercenter-sdk",
+    "homepage": "https://github.com/mobly/sellercenter-sdk",
     "support": {
-        "issues": "https://bitbucket.org/mobly/sellercenter-sdk/issues"
+        "issues": "https://github.com/mobly/sellercenter-sdk/issues"
     },
     "authors": [
         {
@@ -41,6 +41,7 @@
         "phploc/phploc": "~2.0",
         "pdepend/pdepend": "~2.0",
         "sebastian/phpcpd": "~2.0",
-        "theseer/phpdox": "0.7.*"
+        "theseer/phpdox": "0.7.*",
+        "satooshi/php-coveralls": "0.6.*"
     }
 }

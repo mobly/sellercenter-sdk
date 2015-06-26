@@ -3,7 +3,6 @@
 namespace SellerCenter\SDK\Common\Api\Serializer;
 
 use JMS\Serializer\SerializerBuilder;
-use SellerCenter\SDK\Common\Api\Service;
 
 /**
  * Class XmlSerializer
@@ -13,17 +12,6 @@ use SellerCenter\SDK\Common\Api\Service;
  */
 class XmlSerializer
 {
-    /** @var Service */
-    private $api;
-
-    /**
-     * @param Service $api API being used to create the XML body.
-     */
-    public function __construct(Service $api)
-    {
-        $this->api = $api;
-    }
-
     /**
      * Builds the XML body based on an anotated class.
      *

@@ -3,9 +3,6 @@
 ### Composer ###
 vendor/
 
-### OS X ###
-.DS_Store
-
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
