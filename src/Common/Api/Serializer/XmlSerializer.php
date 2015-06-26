@@ -3,7 +3,6 @@
 namespace SellerCenter\SDK\Common\Api\Serializer;
 
 use JMS\Serializer\SerializerBuilder;
-use SellerCenter\SDK\Common\Api\Service;
 
 /**
  * Class XmlSerializer

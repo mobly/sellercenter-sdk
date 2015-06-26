@@ -111,7 +111,7 @@ class ClientFactory
             $this->{"handle_{$key}"}($value, $args, $client);
         }
 
-        $this->postCreate($client, $args);
+        $this->postCreate($client);
 
         return $client;
     }
@@ -310,7 +310,7 @@ class ClientFactory
         throw new InvalidArgumentException('Unable to create the signature.');
     }
 
-    protected function postCreate(SdkClientInterface $client, array $args)
+    protected function postCreate(SdkClientInterface $client)
     {
         // Apply the protocol of the service description to the client.
         $this->applyParser($client);
