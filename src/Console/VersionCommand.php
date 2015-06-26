@@ -92,9 +92,6 @@ class VersionCommand extends Command
 
         list($major, $minor, $patch) = explode('.', $sdkVersion);
 
-        // add this to retrieve tag details from git command: git describe --abbrev=4 --dirty --always --tags
-        // list($patch, $pendingCommits, $lastCommit, $dirty) = explode('-', $patch);
-
         if ($this->input->getOption('part') == 'major') {
             $major++;
             $minor = 0;

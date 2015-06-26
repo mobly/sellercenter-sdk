@@ -25,13 +25,15 @@ class RestXmlSerializer extends RestSerializer
     public function __construct(Service $api, $endpoint, XmlSerializer $serializer = null)
     {
         parent::__construct($api, $endpoint);
-        $this->serializer = $serializer ?: new XmlSerializer($api);
+        $this->serializer = $serializer ?: new XmlSerializer();
     }
 
     /**
      * @param RequestInterface $request
      * @param string           $name
      * @param mixed            $args
+     *
+     * @return \GuzzleHttp\Stream\StreamInterface|void
      */
     protected function payload(RequestInterface $request, $name, $args)
     {

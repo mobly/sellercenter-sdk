@@ -2,7 +2,6 @@
 
 namespace SellerCenter\SDK\Common;
 
-use Exception;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Command\Subscriber\Debug;
 use InvalidArgumentException;

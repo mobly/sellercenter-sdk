@@ -4,9 +4,9 @@
     "type": "library",
     "license": "proprietary",
     "minimum-stability": "stable",
-    "homepage": "https://bitbucket.org/mobly/sellercenter-sdk",
+    "homepage": "https://github.com/mobly/sellercenter-sdk",
     "support": {
-        "issues": "https://bitbucket.org/mobly/sellercenter-sdk/issues"
+        "issues": "https://github.com/mobly/sellercenter-sdk/issues"
     },
     "authors": [
         {

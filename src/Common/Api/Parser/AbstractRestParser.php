@@ -2,9 +2,7 @@
 
 namespace SellerCenter\SDK\Common\Api\Parser;
 
-use GuzzleHttp\Command\CommandInterface;
 use GuzzleHttp\Message\ResponseInterface;
-use SellerCenter\SDK\Common\Result;
 
 /**
  * Class AbstractRestParser
