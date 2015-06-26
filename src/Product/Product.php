@@ -615,11 +615,11 @@ class Product implements ToArrayInterface
         }
 
         if ($this->saleStartDate instanceof \DateTime) {
-            $data['SaleFromDate'] = $this->getSaleStartDate()->format(\DateTime::ISO8601);
+            $data['SaleStartDate'] = $this->getSaleStartDate()->format(\DateTime::ISO8601);
         }
 
         if ($this->saleEndDate instanceof \DateTime) {
-            $data['SaleToDate'] = $this->getSaleEndDate()->format(\DateTime::ISO8601);
+            $data['SaleEndDate'] = $this->getSaleEndDate()->format(\DateTime::ISO8601);
         }
 
         if (!empty($this->taxClass)) {

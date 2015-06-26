@@ -20,8 +20,8 @@ class PriceTest extends SdkTestCase
             'SellerSku' => 'MOB12345',
             'Price' => 159.99,
             'SalePrice' => 123.99,
-            'SaleFromDate' => '2015-01-01T10:00:00+0000',
-            'SaleToDate' => '2015-01-10T10:00:00+0000',
+            'SaleStartDate' => '2015-01-01T10:00:00+0000',
+            'SaleEndDate' => '2015-01-10T10:00:00+0000',
         ];
         $this->assertEquals($expected, $price->toArray());
     }

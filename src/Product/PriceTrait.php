@@ -35,7 +35,7 @@ trait PriceTrait
      * Starting date for the sale
      *
      * @var \DateTime
-     * @JMS\SerializedName("DateTime")
+     * @JMS\SerializedName("SaleStartDate")
      * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
      */
     protected $saleStartDate;
@@ -44,7 +44,7 @@ trait PriceTrait
      * Ending date for the sale
      *
      * @var \DateTime
-     * @JMS\SerializedName("DateTime")
+     * @JMS\SerializedName("SaleEndDate")
      * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
      */
     protected $saleEndDate;
