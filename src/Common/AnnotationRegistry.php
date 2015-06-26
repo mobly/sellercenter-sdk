@@ -6,9 +6,9 @@ class AnnotationRegistry
     {
         $directoryTree = explode(DIRECTORY_SEPARATOR, __DIR__);
         $serializerDirectory = implode(DIRECTORY_SEPARATOR, $directoryTree);
-        while (
-            !is_dir($serializerDirectory . implode(DIRECTORY_SEPARATOR, ['', 'vendor', 'jms', 'serializer', 'src']))
-        ) {
+        while (!is_dir(
+            $serializerDirectory . implode(DIRECTORY_SEPARATOR, ['', 'vendor', 'jms', 'serializer', 'src'])
+        )) {
             array_pop($directoryTree);
             $serializerDirectory = implode(DIRECTORY_SEPARATOR, $directoryTree);
         }
