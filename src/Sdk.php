@@ -66,6 +66,19 @@ class Sdk
         throw new BadMethodCallException("Unknown method: {$name}.");
     }
 
+    public static function __callStatic($name, array $args = [])
+    {
+        if (strpos($name, 'get') === 0) {
+            $sdk = new Sdk($args);
+            return $sdk->getClient(
+                substr($name, 3),
+                isset($args[0]) ? $args[0] : []
+            );
+        }
+
+        throw new BadMethodCallException("Unknown method: {$name}.");
+    }
+
     /**
      * Get a client by name using an array of constructor options.
      *
