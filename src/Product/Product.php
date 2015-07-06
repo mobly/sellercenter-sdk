@@ -151,6 +151,7 @@ class Product implements ToArrayInterface
      * @var string
      * @JMS\SerializedName("ProductId")
      * @JMS\Type("string")
+     * @JMS\Accessor(getter="getProductId",setter="setProductId")
      */
     protected $productId;
 
@@ -414,7 +415,9 @@ class Product implements ToArrayInterface
             throw new InvalidArgumentException('Product ID is not a valid string, ' . gettype($productId) . ' passed');
         }
 
-        $this->productId = $productId;
+        if (!empty($productId)) {
+            $this->productId = $productId;
+        }
 
         return $this;
     }

@@ -19,6 +19,7 @@ trait PriceTrait
      * @var float
      * @JMS\SerializedName("Price")
      * @JMS\Type("double")
+     * @JMS\AccessType("public_method")
      */
     protected $price;
 
@@ -28,6 +29,7 @@ trait PriceTrait
      * @var float
      * @JMS\SerializedName("SalePrice")
      * @JMS\Type("double")
+     * @JMS\AccessType("public_method")
      */
     protected $salePrice;
 
@@ -36,7 +38,8 @@ trait PriceTrait
      *
      * @var \DateTime
      * @JMS\SerializedName("SaleStartDate")
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
+     * @JMS\Type("string")
+     * @JMS\AccessType("public_method")
      */
     protected $saleStartDate;
 
@@ -45,7 +48,8 @@ trait PriceTrait
      *
      * @var \DateTime
      * @JMS\SerializedName("SaleEndDate")
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
+     * @JMS\Type("string")
+     * @JMS\AccessType("public_method")
      */
     protected $saleEndDate;
 
@@ -70,7 +74,9 @@ trait PriceTrait
             );
         }
 
-        $this->price = $price;
+        if ($price) {
+            $this->price = $price;
+        }
 
         return $this;
     }
@@ -90,13 +96,15 @@ trait PriceTrait
      */
     public function setSaleEndDate($saleEndDate)
     {
-        if (!($saleEndDate instanceof \DateTime)) {
-            throw new InvalidArgumentException(
-                'Sale end date is not an instance of DateTime'
-            );
-        }
+        if (!empty($saleEndDate)) {
+            if (!($saleEndDate instanceof \DateTime)) {
+                throw new InvalidArgumentException(
+                    'Sale end date is not an instance of DateTime'
+                );
+            }
 
-        $this->saleEndDate = $saleEndDate;
+            $this->saleEndDate = $saleEndDate;
+        }
 
         return $this;
     }
@@ -122,8 +130,9 @@ trait PriceTrait
             );
         }
 
-
-        $this->salePrice = $salePrice;
+        if ($salePrice) {
+            $this->salePrice = $salePrice;
+        }
 
         return $this;
     }
@@ -143,13 +152,15 @@ trait PriceTrait
      */
     public function setSaleStartDate($saleStartDate)
     {
-        if (!($saleStartDate instanceof \DateTime)) {
-            throw new InvalidArgumentException(
-                'Sale start date is not an instance of DateTime'
-            );
-        }
+        if (!empty($saleStartDate)) {
+            if (!($saleStartDate instanceof \DateTime)) {
+                throw new InvalidArgumentException(
+                    'Sale start date is not an instance of DateTime'
+                );
+            }
 
-        $this->saleStartDate = $saleStartDate;
+            $this->saleStartDate = $saleStartDate;
+        }
 
         return $this;
     }

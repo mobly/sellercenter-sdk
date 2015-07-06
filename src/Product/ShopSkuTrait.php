@@ -19,6 +19,7 @@ trait ShopSkuTrait
      * @var string
      * @JMS\SerializedName("ShopSku")
      * @JMS\Type("string")
+     * @JMS\Accessor(getter="getShopSku",setter="setShopSku")
      */
     protected $shopSku;
 
@@ -41,7 +42,9 @@ trait ShopSkuTrait
             throw new InvalidArgumentException('Shop SKU is not a valid string, ' . gettype($shopSku) . ' passed');
         }
 
-        $this->shopSku = $shopSku;
+        if (!empty($shopSku)) {
+            $this->shopSku = $shopSku;
+        }
 
         return $this;
     }
