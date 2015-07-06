@@ -143,7 +143,6 @@ class VersionCommand extends Command
         if ($sdkVersion == Sdk::VERSION && $apiVersion == Sdk::API) {
             $this->output->writeln('Current SDK version: <comment>'.$sdkVersion.'</comment>');
             $this->output->writeln('Current API version: <comment>'.$apiVersion.'</comment>');
-            $this->output->writeln('<info>Nothing to change</info>');
             return false;
         }
 

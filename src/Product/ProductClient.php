@@ -60,17 +60,14 @@ class ProductClient extends SdkClient implements ProductInterface
     }
 
     /**
-     * @param Product $product
+     * @param ProductCollection $collection
      *
      * @return \SellerCenter\SDK\Common\Api\SuccessResponse
      */
-    public function productCreate(Product $product)
+    public function productCreate(ProductCollection $collection)
     {
-        $request = new ProductCollection();
-        $request->add($product);
-
         $data = [
-            'ProductRequest' => $request
+            'ProductRequest' => $collection
         ];
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));

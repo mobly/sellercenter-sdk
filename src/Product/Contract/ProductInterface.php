@@ -2,11 +2,12 @@
 
 namespace SellerCenter\SDK\Product\Contract;
 
+use DateTime;
 use GuzzleHttp\Command\ServiceClientInterface;
-use SellerCenter\SDK\Product\Product;
+use SellerCenter\SDK\Product\Enum\ProductFilterEnum;
 use SellerCenter\SDK\Product\ProductCollection;
-use SellerCenter\SDK\Product\ProductImage;
 use SellerCenter\SDK\Product\ProductImageCollection;
+use SellerCenter\SDK\Product\Products;
 
 /**
  * Product Interface
@@ -17,16 +18,30 @@ use SellerCenter\SDK\Product\ProductImageCollection;
 interface ProductInterface extends ServiceClientInterface
 {
     /**
-     * @return \SellerCenter\SDK\Product\Products
+     * @param DateTime|null          $createdAt
+     * @param DateTime|null          $createdBefore
+     * @param null                   $search
+     * @param null|ProductFilterEnum $filter
+     * @param null                   $limit
+     * @param null                   $offset
+     *
+     * @return Products
      */
-    public function getProducts();
+    public function getProducts(
+        $search = null,
+        ProductFilterEnum $filter = null,
+        DateTime $createdAt = null,
+        DateTime $createdBefore = null,
+        $limit = null,
+        $offset = null
+    );
 
     /**
-     * @param Product $product
+     * @param ProductCollection $collection
      *
      * @return \SellerCenter\SDK\Common\Api\SuccessResponse
      */
-    public function productCreate(Product $product);
+    public function productCreate(ProductCollection $collection);
 
     /**
      * @param ProductCollection $collection
