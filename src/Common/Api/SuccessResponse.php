@@ -23,7 +23,7 @@ class SuccessResponse
     /**
      * @var SuccessResponse\Body
      * @JMS\SerializedName("Body")
-     * @JMS\Type("SellerCenter\SDK\Common\Api\ErrorResponse\Body")
+     * @JMS\Type("SellerCenter\SDK\Common\Api\SuccessResponse\Body")
      */
     protected $body;
 

@@ -104,7 +104,7 @@ abstract class RestSerializer
                         $varspecs[isset($member['locationName']) ? $member['locationName'] : $name] =
                             isset($args[$name]) ? $args[$name] : null;
                     } elseif ($member['location'] == 'query' && !empty($args[$name])) {
-                        $this->endpoint->getQuery()->add($name, $args[$name]);
+                        $this->endpoint->getQuery()->set($name, $args[$name]);
                     }
                 }
             }

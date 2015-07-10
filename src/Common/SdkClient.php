@@ -301,6 +301,7 @@ class SdkClient extends AbstractClient implements SdkClientInterface
             }
         }
 
+        /* @var \SellerCenter\SDK\Common\Exception\SdkException $exceptionClass */
         $exceptionClass = $this->commandException;
         return new $exceptionClass(
             sprintf(

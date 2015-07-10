@@ -557,7 +557,11 @@ class Product implements ToArrayInterface
      */
     public function getProductDataArray()
     {
-        return $this->getProductData()->toArray();
+        if ($this->productData instanceof AttributeCollection) {
+            return $this->getProductData()->toArray();
+        }
+
+        return [];
     }
 
     /**

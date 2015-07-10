@@ -11,7 +11,7 @@ namespace SellerCenter\SDK;
 class Version
 {
 
-    const VERSION_NUMBER = '1.8.3';
+    const VERSION_NUMBER = '1.8.4';
 
     const API = '2.6';
 
