@@ -10,6 +10,7 @@ use SellerCenter\SDK\Product\Contract\ProductInterface;
  *
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
+ * @codeCoverageIgnore
  */
 class ProductClient extends SdkClient implements ProductInterface
 {

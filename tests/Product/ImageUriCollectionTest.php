@@ -14,6 +14,42 @@ use SellerCenter\Test\SDK\SdkTestCase;
  */
 class ImageUriCollectionTest extends SdkTestCase
 {
+    public function testConstructorWithEmptyArray()
+    {
+        $collection = new ImageUriCollection;
+        $collection->add(new ImageUri('http://host.com/img.jpg'));
+
+        $this->assertEquals(1, $collection->count());
+    }
+
+    public function testConstructorWithArrayData()
+    {
+        $collection = new ImageUriCollection([new ImageUri('http://host.com/img1.jpg')]);
+        $collection->add(new ImageUri('http://host.com/img2.jpg'));
+
+        $this->assertEquals(2, $collection->count());
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Image is not an instance of ImageUri
+     */
+    public function testAddInvalidImageShouldThrowInvalidArgumentException()
+    {
+        $collection = new ImageUriCollection;
+        $collection->add(1);
+    }
+
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage Method set is not allowed
+     */
+    public function testSetShouldThrowInvalidArgumentException()
+    {
+        $collection = new ImageUriCollection;
+        $collection->set('key', 'value');
+    }
+
     public function testToArray()
     {
         $collection = new ImageUriCollection;
@@ -21,5 +57,13 @@ class ImageUriCollectionTest extends SdkTestCase
 
         $expected = ['http://host.com/img.jpg'];
         $this->assertEquals($expected, $collection->toArray());
+    }
+
+    public function testGetElements()
+    {
+        $collection = new ImageUriCollection;
+        $collection->add(new ImageUri('http://host.com/img.jpg'));
+
+        $this->assertEquals(1, count($collection->getElements()));
     }
 }

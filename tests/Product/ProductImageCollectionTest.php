@@ -17,26 +17,32 @@ class ProductImageCollectionTest extends SdkTestCase
 {
     public function testAddImageToCollection()
     {
-        $image = new ProductImage;
-        $image->setSellerSku('12345');
-        $collection = new ProductImageCollection;
-        $collection->add($image);
+        $image = new ProductImage('12345');
+        $collection = new ProductImageCollection([$image]);
         $this->assertEquals($collection->count(), 1);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Element is not an instance of ProductImage
+     */
+    public function testAddInvalidImageShouldThrowInvalidArgumentException()
+    {
+        $collection = new ProductImageCollection();
+        $collection->add(1);
     }
 
     public function testToArray()
     {
         $collection = new ProductImageCollection;
 
-        $image1 = new ProductImage();
-        $image1->setSellerSku('MOB12345');
+        $image1 = new ProductImage('MOB12345');
         $image1->getImages()->add(new ImageUri('http://host/img.jpg'));
         $image1->getImages()->add(new ImageUri('http://host/img.gif'));
         $image1->getImages()->add(new ImageUri('http://host/img.png'));
         $collection->add($image1);
 
-        $image2 = new ProductImage();
-        $image2->setSellerSku('MOB987654');
+        $image2 = new ProductImage('MOB987654');
         $image2->getImages()->add(new ImageUri('http://host/img2.jpg'));
         $image2->getImages()->add(new ImageUri('http://host/img2.gif'));
         $image2->getImages()->add(new ImageUri('http://host/img2.png'));
@@ -47,5 +53,24 @@ class ProductImageCollectionTest extends SdkTestCase
             $image2->toArray(),
         ];
         $this->assertEquals($expected, $collection->toArray());
+    }
+
+    public function testGetElements()
+    {
+        $collection = new ProductImageCollection;
+
+        $image1 = new ProductImage('MOB12345');
+        $image1->getImages()->add(new ImageUri('http://host/img.jpg'));
+        $image1->getImages()->add(new ImageUri('http://host/img.gif'));
+        $image1->getImages()->add(new ImageUri('http://host/img.png'));
+        $collection->add($image1);
+
+        $image2 = new ProductImage('MOB987654');
+        $image2->getImages()->add(new ImageUri('http://host/img2.jpg'));
+        $image2->getImages()->add(new ImageUri('http://host/img2.gif'));
+        $image2->getImages()->add(new ImageUri('http://host/img2.png'));
+        $collection->add($image2);
+
+        $this->assertEquals(2, count($collection->getElements()));
     }
 }

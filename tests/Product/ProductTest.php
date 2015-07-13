@@ -36,6 +36,15 @@ class ProductTest extends SdkTestCase
         $product->setSellerSku(1);
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testSetInvalidShopSkuShouldThrowInvalidArgumentException()
+    {
+        $product = new Product;
+        $product->setShopSku(1);
+    }
+
     public function testSetGetParentSku()
     {
         $product = new Product;
@@ -308,6 +317,14 @@ class ProductTest extends SdkTestCase
         $this->assertEquals('new', $product->getCondition());
     }
 
+    public function testSetGetBrowseNodes()
+    {
+        $product = new Product;
+        $product->setBrowseNodes('browse_nodes');
+        $this->assertAttributeEquals('browse_nodes', 'browseNodes', $product);
+        $this->assertEquals('browse_nodes', $product->getBrowseNodes());
+    }
+
     public function testSetGetProductData()
     {
         $productData = new AttributeCollection;
@@ -319,6 +336,35 @@ class ProductTest extends SdkTestCase
         $product->setProductData($productData);
         $this->assertAttributeEquals($productData, 'productData', $product);
         $this->assertEquals($productData, $product->getProductData());
+    }
+
+    public function testSetGetProductDataArrayWithEmptyData()
+    {
+        $xml = '<Product><SellerSku>MOB12345</SellerSku></Product>';
+
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace(
+            'JMS\Serializer\Annotation',
+            getcwd() . '/vendor/jms/serializer/src'
+        );
+
+        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+
+        $product = $serializer->deserialize($xml, 'SellerCenter\SDK\Product\Product', 'xml');
+
+        $this->assertEquals([], $product->getProductDataArray());
+    }
+
+    public function testSetGetProductDataArray()
+    {
+        $productData = new AttributeCollection;
+        $productAttribute1 = new Attribute('attribute_one', 'value_one');
+        $productAttribute2 = new Attribute('attribute_two', 'value_two');
+        $productData->add($productAttribute1);
+        $productData->add($productAttribute2);
+        $product = new Product;
+        $product->setProductData($productData);
+        $this->assertAttributeEquals($productData, 'productData', $product);
+        $this->assertEquals($productData->toArray(), $product->getProductDataArray());
     }
 
     public function testSetGetQuantity()
@@ -365,6 +411,8 @@ class ProductTest extends SdkTestCase
         $product->setProductId('78900112233');
         $product->setCondition(ConditionEnum::NEW_PRODUCT());
         $product->setQuantity(1);
+        $product->setShopSku('12345SHOP');
+        $product->setBrowseNodes('browse_nodes');
 
         $expected = [
             'SellerSku' => 'MOB123456',
@@ -388,7 +436,9 @@ class ProductTest extends SdkTestCase
                 'attribute_one' => 'value_one',
                 'attribute_two' => 'value_two'
             ],
-            'Quantity' => 1
+            'Quantity' => 1,
+            'ShopSku' => '12345SHOP',
+            'BrowseNodes' => 'browse_nodes',
         ];
         $this->assertEquals($expected, $product->toArray());
     }

@@ -15,53 +15,46 @@ use SellerCenter\Test\SDK\SdkTestCase;
  */
 class ProductImageTest extends SdkTestCase
 {
-    public function testSetGetSellerSku()
+    public function testConstructorSetsSellerSku()
     {
-        $image = new ProductImage();
-        $image->setSellerSku('MOB12345');
+        $image = new ProductImage('MOB12345');
         $this->assertAttributeEquals('MOB12345', 'sellerSku', $image);
         $this->assertEquals('MOB12345', $image->getSellerSku());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetInvalidSellerSkuShouldThrowInvalidArgumentException()
+    public function testGetImages()
     {
-        $image = new ProductImage();
-        $image->setSellerSku(1);
+        $imageUriCollection = new ImageUriCollection;
+        $imageUri = new ImageUri('http://host.com/img1.jpg');
+        $imageUriCollection->add($imageUri);
+        $image = new ProductImage('MOB12345', $imageUriCollection);
+
+        $this->assertEquals(1, $image->getImages()->count());
     }
 
-    public function testSetGetImages()
+    public function testToArrayWithImageUriAddedOnConstructor()
     {
-        $uri1 = new ImageUri('http://www.host.com/images/logo1.png');
-        $uri2 = new ImageUri('http://www.host.com/images/logo2.png');
-        $collection = new ImageUriCollection;
-        $collection->add($uri1);
-        $collection->add($uri2);
-        $image = new ProductImage();
-        $image->setImages($collection);
-        $this->assertAttributeEquals($collection, 'images', $image);
-        $this->assertEquals($collection, $image->getImages());
+        $imageUriCollection = new ImageUriCollection;
+        $imageUri = new ImageUri('http://host.com/img1.jpg');
+        $imageUriCollection->add($imageUri);
+        $image = new ProductImage('MOB12345', $imageUriCollection);
+
+        $expected = [
+            'SellerSku' => 'MOB12345',
+            'Images' => [
+                'http://host.com/img1.jpg',
+            ]
+        ];
+
+        $this->assertEquals($expected, $image->toArray());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetInvalidImagesShouldThrowInvalidArgumentException()
+    public function testToArrayWithImageUriAddedLater()
     {
-        $image = new ProductImage();
-        /** @noinspection PhpParamsInspection */
-        $image->setImages(1);
-    }
-
-    public function testToArray()
-    {
-        $image = new ProductImage();
-        $image->setSellerSku('MOB12345');
-        $image->getImages()->add(new ImageUri('http://host/img.jpg'));
-        $image->getImages()->add(new ImageUri('http://host/img.gif'));
-        $image->getImages()->add(new ImageUri('http://host/img.png'));
+        $image = new ProductImage('MOB12345');
+        $image->add(new ImageUri('http://host/img.jpg'));
+        $image->add(new ImageUri('http://host/img.gif'));
+        $image->add(new ImageUri('http://host/img.png'));
 
         $expected = [
             'SellerSku' => 'MOB12345',

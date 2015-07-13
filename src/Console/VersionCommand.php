@@ -11,6 +11,12 @@ use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\DocBlockGenerator;
 use Zend\Code\Generator\PropertyGenerator;
 
+/**
+ * Class VersionCommand
+ *
+ * @package SellerCenter\SDK\Console
+ * @codeCoverageIgnore
+ */
 class VersionCommand extends Command
 {
     /**

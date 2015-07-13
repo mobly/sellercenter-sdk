@@ -9,44 +9,19 @@ use SellerCenter\SDK\Sdk;
 class SdkTest extends SdkTestCase
 {
     /**
-     * Check if the given emitter has the provided event listener
-     *
-     * @param EmitterInterface $emitter Emitter to search
-     * @param string|object    $value   Can be a class name or listener object
-     * @param null             $event   Specific event to search (optional)
-     *
-     * @return bool
+     * @expectedException \BadMethodCallException
      */
-//    public static function hasListener(
-//        EmitterInterface $emitter,
-//        $value,
-//        $event = null
-//    ) {
-//        $expression = $event
-//            ? '[*][0]'
-//            : '*[*][0]';
-//
-//        $listeners = $event
-//            ? $emitter->listeners($event)
-//            : $emitter->listeners();
-//
-//        $result = JmesPath::search($expression, $listeners) ?: [];
-//
-//        if (!is_object($value)) {
-//            $result = array_map(function($o) {
-//                return get_class($o);
-//            }, $result);
-//        }
-//
-//        return in_array($value, $result, true);
-//    }
+    public function testEnsuresMissingMethodThrowsExceptionWhenCalledFromInstance()
+    {
+        (new Sdk())->foo();
+    }
 
     /**
      * @expectedException \BadMethodCallException
      */
-    public function testEnsuresMissingMethodThrowsException()
+    public function testEnsuresMissingMethodThrowsExceptionWhenCalledStatically()
     {
-        (new Sdk())->foo();
+        Sdk::foo();
     }
 
     public function testHasMagicMethods()
@@ -65,6 +40,18 @@ class SdkTest extends SdkTestCase
         $this->assertInstanceOf(
             'SellerCenter\SDK\Common\SdkClientInterface',
             (new Sdk())->getProduct([
+                'store'  => 'mobly',
+                'environment' => 'staging',
+                'credentials' => [
+                    'id' => 'admin@sellercenter.com',
+                    'key' => '1234567890123456789012345678901234567890',
+                ]
+            ])
+        );
+
+        $this->assertInstanceOf(
+            'SellerCenter\SDK\Common\SdkClientInterface',
+            Sdk::getProduct([
                 'store'  => 'mobly',
                 'environment' => 'staging',
                 'credentials' => [

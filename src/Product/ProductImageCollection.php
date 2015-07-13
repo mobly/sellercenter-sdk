@@ -13,68 +13,34 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Product
  * @author Daniel Costa
  * @JMS\XmlRoot("Request")
+ * @JMS\AccessorOrder("custom", custom = {"Elements"})
  */
-class ProductImageCollection implements ToArrayInterface, Countable
+class ProductImageCollection extends ArrayCollection implements ToArrayInterface
 {
     /**
-     * @JMS\XmlList(inline = true, entry = "ProductImage")
+     * Initializes a new ArrayCollection.
+     *
+     * @param array $images
      */
-    protected $products;
-
-    /**
-     * @param ArrayCollection $products
-     */
-    public function __construct(ArrayCollection $products = null)
+    public function __construct(array $images = array())
     {
-        if (empty($products)) {
-            $products = new ArrayCollection();
+        if (count($images)) {
+            foreach ($images as $image) {
+                $this->add($image);
+            }
         }
-        $this->setProducts($products);
     }
 
     /**
-     * @param ProductImage $product
-     *
-     * @return bool
+     * {@inheritDoc}
      */
-    public function add(ProductImage $product)
+    public function add($image)
     {
-        return $this->getProducts()->add($product);
-    }
+        if (!$image instanceof ProductImage) {
+            throw new \InvalidArgumentException('Element is not an instance of ProductImage');
+        }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
-     * @param ArrayCollection $products
-     *
-     * @return ProductCollection
-     */
-    public function setProducts($products)
-    {
-        $this->products = $products;
-
-        return $this;
-    }
-
-    /**
-     * (PHP 5 &gt;= 5.1.0)<br/>
-     * Count elements of an object
-     *
-     * @link http://php.net/manual/en/countable.count.php
-     * @return int The custom count as an integer.
-     *       </p>
-     *       <p>
-     *       The return value is cast to an integer.
-     */
-    public function count()
-    {
-        return count($this->products);
+        return parent::add($image);
     }
 
     /**
@@ -85,10 +51,19 @@ class ProductImageCollection implements ToArrayInterface, Countable
         $data = [];
 
         /* @var ProductImage $image */
-        foreach ($this->getProducts()->getValues() as $image) {
+        foreach (parent::toArray() as $image) {
             $data[] = $image->toArray();
         }
 
         return $data;
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\XmlList(inline = true, entry = "ProductImage")
+     */
+    public function getElements()
+    {
+        return parent::toArray();
     }
 }

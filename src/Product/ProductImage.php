@@ -12,6 +12,7 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  * @JMS\XmlRoot("ProductImage")
+ * @JMS\AccessorOrder("custom", custom = {"SellerSku", "Images"})
  */
 class ProductImage implements ToArrayInterface
 {
@@ -22,11 +23,29 @@ class ProductImage implements ToArrayInterface
      * @JMS\SerializedName("Images")
      * @JMS\Type("SellerCenter\SDK\Product\ImageUriCollection")
      */
-    protected $images;
+    private $images;
 
-    public function __construct()
+    public function __construct($sellerSku, ImageUriCollection $images = null)
     {
-        $this->setImages(new ImageUriCollection);
+        $this->setSellerSku($sellerSku);
+        $this->images = new ImageUriCollection;
+        if (count($images)) {
+            foreach ($images as $image) {
+                $this->add($image);
+            }
+        }
+    }
+
+    /**
+     * @param ImageUri $image
+     *
+     * @return bool
+     */
+    public function add(ImageUri $image)
+    {
+        $this->images->add($image);
+
+        return true;
     }
 
     /**
@@ -38,31 +57,13 @@ class ProductImage implements ToArrayInterface
     }
 
     /**
-     * @param ImageUriCollection $images
-     *
-     * @return $this
-     */
-    public function setImages($images)
-    {
-        if (!($images instanceof ImageUriCollection)) {
-            throw new InvalidArgumentException(
-                'Images is not an instance of UriCollection'
-            );
-        }
-
-        $this->images = $images;
-
-        return $this;
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function toArray()
     {
         return [
             'SellerSku' => $this->getSellerSku(),
-            'Images' => $this->getImages()->toArray()
+            'Images' => $this->images->toArray()
         ];
     }
 }

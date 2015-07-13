@@ -12,49 +12,44 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  * @JMS\XmlRoot("Images")
+ * @JMS\AccessorOrder("custom", custom = {"Elements"})
  */
-class ImageUriCollection implements ToArrayInterface, \Countable
+class ImageUriCollection extends ArrayCollection implements ToArrayInterface
 {
     /**
-     * @var ArrayCollection
-     * @JMS\XmlList(inline = true, entry = "Image")
+     * Initializes a new ArrayCollection.
+     *
+     * @param array $images
      */
-    protected $images;
-
-    public function __construct(ArrayCollection $products = null)
+    public function __construct(array $images = [])
     {
-        if (empty($products)) {
-            $products = new ArrayCollection();
+        parent::__construct();
+
+        if (count($images)) {
+            foreach ($images as $image) {
+                $this->add($image);
+            }
         }
-        $this->setImages($products);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function add(ImageUri $image)
+    public function add($image)
     {
-        return $this->getImages()->add($image);
+        if (!$image instanceof ImageUri) {
+            throw new \InvalidArgumentException('Image is not an instance of ImageUri');
+        }
+
+        return parent::add($image);
     }
 
     /**
-     * @return ArrayCollection
+     * {@inheritDoc}
      */
-    public function getImages()
+    public function set($key, $value)
     {
-        return $this->images;
-    }
-
-    /**
-     * @param ArrayCollection $images
-     *
-     * @return ArrayCollection
-     */
-    public function setImages($images)
-    {
-        $this->images = $images;
-
-        return $this;
+        throw new \RuntimeException('Method set is not allowed');
     }
 
     /**
@@ -65,25 +60,19 @@ class ImageUriCollection implements ToArrayInterface, \Countable
         $data = [];
 
         /* @var ImageUri $image */
-        foreach ($this->getImages()->getValues() as $image) {
-            $data[] = $image->toString();
+        foreach (parent::toArray() as $image) {
+            $data[] = (string) $image;
         }
 
         return $data;
     }
 
     /**
-     * (PHP 5 &gt;= 5.1.0)<br/>
-     * Count elements of an object
-     *
-     * @link http://php.net/manual/en/countable.count.php
-     * @return int The custom count as an integer.
-     *       </p>
-     *       <p>
-     *       The return value is cast to an integer.
+     * @JMS\VirtualProperty
+     * @JMS\XmlList(inline = true, entry = "Image")
      */
-    public function count()
+    public function getElements()
     {
-        return $this->getImages()->count();
+        return parent::toArray();
     }
 }

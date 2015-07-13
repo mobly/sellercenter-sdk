@@ -17,6 +17,7 @@ class ImageUri
     /**
      * @var Http
      * @JMS\XmlValue
+     * @JMS\Accessor(getter="__toString",setter="setUri")
      */
     protected $uri;
 
@@ -26,30 +27,26 @@ class ImageUri
     }
 
     /**
-     * @return Http
+     * @return string
      */
-    public function getUri()
+    public function __toString()
     {
-        return $this->uri;
+        return $this->uri->toString();
     }
 
     /**
-     * @param Http $uri
+     * @param string $uri
      *
      * @return ImageUri
      */
     public function setUri($uri)
     {
-        $this->uri = $uri;
+        $this->uri = new Http($uri);
+
+        if (!$this->uri->isAbsolute()) {
+            throw new \InvalidArgumentException('Invalid image URL: ' . $this->uri->toString());
+        }
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function toString()
-    {
-        return (string) $this->uri;
     }
 }

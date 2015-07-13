@@ -18,7 +18,7 @@ abstract class RestSerializer
     /** @var Service */
     private $api;
 
-    /** @var Url */
+    /** @var string */
     private $endpoint;
 
     /**
@@ -28,7 +28,7 @@ abstract class RestSerializer
     public function __construct(Service $api, $endpoint)
     {
         $this->api = $api;
-        $this->endpoint = Url::fromString($endpoint);
+        $this->endpoint = $endpoint;
     }
 
     public function getEvents()
@@ -91,11 +91,12 @@ abstract class RestSerializer
      */
     private function buildEndpoint($operation, array $args)
     {
-        $uri = (string) $this->endpoint;
+        $endpoint = Url::fromString($this->endpoint);
+        $uri = (string) $endpoint;
         $varspecs = [];
 
         if (isset($operation['http']['requestUri'])) {
-            $uri = $this->endpoint->combine($operation['http']['requestUri']);
+            $uri = $endpoint->combine($operation['http']['requestUri']);
 
             // Create an associative array of varspecs used in expansions
             if (isset($operation['parameters'])) {
@@ -104,13 +105,13 @@ abstract class RestSerializer
                         $varspecs[isset($member['locationName']) ? $member['locationName'] : $name] =
                             isset($args[$name]) ? $args[$name] : null;
                     } elseif ($member['location'] == 'query' && !empty($args[$name])) {
-                        $this->endpoint->getQuery()->set($name, $args[$name]);
+                        $endpoint->getQuery()->set($name, $args[$name]);
                     }
                 }
             }
         }
 
-        $uri = (string) $this->endpoint;
+        $uri = (string) $endpoint;
 
         return preg_replace_callback(
             '/%7B([^\}]+)%7D/',

@@ -274,6 +274,15 @@ class SdkClientTest extends SdkTestCase
         );
     }
 
+    public function testCanGetEnvironment()
+    {
+        $client = $this->createClient();
+        $this->assertEquals(
+            'staging',
+            $client->getEnvironment()
+        );
+    }
+
     private function createClient(array $service = [], array $config = [])
     {
         $apiProvider = function ($type) use ($service, $config) {
