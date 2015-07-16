@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api;
+<?php namespace SellerCenter\SDK\Common\Api;
 
 use GuzzleHttp\Utils;
 
@@ -108,6 +106,7 @@ class FilesystemApiProvider
         $path = "{$this->path}/{$service}-{$version}.{$type}.php";
 
         if (file_exists($path)) {
+            /** @noinspection PhpIncludeInspection */
             return require $path;
         }
 

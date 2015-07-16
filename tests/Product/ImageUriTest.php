@@ -20,18 +20,15 @@ class ImageUriTest extends SdkTestCase
         new ImageUri('img/product-1.jpg');
     }
 
-    public function testImageUriSerialized()
+    public function testSerialization()
     {
-        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace(
-            'JMS\Serializer\Annotation',
-            getcwd() . '/vendor/jms/serializer/src'
-        );
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace();
 
         $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
 
-        $this->assertXmlStringEqualsXmlString(
-            '<Image>http://www.mobly.com.br/img/product-1.jpg</Image>',
-            $serializer->serialize(new ImageUri('http://www.mobly.com.br/img/product-1.jpg'), 'xml')
-        );
+        $xml = '<Image>http://www.mobly.com.br/img/product-1.jpg</Image>';
+        $imageUri = new ImageUri('http://www.mobly.com.br/img/product-1.jpg');
+
+        $this->assertXmlStringEqualsXmlString($xml, $serializer->serialize($imageUri, 'xml'));
     }
 }

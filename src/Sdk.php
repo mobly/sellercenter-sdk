@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK;
+<?php namespace SellerCenter\SDK;
 
 use BadMethodCallException;
 use InvalidArgumentException;

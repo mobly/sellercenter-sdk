@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common;
+<?php namespace SellerCenter\Test\SDK\Common;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Event\PreparedEvent;

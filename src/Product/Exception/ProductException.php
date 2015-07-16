@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Product\Exception;
+<?php namespace SellerCenter\SDK\Product\Exception;
 
 use SellerCenter\SDK\Common\Exception\SdkException;
 

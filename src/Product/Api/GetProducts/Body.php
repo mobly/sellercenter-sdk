@@ -1,20 +1,19 @@
-<?php
+<?php namespace SellerCenter\SDK\Product\Api\GetProducts;
 
-namespace SellerCenter\SDK\Product\Products;
-
-use Doctrine\Common\Collections\ArrayCollection;
+use GuzzleHttp\ToArrayInterface;
 use JMS\Serializer\Annotation as JMS;
+use SellerCenter\SDK\Product\ProductCollection;
 
 /**
  * Class Body
  *
- * @package SellerCenter\SDK\Product\Products
+ * @package SellerCenter\SDK\Product\Api\GetProducts\Response
  * @author Daniel Costa
  */
-class Body
+class Body extends \SellerCenter\SDK\Common\Api\Response\Success\Body implements ToArrayInterface
 {
     /**
-     * @var ArrayCollection
+     * @var ProductCollection
      * @JMS\SerializedName("Products")
      * @JMS\Type("ArrayCollection<SellerCenter\SDK\Product\Product>")
      * @JMS\XmlList(entry="Product")
@@ -22,7 +21,7 @@ class Body
     protected $products;
 
     /**
-     * @return ArrayCollection
+     * @return ProductCollection
      */
     public function getProducts()
     {
@@ -30,7 +29,7 @@ class Body
     }
 
     /**
-     * @param ArrayCollection $products
+     * @param ProductCollection $products
      *
      * @return Body
      */
@@ -39,5 +38,13 @@ class Body
         $this->products = $products;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->products->toArray();
     }
 }

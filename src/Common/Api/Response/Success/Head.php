@@ -1,17 +1,16 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api\SuccessResponse;
+<?php namespace SellerCenter\SDK\Common\Api\Response\Success;
 
 use JMS\Serializer\Annotation as JMS;
+use SellerCenter\SDK\Common\Api\Response\HeadInterface;
 
 /**
  * Class Head
  *
- * @package SellerCenter\SDK\Common\Api\SuccessResponse
+ * @package SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
  * @author Daniel Costa
  * @JMS\XmlRoot("Head")
  */
-class Head
+class Head implements HeadInterface
 {
     /**
      * @var string
@@ -131,7 +130,7 @@ class Head
     }
 
     /**
-     * @return RequestParameters
+     * @return array
      */
     public function getRequestParameters()
     {
@@ -139,7 +138,7 @@ class Head
     }
 
     /**
-     * @param RequestParameters $requestParameters
+     * @param array $requestParameters
      *
      * @return Head
      */

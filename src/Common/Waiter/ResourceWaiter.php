@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Waiter;
+<?php namespace SellerCenter\SDK\Common\Waiter;
 
 use RuntimeException;
 use SellerCenter\SDK\Common\Exception\SdkException;

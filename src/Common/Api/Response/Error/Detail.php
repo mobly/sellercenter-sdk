@@ -1,13 +1,11 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api\ErrorResponse;
+<?php namespace SellerCenter\SDK\Common\Api\Response\Error;
 
 use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class ErrorBody
  *
- * @package SellerCenter\SDK\Common\Api\ErrorResponse
+ * @package SellerCenter\SDK\Common\Api\Response\Error\ErrorResponse
  * @author Daniel Costa
  */
 class Detail

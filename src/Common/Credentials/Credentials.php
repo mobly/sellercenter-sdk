@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Credentials;
+<?php namespace SellerCenter\SDK\Common\Credentials;
 
 use \InvalidArgumentException;
 use SellerCenter\SDK\Common\Enum\ConfigEnum;

@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\OrderItems;
+<?php namespace SellerCenter\SDK\Order\OrderItems;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
@@ -11,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Order\Order
  * @author Daniel Costa
  */
-class Body
+class Body extends \SellerCenter\SDK\Common\Api\Response\Success\Body
 {
     /**
      * @var ArrayCollection

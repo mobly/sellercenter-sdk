@@ -1,9 +1,5 @@
-<?php
+<?php namespace SellerCenter\SDK\Product;
 
-namespace SellerCenter\SDK\Product;
-
-use GuzzleHttp\ToArrayInterface;
-use InvalidArgumentException;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -12,48 +8,35 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  * @JMS\XmlRoot("ProductImage")
- * @JMS\AccessorOrder("custom", custom = {"SellerSku", "Images"})
+ * @JMS\AccessorOrder("custom", custom = {"SellerSku", "Elements"})
  */
-class ProductImage implements ToArrayInterface
+class ProductImage extends ImageUriCollection
 {
     use SellerSkuTrait;
 
     /**
-     * @var ImageUriCollection
-     * @JMS\SerializedName("Images")
-     * @JMS\Type("SellerCenter\SDK\Product\ImageUriCollection")
+     * Initializes a new ArrayCollection.
+     *
+     * @param string             $sellerSku
+     * @param ImageUriCollection $elements
      */
-    private $images;
-
-    public function __construct($sellerSku, ImageUriCollection $images = null)
+    public function __construct($sellerSku, ImageUriCollection $elements = null)
     {
         $this->setSellerSku($sellerSku);
-        $this->images = new ImageUriCollection;
-        if (count($images)) {
-            foreach ($images as $image) {
-                $this->add($image);
+
+        if (count($elements)) {
+            foreach ($elements as $element) {
+                $this->add($element);
             }
         }
     }
 
     /**
-     * @param ImageUri $image
-     *
-     * @return bool
+     * {@inheritDoc}
      */
-    public function add(ImageUri $image)
+    public function add($element)
     {
-        $this->images->add($image);
-
-        return true;
-    }
-
-    /**
-     * @return ImageUriCollection
-     */
-    public function getImages()
-    {
-        return $this->images;
+        return parent::add($element);
     }
 
     /**
@@ -63,7 +46,17 @@ class ProductImage implements ToArrayInterface
     {
         return [
             'SellerSku' => $this->getSellerSku(),
-            'Images' => $this->images->toArray()
+            'Images' => parent::toArray()
         ];
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("Images")
+     * @JMS\XmlList(inline = false, entry = "Image")
+     */
+    public function getElements()
+    {
+        return parent::getElements();
     }
 }

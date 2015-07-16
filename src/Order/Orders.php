@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order;
+<?php namespace SellerCenter\SDK\Order;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -14,9 +12,9 @@ use JMS\Serializer\Annotation as JMS;
 class Orders
 {
     /**
-     * @var \SellerCenter\SDK\Common\Api\SuccessResponse\Head
+     * @var \SellerCenter\SDK\Common\Api\Response\Success\Head
      * @JMS\SerializedName("Head")
-     * @JMS\Type("SellerCenter\SDK\Common\Api\SuccessResponse\Head")
+     * @JMS\Type("SellerCenter\SDK\Common\Api\Response\Success\Head")
      */
     protected $head;
 
@@ -28,7 +26,7 @@ class Orders
     protected $body;
 
     /**
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse\Head
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\Head
      */
     public function getHead()
     {
@@ -36,7 +34,7 @@ class Orders
     }
 
     /**
-     * @param \SellerCenter\SDK\Common\Api\SuccessResponse\Head $head
+     * @param \SellerCenter\SDK\Common\Api\Response\Success\Head $head
      *
      * @return Orders
      */

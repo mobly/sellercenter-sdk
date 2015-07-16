@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common\Api;
+<?php namespace SellerCenter\Test\SDK\Common\Api;
 
 use SellerCenter\SDK\Common\Api\FilesystemApiProvider;
 use SellerCenter\Test\SDK\SdkTestCase;

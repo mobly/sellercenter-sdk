@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Product;
+<?php namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\ImageUri;
 use SellerCenter\SDK\Product\ImageUriCollection;
@@ -32,7 +30,7 @@ class ImageUriCollectionTest extends SdkTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Image is not an instance of ImageUri
+     * @expectedExceptionMessage Element is not an instance of ImageUri
      */
     public function testAddInvalidImageShouldThrowInvalidArgumentException()
     {
@@ -65,5 +63,25 @@ class ImageUriCollectionTest extends SdkTestCase
         $collection->add(new ImageUri('http://host.com/img.jpg'));
 
         $this->assertEquals(1, count($collection->getElements()));
+    }
+
+    public function testSerialization()
+    {
+        $collection = new ImageUriCollection;
+        $collection->add(new ImageUri('http://host.com/img1.jpg'));
+        $collection->add(new ImageUri('http://host.com/img2.jpg'));
+
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace();
+
+        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+
+        $xml = '
+            <Images>
+                <Image>http://host.com/img1.jpg</Image>
+                <Image>http://host.com/img2.jpg</Image>
+            </Images>
+        ';
+
+        $this->assertXmlStringEqualsXmlString($xml, $serializer->serialize($collection, 'xml'));
     }
 }

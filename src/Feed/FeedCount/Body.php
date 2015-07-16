@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Feed\FeedCount;
+<?php namespace SellerCenter\SDK\Feed\FeedCount;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;

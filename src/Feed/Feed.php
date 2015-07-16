@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Feed;
+<?php namespace SellerCenter\SDK\Feed;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;

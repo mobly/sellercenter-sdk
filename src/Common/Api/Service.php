@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api;
+<?php namespace SellerCenter\SDK\Common\Api;
 
 use ArrayAccess;
 use GuzzleHttp\ToArrayInterface;
@@ -40,13 +38,11 @@ class Service implements ToArrayInterface, ArrayAccess
      * @param callable $apiProvider
      * @param string   $serviceName
      * @param string   $apiVersion
-     *
-     * @internal param array $definition Service description
      */
     public function __construct(
         callable $apiProvider,
         $serviceName,
-        $apiVersion//,
+        $apiVersion
     ) {
         $definition = $apiProvider('api', $serviceName, $apiVersion);
         $this->apiProvider = $apiProvider;

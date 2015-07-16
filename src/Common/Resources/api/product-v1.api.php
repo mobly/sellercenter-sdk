@@ -11,7 +11,7 @@
             'name' => 'GetProducts',
             'description' => 'GetProducts returns a list of all products. The following optional parameters can
                                 be used to control which products are returned',
-            'deserialize' => 'SellerCenter\SDK\Product\Products',
+            'deserialize' => 'SellerCenter\SDK\Product\Api\GetProducts\Response',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -52,7 +52,7 @@
         'ProductCreate' => [
             'name' => 'ProductCreate',
             'description' => 'This action allows the creation of new products',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'POST',
             ],
@@ -67,7 +67,7 @@
         'ProductUpdate' => [
             'name' => 'ProductUpdate',
             'description' => 'This action provides a mechanism to update product information',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'POST',
             ],
@@ -82,7 +82,7 @@
         'ProductRemove' => [
             'name' => 'ProductRemove',
             'description' => 'This action enables the removal of products',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'POST',
             ],
@@ -98,10 +98,9 @@
             'name' => 'Image',
             'description' => 'This action provides URLs for the images of products. All existing images
                                 will be replaced. The first entry will be used as a default image',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/',
             ],
             'parameters' => [
                 'ProductImageRequest' => [

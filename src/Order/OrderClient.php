@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order;
+<?php namespace SellerCenter\SDK\Order;
 
 use DateTime;
 use SellerCenter\SDK\Common\SdkClient;
@@ -114,7 +112,7 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
     /**
      * @param ToCancel $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToCanceled(ToCancel $order)
     {
@@ -147,7 +145,7 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
     /**
      * @param ToShipped $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToShipped(ToShipped $order)
     {
@@ -161,7 +159,7 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
     /**
      * @param ToFailedDelivery $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToFailedDelivery(ToFailedDelivery $order)
     {
@@ -177,7 +175,7 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
     /**
      * @param ToDelivered $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToDelivered(ToDelivered $order)
     {

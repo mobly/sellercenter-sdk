@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\StatusToReadyToShip;
+<?php namespace SellerCenter\SDK\Order\StatusToReadyToShip;
 
 use JMS\Serializer\Annotation as JMS;
 

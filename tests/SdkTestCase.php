@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK;
+<?php namespace SellerCenter\Test\SDK;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 

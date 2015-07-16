@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common\Signature;
+<?php namespace SellerCenter\Test\SDK\Common\Signature;
 
 require_once __DIR__ . '/sig_hack.php';
 

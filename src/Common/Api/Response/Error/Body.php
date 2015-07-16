@@ -1,21 +1,20 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api\ErrorResponse;
+<?php namespace SellerCenter\SDK\Common\Api\Response\Error;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
+use SellerCenter\SDK\Common\Api\Response\BodyInterface;
 
 /**
  * Class Body
  *
- * @package SellerCenter\SDK\Common\Api\ErrorResponse
+ * @package SellerCenter\SDK\Common\Api\Response\Error\ErrorResponse
  * @author Daniel Costa
  */
-class Body
+class Body implements BodyInterface
 {
     /**
      * @var ArrayCollection
-     * @JMS\Type("ArrayCollection<SellerCenter\SDK\Common\Api\ErrorResponse\Detail>")
+     * @JMS\Type("ArrayCollection<SellerCenter\SDK\Common\Api\Response\Error\ErrorResponse\Detail>")
      * @JMS\XmlList(entry="ErrorDetail")
      */
     protected $detail;

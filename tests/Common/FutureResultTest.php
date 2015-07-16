@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common;
+<?php namespace SellerCenter\Test\SDK\Common;
 
 use React\Promise\FulfilledPromise;
 use SellerCenter\SDK\Common\FutureResult;

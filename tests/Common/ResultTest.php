@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common;
+<?php namespace SellerCenter\Test\SDK\Common;
 
 use SellerCenter\SDK\Common\Result;
 use SellerCenter\Test\SDK\SdkTestCase;

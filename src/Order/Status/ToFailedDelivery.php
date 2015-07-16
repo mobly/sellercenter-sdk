@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\Status;
+<?php namespace SellerCenter\SDK\Order\Status;
 
 use SellerCenter\SDK\Order\OrderItemIdTrait;
 use SellerCenter\SDK\Order\ReasonTrait;

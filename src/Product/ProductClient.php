@@ -1,8 +1,7 @@
-<?php
-
-namespace SellerCenter\SDK\Product;
+<?php namespace SellerCenter\SDK\Product;
 
 use SellerCenter\SDK\Common\SdkClient;
+use SellerCenter\SDK\Product\Api\GetProducts\Response;
 use SellerCenter\SDK\Product\Contract\ProductInterface;
 
 /**
@@ -27,7 +26,7 @@ class ProductClient extends SdkClient implements ProductInterface
      * @param null                        $limit
      * @param null                        $offset
      *
-     * @return Products
+     * @return Response
      */
     public function getProducts(
         $search = null,
@@ -63,7 +62,7 @@ class ProductClient extends SdkClient implements ProductInterface
     /**
      * @param ProductCollection $collection
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function productCreate(ProductCollection $collection)
     {
@@ -77,7 +76,7 @@ class ProductClient extends SdkClient implements ProductInterface
     /**
      * @param ProductCollection $collection
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function productUpdate(ProductCollection $collection)
     {
@@ -91,7 +90,7 @@ class ProductClient extends SdkClient implements ProductInterface
     /**
      * @param ProductCollection $collection
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function productRemove(ProductCollection $collection)
     {
@@ -105,7 +104,7 @@ class ProductClient extends SdkClient implements ProductInterface
     /**
      * @param ProductImageCollection $collection
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function image(ProductImageCollection $collection)
     {

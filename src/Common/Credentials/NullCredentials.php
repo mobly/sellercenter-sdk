@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Credentials;
+<?php namespace SellerCenter\SDK\Common\Credentials;
 
 /**
  * Class NullCredentials

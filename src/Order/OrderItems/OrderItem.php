@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\OrderItems;
+<?php namespace SellerCenter\SDK\Order\OrderItems;
 
 use DateTime;
 use JMS\Serializer\Annotation as JMS;

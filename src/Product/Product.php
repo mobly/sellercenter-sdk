@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Product;
+<?php namespace SellerCenter\SDK\Product;
 
 use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
@@ -15,6 +13,7 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Product
  * @author  Daniel Costa
  * @JMS\XmlRoot("Product")
+ * @JMS\AccessorOrder("custom", custom = {"SellerSku", "Name"})
  */
 class Product implements ToArrayInterface
 {
@@ -561,7 +560,9 @@ class Product implements ToArrayInterface
             return $this->getProductData()->toArray();
         }
 
+        // @codeCoverageIgnoreStart
         return [];
+        // @codeCoverageIgnoreEnd
     }
 
     /**

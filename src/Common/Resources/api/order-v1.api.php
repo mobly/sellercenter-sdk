@@ -83,7 +83,7 @@
         'SetStatusToCanceled' => [
             'name' => 'SetStatusToCanceled',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been canceled',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -140,7 +140,7 @@
         'SetStatusToShipped' => [
             'name' => 'SetStatusToShipped',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been shipped',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -156,7 +156,7 @@
         'SetStatusToFailedDelivery' => [
             'name' => 'SetStatusToFailedDelivery',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been failed',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -172,7 +172,7 @@
         'SetStatusToDelivered' => [
             'name' => 'SetStatusToDelivered',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been delivered',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',

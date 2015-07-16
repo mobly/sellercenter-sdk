@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common\Exception;
+<?php namespace SellerCenter\Test\SDK\Common\Exception;
 
 use GuzzleHttp\Command\Command;
 use GuzzleHttp\Command\CommandTransaction;

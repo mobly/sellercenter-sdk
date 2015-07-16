@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Product;
+<?php namespace SellerCenter\SDK\Product;
 
 use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;

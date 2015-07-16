@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common;
+<?php namespace SellerCenter\SDK\Common;
 
 use ArrayAccess;
 use Countable;

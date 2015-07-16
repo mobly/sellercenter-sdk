@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Product;
+<?php namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\Attribute;
 use SellerCenter\SDK\Product\AttributeCollection;

@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common\Subscriber;
+<?php namespace SellerCenter\Test\SDK\Common\Subscriber;
 
 use SellerCenter\SDK\Common\Credentials\Credentials;
 use GuzzleHttp\Client;

@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api\Serializer;
+<?php namespace SellerCenter\SDK\Common\Api\Serializer;
 
 use JMS\Serializer\SerializerBuilder;
 

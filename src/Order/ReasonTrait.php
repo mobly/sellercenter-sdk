@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order;
+<?php namespace SellerCenter\SDK\Order;
 
 trait ReasonTrait
 {

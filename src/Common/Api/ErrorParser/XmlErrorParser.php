@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api\ErrorParser;
+<?php namespace SellerCenter\SDK\Common\Api\ErrorParser;
 
 use GuzzleHttp\Message\ResponseInterface;
 use JMS\Serializer\SerializerBuilder;
@@ -21,7 +19,7 @@ class XmlErrorParser
             $serializer = SerializerBuilder::create()->build();
             return $serializer->deserialize(
                 $response->xml()->asXML(),
-                'SellerCenter\SDK\Common\Api\ErrorResponse',
+                'SellerCenter\SDK\Common\Api\Response\Error\ErrorResponse',
                 'xml'
             );
         }

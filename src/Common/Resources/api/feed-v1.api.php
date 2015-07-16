@@ -62,7 +62,7 @@
             'name' => 'FeedCancel',
             'description' => 'This action allows the cancellation of submitted feeds with „Queued“ status.
                                 This Action has no ResponseType',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\SuccessResponse',
+            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',

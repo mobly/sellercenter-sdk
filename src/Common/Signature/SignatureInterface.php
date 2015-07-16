@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Signature;
+<?php namespace SellerCenter\SDK\Common\Signature;
 
 use GuzzleHttp\Message\RequestInterface;
 use SellerCenter\SDK\Common\Credentials\CredentialsInterface;

@@ -1,8 +1,5 @@
-<?php
+<?php namespace SellerCenter\SDK\Product;
 
-namespace SellerCenter\SDK\Product;
-
-use Countable;
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
 use JMS\Serializer\Annotation as JMS;
@@ -13,68 +10,36 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Product
  * @author Daniel Costa
  * @JMS\XmlRoot("Request")
+ * @JMS\AccessorOrder("custom", custom = {"Elements"})
  */
-class ProductCollection implements ToArrayInterface, Countable
+class ProductCollection extends ArrayCollection implements ToArrayInterface
 {
     /**
-     * @JMS\XmlList(inline = true, entry = "Product")
+     * Initializes a new ArrayCollection.
+     *
+     * @param array $elements
      */
-    protected $products;
-
-    /**
-     * @param ArrayCollection $products
-     */
-    public function __construct(ArrayCollection $products = null)
+    public function __construct(array $elements = [])
     {
-        if (empty($products)) {
-            $products = new ArrayCollection();
+        parent::__construct();
+
+        if (count($elements)) {
+            foreach ($elements as $element) {
+                $this->add($element);
+            }
         }
-        $this->setProducts($products);
     }
 
     /**
-     * @param Product $product
-     *
-     * @return bool
+     * {@inheritDoc}
      */
-    public function add(Product $product)
+    public function add($element)
     {
-        return $this->getProducts()->add($product);
-    }
+        if (!$element instanceof Product) {
+            throw new \InvalidArgumentException('Element is not an instance of Product');
+        }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
-     * @param ArrayCollection $products
-     *
-     * @return ProductCollection
-     */
-    public function setProducts($products)
-    {
-        $this->products = $products;
-
-        return $this;
-    }
-
-    /**
-     * (PHP 5 &gt;= 5.1.0)<br/>
-     * Count elements of an object
-     *
-     * @link http://php.net/manual/en/countable.count.php
-     * @return int The custom count as an integer.
-     *       </p>
-     *       <p>
-     *       The return value is cast to an integer.
-     */
-    public function count()
-    {
-        return count($this->products);
+        return parent::add($element);
     }
 
     /**
@@ -84,11 +49,20 @@ class ProductCollection implements ToArrayInterface, Countable
     {
         $data = [];
 
-        /* @var Product $product */
-        foreach ($this->getProducts()->getValues() as $product) {
-            $data[] = $product->toArray();
+        /* @var Product $element */
+        foreach (parent::toArray() as $element) {
+            $data[] = $element->toArray();
         }
 
         return $data;
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\XmlList(inline = true, entry = "Product")
+     */
+    public function getElements()
+    {
+        return parent::toArray();
     }
 }

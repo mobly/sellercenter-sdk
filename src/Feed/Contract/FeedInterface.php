@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Feed\Contract;
+<?php namespace SellerCenter\SDK\Feed\Contract;
 
 use SellerCenter\SDK\Feed\FeedCount;
 use SellerCenter\SDK\Feed\FeedList;

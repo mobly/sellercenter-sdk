@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Product;
+<?php namespace SellerCenter\SDK\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
@@ -19,15 +17,15 @@ class ImageUriCollection extends ArrayCollection implements ToArrayInterface
     /**
      * Initializes a new ArrayCollection.
      *
-     * @param array $images
+     * @param array $elements
      */
-    public function __construct(array $images = [])
+    public function __construct(array $elements = [])
     {
         parent::__construct();
 
-        if (count($images)) {
-            foreach ($images as $image) {
-                $this->add($image);
+        if (count($elements)) {
+            foreach ($elements as $element) {
+                $this->add($element);
             }
         }
     }
@@ -35,13 +33,13 @@ class ImageUriCollection extends ArrayCollection implements ToArrayInterface
     /**
      * {@inheritDoc}
      */
-    public function add($image)
+    public function add($element)
     {
-        if (!$image instanceof ImageUri) {
-            throw new \InvalidArgumentException('Image is not an instance of ImageUri');
+        if (!$element instanceof ImageUri) {
+            throw new \InvalidArgumentException('Element is not an instance of ImageUri');
         }
 
-        return parent::add($image);
+        return parent::add($element);
     }
 
     /**
@@ -59,9 +57,9 @@ class ImageUriCollection extends ArrayCollection implements ToArrayInterface
     {
         $data = [];
 
-        /* @var ImageUri $image */
-        foreach (parent::toArray() as $image) {
-            $data[] = (string) $image;
+        /* @var ImageUri $element */
+        foreach (parent::toArray() as $element) {
+            $data[] = (string) $element;
         }
 
         return $data;

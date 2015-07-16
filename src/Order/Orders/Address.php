@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\Orders;
+<?php namespace SellerCenter\SDK\Order\Orders;
 
 use JMS\Serializer\Annotation as JMS;
 

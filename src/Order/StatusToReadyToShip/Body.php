@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\StatusToReadyToShip;
+<?php namespace SellerCenter\SDK\Order\StatusToReadyToShip;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
@@ -11,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
  * @package SellerCenter\SDK\Order\StatusToReadyToShip
  * @author Daniel Costa
  */
-class Body
+class Body extends \SellerCenter\SDK\Common\Api\Response\Success\Body
 {
     /**
      * @var ArrayCollection

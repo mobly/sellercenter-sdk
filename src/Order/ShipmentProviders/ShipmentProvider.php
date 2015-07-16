@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\ShipmentProviders;
+<?php namespace SellerCenter\SDK\Order\ShipmentProviders;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -30,7 +28,7 @@ class ShipmentProvider
     /**
      * @param string $name
      *
-     * @return Reason
+     * @return ShipmentProvider
      */
     public function setName($name)
     {

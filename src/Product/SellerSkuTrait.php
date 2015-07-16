@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Product;
+<?php namespace SellerCenter\SDK\Product;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation as JMS;

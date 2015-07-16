@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common;
+<?php namespace SellerCenter\SDK\Common;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Command\Subscriber\Debug;
@@ -15,6 +13,7 @@ use SellerCenter\SDK\Common\Signature\SignatureInterface;
 use SellerCenter\SDK\Common\Subscriber\Signature;
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Event\ProcessEvent;
+use GuzzleHttp\Utils;
 
 /**
  * Class ClientFactory
@@ -244,7 +243,7 @@ class ClientFactory
         // Make sure the user agent is prefixed by the SDK version
         $args['client']->setDefaultOption(
             'headers/User-Agent',
-            'sellercenter-sdk-php/' . Sdk::VERSION . ' ' . Client::getDefaultUserAgent()
+            'sellercenter-sdk-php/' . Sdk::VERSION . ' ' . Utils::getDefaultUserAgent()
         );
     }
 
@@ -353,7 +352,7 @@ class ClientFactory
                 $result = $errorParser($response, $e);
 
                 // @todo: maybe we should throw exception on error response
-                if ($result instanceof Api\ErrorResponse) {
+                if ($result instanceof Api\Response\Error\ErrorResponse) {
                     $e->setResult($result);
                     $e->stopPropagation();
                 }

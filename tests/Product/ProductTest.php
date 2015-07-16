@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Product;
+<?php namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\Attribute;
 use SellerCenter\SDK\Product\AttributeCollection;
@@ -340,17 +338,7 @@ class ProductTest extends SdkTestCase
 
     public function testSetGetProductDataArrayWithEmptyData()
     {
-        $xml = '<Product><SellerSku>MOB12345</SellerSku></Product>';
-
-        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace(
-            'JMS\Serializer\Annotation',
-            getcwd() . '/vendor/jms/serializer/src'
-        );
-
-        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
-
-        $product = $serializer->deserialize($xml, 'SellerCenter\SDK\Product\Product', 'xml');
-
+        $product = new Product;
         $this->assertEquals([], $product->getProductDataArray());
     }
 
@@ -441,5 +429,33 @@ class ProductTest extends SdkTestCase
             'BrowseNodes' => 'browse_nodes',
         ];
         $this->assertEquals($expected, $product->toArray());
+    }
+
+    public function testSerialization()
+    {
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace();
+
+        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+
+        $product = new Product;
+        $product->setSellerSku('ASM_A8012');
+
+        $xml = '<Product><SellerSku>ASM_A8012</SellerSku></Product>';
+
+        $this->assertXmlStringEqualsXmlString($xml, $serializer->serialize($product, 'xml'));
+    }
+
+    public function testDeserialization()
+    {
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace();
+
+        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+
+        $xml = '<Product><SellerSku>ASM_A8012</SellerSku></Product>';
+
+        /* @var \SellerCenter\SDK\Product\Product $product */
+        $product = $serializer->deserialize($xml, 'SellerCenter\SDK\Product\Product', 'xml');
+
+        $this->assertEquals('ASM_A8012', $product->getSellerSku());
     }
 }

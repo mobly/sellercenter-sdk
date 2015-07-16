@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\Enum;
+<?php namespace SellerCenter\SDK\Order\Enum;
 
 use MyCLabs\Enum\Enum;
 

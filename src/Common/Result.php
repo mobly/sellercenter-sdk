@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common;
+<?php namespace SellerCenter\SDK\Common;
 
 use GuzzleHttp\HasDataTrait;
 use SimpleXMLElement;

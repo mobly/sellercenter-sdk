@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Console;
+<?php namespace SellerCenter\SDK\Console;
 
 use SellerCenter\SDK\Sdk;
 use Symfony\Component\Console\Command\Command;
@@ -53,6 +51,8 @@ class VersionCommand extends Command
     /**
      * @param InputInterface  $input
      * @param OutputInterface $output
+     *
+     * @return bool
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -62,7 +62,7 @@ class VersionCommand extends Command
         $sdkVersion = $this->processSdkVersion();
         $apiVersion = $this->processApiVersion();
 
-        $this->writeClassFile($sdkVersion, $apiVersion);
+        return $this->writeClassFile($sdkVersion, $apiVersion);
     }
 
     /**

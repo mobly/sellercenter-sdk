@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Signature
+<?php namespace SellerCenter\SDK\Common\Signature
 {
     use SellerCenter\Test\SDK\Common\Signature\SignatureV1Test;
 

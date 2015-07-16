@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Feed;
+<?php namespace SellerCenter\SDK\Feed;
 
 use SellerCenter\SDK\Common\SdkClient;
 use SellerCenter\SDK\Feed\Contract\FeedInterface;

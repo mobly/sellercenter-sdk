@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common;
+<?php namespace SellerCenter\SDK\Common;
 
 use GuzzleHttp\Command\CommandInterface;
 use GuzzleHttp\Command\ServiceClientInterface;

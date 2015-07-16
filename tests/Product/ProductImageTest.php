@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Product;
+<?php namespace SellerCenter\Test\SDK\Product;
 
 use SellerCenter\SDK\Product\ProductImage;
 use SellerCenter\SDK\Product\ImageUri;
@@ -24,20 +22,24 @@ class ProductImageTest extends SdkTestCase
 
     public function testGetImages()
     {
-        $imageUriCollection = new ImageUriCollection;
-        $imageUri = new ImageUri('http://host.com/img1.jpg');
-        $imageUriCollection->add($imageUri);
-        $image = new ProductImage('MOB12345', $imageUriCollection);
+        $element = new ImageUri('http://host.com/img1.jpg');
 
-        $this->assertEquals(1, $image->getImages()->count());
+        $collection = new ImageUriCollection;
+        $collection->add($element);
+
+        $image = new ProductImage('MOB12345', $collection);
+
+        $this->assertEquals(1, $image->count());
     }
 
     public function testToArrayWithImageUriAddedOnConstructor()
     {
-        $imageUriCollection = new ImageUriCollection;
-        $imageUri = new ImageUri('http://host.com/img1.jpg');
-        $imageUriCollection->add($imageUri);
-        $image = new ProductImage('MOB12345', $imageUriCollection);
+        $element = new ImageUri('http://host.com/img1.jpg');
+
+        $collection = new ImageUriCollection;
+        $collection->add($element);
+
+        $image = new ProductImage('MOB12345', $collection);
 
         $expected = [
             'SellerSku' => 'MOB12345',
@@ -64,6 +66,39 @@ class ProductImageTest extends SdkTestCase
                 'http://host/img.png',
             ]
         ];
+
         $this->assertEquals($expected, $image->toArray());
+    }
+
+    public function testGetElements()
+    {
+        $collection = new ProductImage('ASM_A8012');
+        $collection->add(new ImageUri('http://host.com/img1.jpg'));
+        $collection->add(new ImageUri('http://host.com/img2.jpg'));
+
+        $this->assertEquals(2, count($collection->getElements()));
+    }
+
+    public function testSerialization()
+    {
+        $collection = new ProductImage('MOB_12345');
+        $collection->add(new ImageUri('http://host.com/img1.jpg'));
+        $collection->add(new ImageUri('http://host.com/img2.jpg'));
+
+        \SellerCenter\SDK\Common\AnnotationRegistry::registerAutoloadNamespace();
+
+        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+
+        $xml = '
+            <ProductImage>
+                <SellerSku>MOB_12345</SellerSku>
+                <Images>
+                    <Image>http://host.com/img1.jpg</Image>
+                    <Image>http://host.com/img2.jpg</Image>
+                </Images>
+            </ProductImage>
+        ';
+
+        $this->assertXmlStringEqualsXmlString($xml, $serializer->serialize($collection, 'xml'));
     }
 }

@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\FailureReason;
+<?php namespace SellerCenter\SDK\Order\FailureReason;
 
 use JMS\Serializer\Annotation as JMS;
 

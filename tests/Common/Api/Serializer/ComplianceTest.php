@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common\Api\Serializer;
+<?php namespace SellerCenter\Test\SDK\Common\Api\Serializer;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\CommandTransaction;
@@ -21,13 +19,13 @@ class ComplianceTest extends SdkTestCase
 {
     use UsesServiceTrait;
 
-    public function testCaseProvider()
+    public function caseProvider()
     {
         $cases = [];
 
-        $files = glob(__DIR__ . '/../test_cases/protocols/input/*.json');
+        $files = glob(__DIR__ . '/../test_cases/protocols/input/*.php');
         foreach ($files as $file) {
-            $data = json_decode(file_get_contents($file), true);
+            $data = require_once $file;
             foreach ($data as $suite) {
                 $suite['metadata']['type'] = $suite['metadata']['protocol'];
                 foreach ($suite['cases'] as $case) {
@@ -39,8 +37,8 @@ class ComplianceTest extends SdkTestCase
                             ]
                         ];
                     }, 'service', 'store', 'environment');
-                    $cases[] = [
-                        $file . ': ' . $suite['description'],
+                    $cases[$suite['description'] . ':' . $case['given']['name']] = [
+                        $file . ': ' . $suite['description'] . ':' . $case['given']['name'],
                         $description,
                         $case['given']['name'],
                         $case['params'],
@@ -54,63 +52,51 @@ class ComplianceTest extends SdkTestCase
     }
 
     /**
-     * @dataProvider testCaseProvider
+     * @dataProvider caseProvider
+     *
+     * @param         $about
+     * @param Service $service
+     * @param         $name
+     * @param array   $args
+     * @param         $serialized
      */
-    public function testPassesComplianceTest(
-        $about,
-        Service $service,
-        $name,
-        array $args,
-        $serialized
-    ) {
-        $this->markTestSkipped();
+    public function testPassesComplianceTest($about, Service $service, $name, array $args, $serialized)
+    {
+        $endpoint = 'https://api-staging.sellercenter.net';
 
-        $ep = 'https://api-staging.sellercenter.net';
         $client = new SdkClient([
             'api' => $service,
-            'credentials' => new NullCredentials(),
-            'client' => new Client(),
+            'credentials' => new NullCredentials,
+            'client' => new Client,
             'signature' => $this->getMock('SellerCenter\SDK\Commom\Signature\SignatureInterface'),
             'store' => 'mobly',
             'environment' => 'staging',
-            'endpoint' => $ep,
+            'endpoint' => $endpoint,
             'error_parser' => Service::createErrorParser($service->getProtocol()),
-            'serializer'   => Service::createSerializer($service, $ep),
-            'version'      => 'latest'
+            'serializer' => Service::createSerializer($service, $endpoint),
+            'version' => 'latest'
         ]);
 
-        $clientFactory = new ClientFactory();
+        $factory = new ClientFactory();
         /* @var \SellerCenter\SDK\Common\ClientFactory $reflectionClass */
         /* @var \ReflectionClass $reflectionClass */
-        $reflectionClass = new \ReflectionClass($clientFactory);
+        $reflectionClass = new \ReflectionClass($factory);
         $reflectionMethod = $reflectionClass->getMethod('applyParser');
         $reflectionMethod->setAccessible(true);
 
-        $reflectionMethod->invoke($clientFactory, $client, 'http://foo.com');
+        $reflectionMethod->invoke($factory, $client, 'http://foo.com');
         $command = $client->getCommand($name, $args);
-        $trans = new CommandTransaction($client, $command);
+        $transaction = new CommandTransaction($client, $command);
         /** @var callable $serializer */
         $serializer = $this->readAttribute($client, 'serializer');
-        $request = $serializer($trans);
+        $request = $serializer($transaction);
+
         $this->assertEquals($serialized['uri'], $request->getResource());
 
         $body = (string) $request->getBody();
-        switch ($service->getMetadata('type')) {
-            case 'rest-xml':
-                // Normalize XML data.
-                if ($serialized['body'] && strpos($serialized['body'], '</')) {
-                    $serialized['body'] = str_replace(
-                        ' />',
-                        '/>',
-                        '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
-                        . $serialized['body']
-                    );
-                    $body = trim($body);
-                }
-                break;
+        if (!empty($body) && $service->getMetadata('type') == 'rest-xml') {
+            $this->assertXmlStringEqualsXmlString($serialized['body'], $body);
         }
-
-        $this->assertEquals($serialized['body'], $body);
 
         if (isset($serialized['headers'])) {
             foreach ($serialized['headers'] as $key => $value) {

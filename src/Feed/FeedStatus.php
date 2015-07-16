@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Feed;
+<?php namespace SellerCenter\SDK\Feed;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
@@ -15,9 +13,9 @@ use JMS\Serializer\Annotation as JMS;
 class FeedStatus
 {
     /**
-     * @var \SellerCenter\SDK\Common\Api\SuccessResponse\Head
+     * @var \SellerCenter\SDK\Common\Api\Response\Success\Head
      * @JMS\SerializedName("Head")
-     * @JMS\Type("SellerCenter\SDK\Common\Api\SuccessResponse\Head")
+     * @JMS\Type("SellerCenter\SDK\Common\Api\Response\Success\Head")
      */
     protected $head;
 
@@ -30,7 +28,7 @@ class FeedStatus
     protected $body;
 
     /**
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse\Head
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\Head
      */
     public function getHead()
     {
@@ -38,7 +36,7 @@ class FeedStatus
     }
 
     /**
-     * @param \SellerCenter\SDK\Common\Api\SuccessResponse\Head $head
+     * @param \SellerCenter\SDK\Common\Api\Response\Success\Head $head
      *
      * @return FeedList
      */

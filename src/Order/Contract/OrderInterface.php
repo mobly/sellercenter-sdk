@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\Contract;
+<?php namespace SellerCenter\SDK\Order\Contract;
 
 use DateTime;
 use GuzzleHttp\Command\ServiceClientInterface;

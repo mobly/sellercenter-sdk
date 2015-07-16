@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Feed\FeedCount;
+<?php namespace SellerCenter\SDK\Feed\FeedCount;
 
 use JMS\Serializer\Annotation as JMS;
 

@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Signature;
+<?php namespace SellerCenter\SDK\Common\Signature;
 
 use DateTime;
 use GuzzleHttp\Message\RequestInterface;

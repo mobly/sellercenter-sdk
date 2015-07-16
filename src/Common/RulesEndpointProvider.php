@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common;
+<?php namespace SellerCenter\SDK\Common;
 
 use SellerCenter\SDK\Common\Exception\UnresolvedEndpointException;
 use GuzzleHttp\Utils;

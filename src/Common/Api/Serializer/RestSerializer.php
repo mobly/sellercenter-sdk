@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api\Serializer;
+<?php namespace SellerCenter\SDK\Common\Api\Serializer;
 
 use GuzzleHttp\Command\CommandTransaction;
 use GuzzleHttp\Message\RequestInterface;
@@ -92,11 +90,10 @@ abstract class RestSerializer
     private function buildEndpoint($operation, array $args)
     {
         $endpoint = Url::fromString($this->endpoint);
-        $uri = (string) $endpoint;
         $varspecs = [];
 
         if (isset($operation['http']['requestUri'])) {
-            $uri = $endpoint->combine($operation['http']['requestUri']);
+            $endpoint->combine($operation['http']['requestUri']);
 
             // Create an associative array of varspecs used in expansions
             if (isset($operation['parameters'])) {

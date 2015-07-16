@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Subscriber;
+<?php namespace SellerCenter\SDK\Common\Subscriber;
 
 use SellerCenter\SDK\Common\Signature\SignatureInterface;
 use SellerCenter\SDK\Common\Credentials\CredentialsInterface;

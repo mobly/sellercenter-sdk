@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api\Parser;
+<?php namespace SellerCenter\SDK\Common\Api\Parser;
 
 use GuzzleHttp\Message\ResponseInterface;
 

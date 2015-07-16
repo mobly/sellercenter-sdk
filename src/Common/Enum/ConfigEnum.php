@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Enum;
+<?php namespace SellerCenter\SDK\Common\Enum;
 
 /**
  * Class ConfigEnum

@@ -1,8 +1,5 @@
-<?php
+<?php namespace SellerCenter\SDK\Product;
 
-namespace SellerCenter\SDK\Product;
-
-use Countable;
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
 use JMS\Serializer\Annotation as JMS;
@@ -20,13 +17,15 @@ class ProductImageCollection extends ArrayCollection implements ToArrayInterface
     /**
      * Initializes a new ArrayCollection.
      *
-     * @param array $images
+     * @param array $elements
      */
-    public function __construct(array $images = array())
+    public function __construct(array $elements = [])
     {
-        if (count($images)) {
-            foreach ($images as $image) {
-                $this->add($image);
+        parent::__construct();
+
+        if (count($elements)) {
+            foreach ($elements as $element) {
+                $this->add($element);
             }
         }
     }
@@ -34,13 +33,13 @@ class ProductImageCollection extends ArrayCollection implements ToArrayInterface
     /**
      * {@inheritDoc}
      */
-    public function add($image)
+    public function add($element)
     {
-        if (!$image instanceof ProductImage) {
+        if (!$element instanceof ProductImage) {
             throw new \InvalidArgumentException('Element is not an instance of ProductImage');
         }
 
-        return parent::add($image);
+        return parent::add($element);
     }
 
     /**
@@ -50,9 +49,9 @@ class ProductImageCollection extends ArrayCollection implements ToArrayInterface
     {
         $data = [];
 
-        /* @var ProductImage $image */
-        foreach (parent::toArray() as $image) {
-            $data[] = $image->toArray();
+        /* @var ProductImage $element */
+        foreach (parent::toArray() as $element) {
+            $data[] = $element->toArray();
         }
 
         return $data;

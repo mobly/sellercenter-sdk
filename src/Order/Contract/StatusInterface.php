@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Order\Contract;
+<?php namespace SellerCenter\SDK\Order\Contract;
 
 use GuzzleHttp\Command\ServiceClientInterface;
 use SellerCenter\SDK\Order\Status\ToCancel;
@@ -14,7 +12,7 @@ interface StatusInterface extends ServiceClientInterface
     /**
      * @param ToCancel $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToCanceled(ToCancel $order);
 
@@ -28,21 +26,21 @@ interface StatusInterface extends ServiceClientInterface
     /**
      * @param ToShipped $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToShipped(ToShipped $order);
 
     /**
      * @param ToFailedDelivery $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToFailedDelivery(ToFailedDelivery $order);
 
     /**
      * @param ToDelivered $order
      *
-     * @return \SellerCenter\SDK\Common\Api\SuccessResponse
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToDelivered(ToDelivered $order);
 }

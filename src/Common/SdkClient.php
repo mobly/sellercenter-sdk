@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Common;
+<?php namespace SellerCenter\SDK\Common;
 
 use SellerCenter\SDK\Common\Exception\SdkException;
 use SellerCenter\SDK\Common\Waiter\ResourceWaiter;

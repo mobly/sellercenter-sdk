@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\Test\SDK\Common\Api\ErrorParser;
+<?php namespace SellerCenter\Test\SDK\Common\Api\ErrorParser;
 
 use SellerCenter\SDK\Common\Api\ErrorParser\XmlErrorParser;
 use GuzzleHttp\Message\MessageFactory;

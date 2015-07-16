@@ -1,34 +1,33 @@
-<?php
-
-namespace SellerCenter\SDK\Common\Api;
+<?php namespace SellerCenter\SDK\Common\Api\Response\Success;
 
 use JMS\Serializer\Annotation as JMS;
+use SellerCenter\SDK\Common\Api\Response\Success;
 
 /**
- * Class ErrorResponse
+ * Class SuccessResponse
  *
  * @package SellerCenter\SDK\Common\Api
  * @author Daniel Costa
- * @JMS\XmlRoot("ErrorResponse")
+ * @JMS\XmlRoot("SuccessResponse")
  */
-class ErrorResponse
+class SuccessResponse
 {
     /**
-     * @var ErrorResponse\Head
+     * @var Head
      * @JMS\SerializedName("Head")
-     * @JMS\Type("SellerCenter\SDK\Common\Api\ErrorResponse\Head")
+     * @JMS\Type("SellerCenter\SDK\Common\Api\Response\Success\Head")
      */
     protected $head;
 
     /**
-     * @var ErrorResponse\Body
+     * @var Body
      * @JMS\SerializedName("Body")
-     * @JMS\Type("SellerCenter\SDK\Common\Api\ErrorResponse\Body")
+     * @JMS\Type("SellerCenter\SDK\Common\Api\Response\Success\Body")
      */
     protected $body;
 
     /**
-     * @return ErrorResponse\Head
+     * @return Head
      */
     public function getHead()
     {
@@ -36,11 +35,11 @@ class ErrorResponse
     }
 
     /**
-     * @param ErrorResponse\Head $head
+     * @param Head $head
      *
-     * @return ErrorResponse
+     * @return SuccessResponse
      */
-    public function setHead($head)
+    public function setHead(Head $head)
     {
         $this->head = $head;
 
@@ -48,7 +47,7 @@ class ErrorResponse
     }
 
     /**
-     * @return ErrorResponse\Body
+     * @return Body
      */
     public function getBody()
     {
@@ -56,11 +55,11 @@ class ErrorResponse
     }
 
     /**
-     * @param ErrorResponse\Body $body
+     * @param Body $body
      *
-     * @return ErrorResponse
+     * @return SuccessResponse
      */
-    public function setBody($body)
+    public function setBody(Body $body)
     {
         $this->body = $body;
 

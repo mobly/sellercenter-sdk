@@ -1,6 +1,4 @@
-<?php
-
-namespace SellerCenter\SDK\Product;
+<?php namespace SellerCenter\SDK\Product;
 
 use Zend\Uri\Http;
 use JMS\Serializer\Annotation as JMS;
