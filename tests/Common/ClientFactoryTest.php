@@ -21,7 +21,7 @@ class ClientFactoryTest extends SdkTestCase
         $f = new ClientFactory();
         $args = [
             'service'     => 'product',
-            'store'       => 'mobly',
+            'store'       => 'mobly-br',
             'environment' => 'staging',
             'version'     => 'latest',
             'credentials' => ['id' => 'admin@sellercenter.net', 'key' => '1b10a679643763478e1a14511024e8b6e971b6c7']
@@ -49,7 +49,7 @@ class ClientFactoryTest extends SdkTestCase
         $f = new ClientFactory();
         $f->create([
             'service'     => 'product',
-            'store'       => 'mobly',
+            'store'       => 'mobly-br',
             'environment' => 'staging',
             'class_name'  => 'Foo',
             'version'     => 'latest',
@@ -61,7 +61,7 @@ class ClientFactoryTest extends SdkTestCase
         $f = new ClientFactory();
         $this->assertInstanceOf('SellerCenter\SDK\Product\ProductClient', $f->create([
             'service'     => 'product',
-            'store'       => 'mobly',
+            'store'       => 'mobly-br',
             'environment' => 'staging',
             'version'     => 'latest',
             'credentials' => ['id' => 'admin@sellercenter.net', 'key' => '1b10a679643763478e1a14511024e8b6e971b6c7']
@@ -77,7 +77,7 @@ class ClientFactoryTest extends SdkTestCase
         // Validation is disabled, so server side validation is used.
         $c = (new ClientFactory())->create([
             'service'     => 'product',
-            'store'       => 'mobly',
+            'store'       => 'mobly-br',
             'environment' => 'staging',
             'version'     => 'latest',
             'validate'    => false,
@@ -102,7 +102,7 @@ class ClientFactoryTest extends SdkTestCase
         };
         $f->create([
             'service'     => 'product',
-            'store'       => 'mobly',
+            'store'       => 'mobly-br',
             'environment' => 'staging',
             'version'     => 'latest',
             'api_provider' => $provider,
@@ -114,7 +114,7 @@ class ClientFactoryTest extends SdkTestCase
         $f = new ClientFactory();
         $f->create([
             'service'         => 'product',
-            'store'           => 'mobly',
+            'store'           => 'mobly-br',
             'environment'     => 'staging',
             'exception_class' => 'SellerCenter\SDK\Common\Exception\SdkException',
             'version'         => 'latest',
@@ -131,7 +131,7 @@ class ClientFactoryTest extends SdkTestCase
         $f = new ClientFactory();
         $f->create([
             'service'         => 'product',
-            'store'           => 'mobly',
+            'store'           => 'mobly-br',
             'environment'     => 'staging',
             'exception_class' => 'MissingFoo',
             'version'         => 'latest',
@@ -148,7 +148,7 @@ class ClientFactoryTest extends SdkTestCase
         $f = new ClientFactory();
         $f->create([
             'service'     => 'product',
-            'store'       => 'mobly',
+            'store'       => 'mobly-br',
             'environment' => 'staging',
             'signature'   => [0],
             'version'     => 'latest',
@@ -162,7 +162,7 @@ class ClientFactoryTest extends SdkTestCase
         $f = new ClientFactory();
         $c = $f->create([
             'service' => 'product',
-            'store' => 'mobly',
+            'store' => 'mobly-br',
             'environment' => 'staging',
             'credentials' => $creds,
             'version' => 'latest'

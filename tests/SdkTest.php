@@ -40,7 +40,7 @@ class SdkTest extends SdkTestCase
         $this->assertInstanceOf(
             'SellerCenter\SDK\Common\SdkClientInterface',
             (new Sdk())->getProduct([
-                'store'  => 'mobly',
+                'store'  => 'mobly-br',
                 'environment' => 'staging',
                 'credentials' => [
                     'id' => 'admin@sellercenter.com',
@@ -52,7 +52,7 @@ class SdkTest extends SdkTestCase
         $this->assertInstanceOf(
             'SellerCenter\SDK\Common\SdkClientInterface',
             Sdk::getProduct([
-                'store'  => 'mobly',
+                'store'  => 'mobly-br',
                 'environment' => 'staging',
                 'credentials' => [
                     'id' => 'admin@sellercenter.com',

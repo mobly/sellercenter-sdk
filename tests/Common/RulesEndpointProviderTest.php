@@ -17,14 +17,14 @@ class RulesEndpointProviderTest extends SdkTestCase
     public function testThrowsWhenEndpointIsNotResolved()
     {
         $e = new RulesEndpointProvider(['foo' => ['rules' => []]]);
-        call_user_func($e, ['service' => 'foo', 'store' => 'mobly', 'environment' => 'staging']);
+        call_user_func($e, ['service' => 'foo', 'store' => 'mobly-br', 'environment' => 'staging']);
     }
 
     public function endpointProvider()
     {
         return [
             [
-                ['store' => 'mobly', 'environment' => 'staging'],
+                ['store' => 'mobly-br', 'environment' => 'staging'],
                 ['endpoint' => 'https://sellercenter-api-staging.mobly.com.br', 'signatureVersion' => 'v1']
             ]
         ];
@@ -47,7 +47,7 @@ class RulesEndpointProviderTest extends SdkTestCase
     public function testEnsuresService()
     {
         $p = RulesEndpointProvider::fromDefaults();
-        call_user_func($p, ['store' => 'mobly']);
+        call_user_func($p, ['store' => 'mobly-br']);
     }
 
     /**

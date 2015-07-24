@@ -30,7 +30,7 @@ class SdkClientTest extends SdkTestCase
             'client'       => new Client(),
             'credentials'  => new Credentials('admin@sellercenter.net', 'abc16cfd7e7fa8263b8b83eb3b4467e60ca0638b'),
             'signature'    => new SignatureV1('foo', 'bar'),
-            'store'        => 'mobly',
+            'store'        => 'mobly-br',
             'environment'  => 'staging',
             'serializer'   => function () {},
             'api'          => new Service(function () {}, 'foo', 'bar'),
@@ -116,7 +116,7 @@ class SdkClientTest extends SdkTestCase
             'client'          => $c,
             'credentials'     => new Credentials('admin@sellercenter.net', 'abc16cfd7e7fa8263b8b83eb3b4467e60ca0638b'),
             'signature'       => new SignatureV1('foo', 'bar'),
-            'store'           => 'mobly',
+            'store'           => 'mobly-br',
             'environment'     => 'staging',
             'exception_class' => $value,
             'api'             => $service,
@@ -303,7 +303,7 @@ class SdkClientTest extends SdkTestCase
                 'client'       => new Client(),
                 'credentials'  => new Credentials('admin@sellercenter.net', 'abc16cfd7e7fa8263b8b83eb3b4467e60ca0638b'),
                 'signature'    => new SignatureV1('foo', 'bar'),
-                'store'        => 'mobly',
+                'store'        => 'mobly-br',
                 'environment'  => 'staging',
                 'serializer'   => function () {},
                 'api'          => $api,
@@ -320,10 +320,10 @@ class SdkClientTest extends SdkTestCase
     {
         /* @var \SellerCenter\SDK\Product\ProductClient $client */
         $client = ProductClient::factory([
-            'store' => 'mobly',
+            'store' => 'mobly-br',
             'environment' => 'staging'
         ]);
         $this->assertInstanceOf('SellerCenter\SDK\Product\ProductClient', $client);
-        $this->assertEquals('mobly', $client->getStore());
+        $this->assertEquals('mobly-br', $client->getStore());
     }
 }

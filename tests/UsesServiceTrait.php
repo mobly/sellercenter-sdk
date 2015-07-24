@@ -24,7 +24,7 @@ trait UsesServiceTrait
     private function getTestSdk(array $args = [])
     {
         return new Sdk($args + [
-                'store'       => 'mobly',
+                'store'       => 'mobly-br',
                 'environment' => 'staging',
                 'credentials' => [
                     'id' => 'admin@sellercenter.net',
