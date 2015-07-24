@@ -10,10 +10,12 @@ use MyCLabs\Enum\Enum;
  * @method static FeedStatusEnum QUEUED()
  * @method static FeedStatusEnum PROCESSING()
  * @method static FeedStatusEnum FINISHED()
+ * @method static FeedStatusEnum CANCELED()
  */
 class FeedStatusEnum extends Enum
 {
     const QUEUED = 'Queued';
     const PROCESSING = 'Processing';
     const FINISHED = 'Finished';
+    const CANCELED = 'Canceled';
 }
