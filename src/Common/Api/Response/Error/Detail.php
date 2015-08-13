@@ -25,11 +25,18 @@ class Detail
     protected $message;
 
     /**
-     * @var int
+     * @var string
      * @JMS\SerializedName("Value")
      * @JMS\Type("string")
      */
     protected $value;
+
+    /**
+     * @var string
+     * @JMS\SerializedName("SellerSku")
+     * @JMS\Type("string")
+     */
+    protected $sellerSku;
 
     /**
      * @return string
@@ -87,6 +94,26 @@ class Detail
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSellerSku()
+    {
+        return $this->sellerSku;
+    }
+
+    /**
+     * @param string $sellerSku
+     *
+     * @return Detail
+     */
+    public function setSellerSku($sellerSku)
+    {
+        $this->sellerSku = $sellerSku;
 
         return $this;
     }
