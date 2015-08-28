@@ -25,19 +25,33 @@ class RulesEndpointProviderTest extends SdkTestCase
         return [
             [
                 ['store' => 'mobly-br', 'environment' => 'staging'],
-                ['endpoint' => 'https://sellercenter-api-staging.mobly.com.br', 'signatureVersion' => 'v1']
-            ]
+                ['endpoint' => 'https://sellercenter-api-staging.mobly.com.br', 'signatureVersion' => 'v1'],
+                true
+            ],
+            [
+                ['store' => 'unmapped-store', 'environment' => 'production'],
+                ['endpoint' => null, 'signatureVersion' => null],
+                false
+            ],
         ];
     }
 
     /**
      * @dataProvider endpointProvider
      */
-    public function testResolvesEndpoints($input, $output)
+    public function testResolvesEndpoints($input, $output, $valid)
     {
         // Use the default endpoints file
         $p = RulesEndpointProvider::fromDefaults();
-        $this->assertEquals($output, call_user_func($p, $input));
+        if ($valid) {
+            $this->assertEquals($output, call_user_func($p, $input));
+        } else {
+            $this->setExpectedException(
+                'SellerCenter\SDK\Common\Exception\UnresolvedEndpointException',
+                'Could not resolve a valid endpoint to ' . $input['store'] . '-' . $input['environment']
+            );
+            call_user_func($p, $input);
+        }
     }
 
     /**

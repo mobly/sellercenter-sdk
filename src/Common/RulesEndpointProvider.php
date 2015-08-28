@@ -52,7 +52,9 @@ class RulesEndpointProvider
             }
         }
 
-        throw new UnresolvedEndpointException();
+        throw new UnresolvedEndpointException(
+            'Could not resolve a valid endpoint to ' . $args['store'] . '-' . $args['environment']
+        );
     }
 
     /**
