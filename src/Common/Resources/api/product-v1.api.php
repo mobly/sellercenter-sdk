@@ -110,5 +110,22 @@
                 ]
             ]
         ],
+        'GetCategoryAttributes' => [
+            'name' => 'GetCategoryAttributes',
+            'description' => 'Returns a list of attributes with options for a given category. It will also display
+                            attributes for TaxClass and ShipmentType, with their possible values listed as options.',
+            'deserialize' => 'SellerCenter\SDK\Product\CategoryAttribute',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/',
+            ],
+            'parameters' => [
+                'PrimaryCategory' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => true,
+                ],
+            ]
+        ],
     ],
 ];

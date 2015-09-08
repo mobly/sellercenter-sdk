@@ -114,4 +114,18 @@ class ProductClient extends SdkClient implements ProductInterface
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
+
+    /**
+     * @param int $primaryCategory
+     *
+     * @return mixed
+     */
+    public function getCategoryAttributes($primaryCategory)
+    {
+        $data = [
+            'PrimaryCategory' => $primaryCategory
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
 }
