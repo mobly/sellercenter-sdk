@@ -7,7 +7,7 @@ use SellerCenter\SDK\Product\ProductCollection;
 /**
  * Class Body
  *
- * @package SellerCenter\SDK\Product\Api\GetProducts\Response
+ * @package SellerCenter\SDK\Product\Api\GetProducts
  * @author Daniel Costa
  */
 class Body extends \SellerCenter\SDK\Common\Api\Response\Success\Body implements ToArrayInterface

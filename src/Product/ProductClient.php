@@ -1,8 +1,9 @@
 <?php namespace SellerCenter\SDK\Product;
 
+use DateTime;
 use SellerCenter\SDK\Common\SdkClient;
-use SellerCenter\SDK\Product\Api\GetProducts\Response;
 use SellerCenter\SDK\Product\Contract\ProductInterface;
+use SellerCenter\SDK\Product\Enum\ProductFilterEnum;
 
 /**
  * Class ProductClient
@@ -19,14 +20,17 @@ class ProductClient extends SdkClient implements ProductInterface
     protected $action = 'Product';
 
     /**
-     * @param \DateTime|null              $createdAt
-     * @param \DateTime|null              $createdBefore
-     * @param null                        $search
-     * @param null|Enum\ProductFilterEnum $filter
-     * @param null                        $limit
-     * @param null                        $offset
+     * Create a new product
      *
-     * @return Response
+     * @param null                   $search
+     * @param null|ProductFilterEnum $filter
+     * @param DateTime|null          $createdAt
+     * @param DateTime|null          $createdBefore
+     * @param null                   $limit
+     * @param null                   $offset
+     * @param array                  $skuSeller
+     *
+     * @return \SellerCenter\SDK\Product\Api\GetProducts\Response
      */
     public function getProducts(
         $search = null,
@@ -34,7 +38,8 @@ class ProductClient extends SdkClient implements ProductInterface
         \DateTime $createdAt = null,
         \DateTime $createdBefore = null,
         $limit = null,
-        $offset = null
+        $offset = null,
+        array $skuSeller = []
     ) {
         $data = [];
         if (!empty($createdAt)) {
@@ -55,6 +60,9 @@ class ProductClient extends SdkClient implements ProductInterface
         if (!empty($offset) && is_int($offset) && $offset > -1) {
             $data['Offset'] = $offset;
         }
+        if (!empty($skuSeller)) {
+            $data['SkuSellerList'] = json_encode($skuSeller);
+        }
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }
@@ -74,6 +82,8 @@ class ProductClient extends SdkClient implements ProductInterface
     }
 
     /**
+     * Update the attributes of one or more existing products
+     *
      * @param ProductCollection $collection
      *
      * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
@@ -88,6 +98,8 @@ class ProductClient extends SdkClient implements ProductInterface
     }
 
     /**
+     * Removes one or more products
+     *
      * @param ProductCollection $collection
      *
      * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
@@ -102,6 +114,13 @@ class ProductClient extends SdkClient implements ProductInterface
     }
 
     /**
+     * Set the Images for a Product, by associating one or more URLs with it
+     *
+     * It is the caller's responsibility to host the images.
+     * The first image passed in becomes the product's default image.
+     * Upon calling this endpoint, all previously associated images are disassociated.
+     * There is a hard limit of at most 8 images per product.
+     *
      * @param ProductImageCollection $collection
      *
      * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
@@ -116,14 +135,55 @@ class ProductClient extends SdkClient implements ProductInterface
     }
 
     /**
-     * @param int $primaryCategory
+     * Get all or a range of product brands
      *
-     * @return mixed
+     * @return \SellerCenter\SDK\Product\Api\GetBrands\Response
      */
-    public function getCategoryAttributes($primaryCategory)
+    public function getBrands()
+    {
+        $data = [];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * Get the list of all product categories
+     *
+     * @return \SellerCenter\SDK\Product\Api\GetCategoryTree\Response
+     */
+    public function getCategoryTree()
+    {
+        $data = [];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * Returns a list of attributes with options for a given category
+     * It will also display attributes for TaxClass and ShipmentType, with their possible values listed as options
+     *
+     * @param int $category Identifier of the category for which the caller wants the list of attributes
+     *
+     * @return \SellerCenter\SDK\Product\Api\GetCategoryAttributes\AttributeCollection
+     */
+    public function getCategoryAttributes($category)
     {
         $data = [
-            'PrimaryCategory' => $primaryCategory
+            'PrimaryCategory' => $category
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * @param int $attributeSet Id of the AttributeSet(s)
+     *
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
+     */
+    public function getCategoriesByAttributeSet($attributeSet)
+    {
+        $data = [
+            'AttributeSet' => $attributeSet
         ];
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));

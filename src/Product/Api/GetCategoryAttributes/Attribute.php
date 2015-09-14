@@ -1,4 +1,4 @@
-<?php namespace SellerCenter\SDK\Product\CategoryAttribute;
+<?php namespace SellerCenter\SDK\Product\Api\GetCategoryAttributes;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
@@ -6,7 +6,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Class Attribute
  *
- * @package SellerCenter\SDK\Product\CategoryAttribute
+ * @package SellerCenter\SDK\Product\Api\GetCategoryAttributes\AttributeCollection
  * @author Daniel Costa
  */
 class Attribute
@@ -63,7 +63,7 @@ class Attribute
     /**
      * @var ArrayCollection
      * @JMS\SerializedName("Options")
-     * @JMS\Type("ArrayCollection<SellerCenter\SDK\Product\CategoryAttribute\Option>")
+     * @JMS\Type("ArrayCollection<SellerCenter\SDK\Product\Api\GetCategoryAttributes\Option>")
      * @JMS\XmlList(entry="Option")
      */
     private $options;

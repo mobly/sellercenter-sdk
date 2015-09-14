@@ -1,11 +1,11 @@
-<?php namespace SellerCenter\SDK\Product\CategoryAttribute;
+<?php namespace SellerCenter\SDK\Product\Api\GetCategoryAttributes;
 
 use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Option
  *
- * @package SellerCenter\SDK\Product\CategoryAttribute
+ * @package SellerCenter\SDK\Product\Api\GetCategoryAttributes\AttributeCollection
  * @author Daniel Costa
  */
 class Option
@@ -74,7 +74,7 @@ class Option
     /**
      * @return boolean
      */
-    public function isIsDefault()
+    public function isDefault()
     {
         return $this->isDefault;
     }

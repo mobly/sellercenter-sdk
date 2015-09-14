@@ -88,5 +88,7 @@ class ResponseTest extends SdkTestCase
 
         $this->assertInstanceOf('SellerCenter\SDK\Product\Product', $product);
         $this->assertEquals('ASM_A8012', $product->getSellerSku());
+
+        $this->assertCount(2, $response->getBody()->toArray());
     }
 }
