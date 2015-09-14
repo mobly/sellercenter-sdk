@@ -36,6 +36,7 @@ class Attribute
      * @var bool
      * @JMS\SerializedName("isMandatory")
      * @JMS\Type("string")
+     * @JMS\Accessor(getter="isMandatory",setter="setMandatory")
      */
     private $isMandatory;
 
@@ -141,7 +142,7 @@ class Attribute
      *
      * @return Attribute
      */
-    public function setIsMandatory($isMandatory)
+    public function setMandatory($isMandatory)
     {
         $this->isMandatory = $isMandatory;
 

@@ -33,4 +33,3 @@ class RequestParameters
         $this->feedId = $feedId;
     }
 }
-

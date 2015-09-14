@@ -1,6 +1,5 @@
 <?php namespace SellerCenter\SDK\Product;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
 use JMS\Serializer\Annotation as JMS;
 

@@ -351,7 +351,6 @@ class ClientFactory
                 /* @var \SellerCenter\SDK\Common\Api\ErrorParser\XmlErrorParser $errorParser */
                 $result = $errorParser($response, $e);
 
-                // @todo: maybe we should throw exception on error response
                 if ($result instanceof Api\Response\Error\ErrorResponse) {
                     $e->setResult($result);
                     $e->stopPropagation();
