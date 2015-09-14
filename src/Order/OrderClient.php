@@ -10,12 +10,14 @@ use SellerCenter\SDK\Order\Status\ToDelivered;
 use SellerCenter\SDK\Order\Status\ToFailedDelivery;
 use SellerCenter\SDK\Order\Status\ToReadyToShip;
 use SellerCenter\SDK\Order\Status\ToShipped;
+use SellerCenter\SDK\ShipmentProvider\ShipmentProviderCollection;
 
 /**
  * Class StatusClient
  *
  * @package SellerCenter\SDK\Status
  * @author  Daniel Costa
+ * @codeCoverageIgnore
  */
 class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface, StatusInterface
 {
@@ -102,7 +104,7 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
     }
 
     /**
-     * @return ShipmentProviders
+     * @return ShipmentProviderCollection
      */
     public function getShipmentProviders()
     {
