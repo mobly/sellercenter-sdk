@@ -90,18 +90,18 @@ class CategoryTest extends \PHPUnit_Framework_TestCase
             ->setName('Voltagem')
             ->setGlobalIdentifier('VOLTAGEM')
             ->setAttributeType('option')
-            ->setIsMandatory(1)
+            ->setMandatory(1)
             ->setOptions(new ArrayCollection)
             ->setDescription('Voltagem do produto')
             ->setExampleValue('110v')
         ;
 
         $option = new Option;
-        $option->setGlobalIdentifier('110V')->setName('110v')->setIsDefault(1);
+        $option->setGlobalIdentifier('110V')->setName('110v')->setDefault(1);
         $attribute->getOptions()->add($option);
 
         $option = new Option;
-        $option->setGlobalIdentifier('220V')->setName('220v')->setIsDefault(0);
+        $option->setGlobalIdentifier('220V')->setName('220v')->setDefault(0);
         $attribute->getOptions()->add($option);
 
         $this->assertEquals('voltagem', $attribute->getLabel());
