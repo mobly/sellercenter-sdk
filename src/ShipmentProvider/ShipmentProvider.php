@@ -1,11 +1,11 @@
-<?php namespace SellerCenter\SDK\Order\ShipmentProviders;
+<?php namespace SellerCenter\SDK\ShipmentProvider;
 
 use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Reason
  *
- * @package SellerCenter\SDK\Order\ShipmentProviders
+ * @package SellerCenter\SDK\ShipmentProvider\GetShipmentProviders
  * @author Daniel Costa
  */
 class ShipmentProvider
