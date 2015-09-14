@@ -1,20 +1,5 @@
 <?php
 
-$product = new \SellerCenter\SDK\Product\Product;
-$product->setSellerSku('MOB-12345');
-$product->setName('Product');
-$productCollection = new \SellerCenter\SDK\Product\ProductCollection;
-$productCollection->add($product);
-
-$productCollectionXml = '
-<Request>
-    <Product>
-        <Name>Product</Name>
-        <SellerSku>MOB-12345</SellerSku>
-    </Product>
-</Request>
-';
-
 return [
     [
         'description' => 'Product',
@@ -82,18 +67,18 @@ return [
                     'name' => 'ProductCreate',
                     'parameters' => [
                         'ProductRequest' => [
-                            'type' => 'SellerCenter\SDK\Product\ProductCollection',
+                            'type' => SellerCenter\SDK\Product\ProductCollection::class,
                             'location' => 'xml',
                             'required' => true,
                         ],
                     ]
                 ],
                 'params' => [
-                    'ProductRequest' => $productCollection,
+                    'ProductRequest' => unserialize(file_get_contents(__DIR__ . '/fixtures/ProductCreate.serialized')),
                 ],
                 'serialized' => [
                     'method' => 'POST',
-                    'body' => $productCollectionXml,
+                    'body' => file_get_contents(__DIR__ . '/fixtures/ProductCreate.xml'),
                     'uri' => '/',
                     'headers' => [
                         'Content-type' => 'application/xml'
@@ -109,18 +94,18 @@ return [
                     'name' => 'ProductUpdate',
                     'parameters' => [
                         'ProductRequest' => [
-                            'type' => 'SellerCenter\SDK\Product\ProductCollection',
+                            'type' => SellerCenter\SDK\Product\ProductCollection::class,
                             'location' => 'xml',
                             'required' => true,
                         ],
                     ]
                 ],
                 'params' => [
-                    'ProductRequest' => $productCollection,
+                    'ProductRequest' => unserialize(file_get_contents(__DIR__ . '/fixtures/ProductUpdate.serialized')),
                 ],
                 'serialized' => [
                     'method' => 'POST',
-                    'body' => $productCollectionXml,
+                    'body' => file_get_contents(__DIR__ . '/fixtures/ProductUpdate.xml'),
                     'uri' => '/',
                     'headers' => [
                         'Content-type' => 'application/xml'

@@ -1,11 +1,9 @@
 <?php namespace SellerCenter\Test\SDK\Common\Api\Parser;
 
-use GuzzleHttp\Command\Command;
 use GuzzleHttp\Message\Response;
 use GuzzleHttp\Stream\Stream;
-use SellerCenter\SDK\Common\Api\Response\Success\Body;
 use SellerCenter\SDK\Common\Api\Response\Success\Head;
-use SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse;
+use SellerCenter\SDK\Common\Api\Response\Success\RequestParameters;
 use SellerCenter\SDK\Common\Api\Service;
 use SellerCenter\Test\SDK\SdkTestCase;
 use SellerCenter\Test\SDK\UsesServiceTrait;
@@ -60,24 +58,26 @@ class ComplianceTest extends SdkTestCase
         $parser = Service::createParser($service);
 
         // Create a response based on the serialized property of the test.
-        $response = new Response(
-            $response['status_code'],
-            $response['headers'],
-            Stream::factory($response['body'])
-        );
+        $response = new Response($response['status_code'], $response['headers'], Stream::factory($response['body']));
         $parsedResult = $parser($response, $deserialize);
 
         $expectedHead = new Head;
         $expectedHead->setRequestId($expectedResult['Head']['RequestId']);
         $expectedHead->setRequestAction($expectedResult['Head']['RequestAction']);
         $expectedHead->setResponseType($expectedResult['Head']['ResponseType']);
-        $expectedHead->setRequestParameters($expectedResult['Head']['RequestParameters']);
+        $expectedHead->setTimestamp(\DateTime::createFromFormat(DATE_ISO8601, $expectedResult['Head']['Timestamp']));
+        if (isset($expectedResult['Head']['RequestParameters']) && count($expectedResult['Head']['RequestParameters'])) {
+            $expectedHead->setRequestParameters(new RequestParameters);
+            if (!empty($expectedResult['Head']['RequestParameters'])) {
+                $expectedHead->getRequestParameters()->setFeedId($expectedResult['Head']['RequestParameters']['FeedID']);
+            }
+        }
 
         $expectedResponse = new $deserialize();
         $expectedResponse->setHead($expectedHead);
         $expectedResponse->setBody($expectedResult['Body']);
 
         $this->assertEquals($expectedResponse->getHead(), $parsedResult->getHead());
-        $this->assertEquals(count($expectedResponse->getBody()->toArray()), count($parsedResult->getBody()));
+        $this->assertEquals($expectedResponse->getBody(), $parsedResult->getBody());
     }
 }

@@ -1,0 +1,25 @@
+<SuccessResponse>
+    <Head>
+        <RequestId/>
+        <RequestAction>FeedStatus</RequestAction>
+        <ResponseType>FeedDetail</ResponseType>
+        <Timestamp>2015-07-06T15:00:14+0200</Timestamp>
+        <RequestParameters>
+            <FeedID>883bdfe3-950f-4390-9a80-41437b69808c</FeedID>
+        </RequestParameters>
+    </Head>
+    <Body>
+        <FeedDetail>
+            <Feed>883bdfe3-950f-4390-9a80-41437b69808c</Feed>
+            <Status>Finished</Status>
+            <Action>ProductUpdate</Action>
+            <CreationDate>2015-05-05 15:06:35</CreationDate>
+            <UpdatedDate>2015-05-05 15:07:11</UpdatedDate>
+            <Source>csv</Source>
+            <TotalRecords>10</TotalRecords>
+            <ProcessedRecords>10</ProcessedRecords>
+            <FailedRecords>0</FailedRecords>
+            <FeedErrors/>
+        </FeedDetail>
+    </Body>
+</SuccessResponse>

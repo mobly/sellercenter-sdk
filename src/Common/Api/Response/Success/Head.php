@@ -35,17 +35,15 @@ class Head implements HeadInterface
 
     /**
      * @var \DateTime
-     * @JMS\SerializedName("DateTime")
-     * @JMS\Type("DateTime<'Y-m-d\TH:i:sO'>")
+     * @JMS\SerializedName("Timestamp")
+     * @JMS\Type("DateTime")
      */
     protected $timestamp;
 
     /**
-     * @var array
+     * @var RequestParameters
      * @JMS\SerializedName("RequestParameters")
-     * @JMS\Type("array<string,string>")
-     * @JMS\XmlKeyValuePairs
-     * @JMS\XmlList(inline = true)
+     * @JMS\Type("SellerCenter\SDK\Common\Api\Response\Success\RequestParameters")
      */
     protected $requestParameters;
 
@@ -130,7 +128,7 @@ class Head implements HeadInterface
     }
 
     /**
-     * @return array
+     * @return RequestParameters
      */
     public function getRequestParameters()
     {
@@ -138,14 +136,10 @@ class Head implements HeadInterface
     }
 
     /**
-     * @param array $requestParameters
-     *
-     * @return Head
+     * @param RequestParameters $requestParameters
      */
     public function setRequestParameters($requestParameters)
     {
         $this->requestParameters = $requestParameters;
-
-        return $this;
     }
 }

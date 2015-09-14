@@ -1,0 +1,47 @@
+<SuccessResponse>
+    <Head>
+        <RequestId/>
+        <RequestAction>GetProducts</RequestAction>
+        <ResponseType>Products</ResponseType>
+        <Timestamp>2015-07-01T11:11:11+0000</Timestamp>
+    </Head>
+    <Body>
+        <Products>
+            <Product>
+                <SellerSku>NI006ELAAGWDNAFAMZ-43340</SellerSku>
+                <ShopSku>NI006ELAAGWDNAFAMZ-43340</ShopSku>
+                <Name>Dr. Fawzi's Snakeoil (original)</Name>
+                <Variation>64GB</Variation>
+                <ParentSku>NI006ELAAGWDNAFAMZ-43340</ParentSku>
+                <Quantity>99</Quantity>
+                <FulfillmentByNonSellable>1</FulfillmentByNonSellable>
+                <Available>99</Available>
+                <Price>1000.00</Price>
+                <SalePrice/>
+                <SaleStartDate/>
+                <SaleEndDate/>
+                <Status>active</Status>
+                <ProductId/>
+                <Url>http://example.sellercenter.net/24020.html</Url>
+                <MainImage>http://static.somesite.com/p/iamge1.jpg</MainImage>
+            </Product>
+            <Product>
+                <SellerSku>pluwki</SellerSku>
+                <ShopSku>BO837ELAAK2FNAFAMZ-53757</ShopSku>
+                <Name>Yellow Snow Cleaning Agent</Name>
+                <Variation>scuffed</Variation>
+                <ParentSku>pluwki</ParentSku>
+                <Quantity>143</Quantity>
+                <Available>143</Available>
+                <Price>412.00</Price>
+                <SalePrice/>
+                <SaleStartDate/>
+                <SaleEndDate/>
+                <Status>active</Status>
+                <ProductId>Mika</ProductId>
+                <Url>http://example.sellercenter.net/26007.html</Url>
+                <MainImage>http://static.somesite.com/p/iamge1.jpg</MainImage>
+            </Product>
+        </Products>
+    </Body>
+</SuccessResponse>

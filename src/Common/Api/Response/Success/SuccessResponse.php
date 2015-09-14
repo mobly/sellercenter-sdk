@@ -59,7 +59,7 @@ class SuccessResponse
      *
      * @return SuccessResponse
      */
-    public function setBody(Body $body)
+    public function setBody($body)
     {
         $this->body = $body;
 

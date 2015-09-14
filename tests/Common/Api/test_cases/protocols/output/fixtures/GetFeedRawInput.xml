@@ -1,0 +1,19 @@
+<SuccessResponse>
+    <Head>
+        <RequestId></RequestId>
+        <RequestAction>GetFeedRawInput</RequestAction>
+        <ResponseType>FeedRawInput</ResponseType>
+        <Timestamp>2015-06-25T07:55:38+0000</Timestamp>
+    </Head>
+    <Body>
+        <FeedRawInput>
+            <Feed>4a835cd5-1f55-4f3b-861d-f56e011be009</Feed>
+            <RawInputFile>
+                <MimeType>text/xml</MimeType>
+                <File>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiID8+DQo8UmVxdWVzdD4N
+                    CjxQcm9kdWN0Pg0KPFNlbGxlclNrdT4xMjM0PC9TZWxsZXJTa3U+DQo8UHJpY2U+MTI8L1ByaW
+                    NlPg0KPC9Qcm9kdWN0Pg0KPC9SZXF1ZXN0Pg==</File>
+            </RawInputFile>
+        </FeedRawInput>
+    </Body>
+</SuccessResponse>

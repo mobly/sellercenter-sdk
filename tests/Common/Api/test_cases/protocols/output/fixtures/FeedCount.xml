@@ -1,0 +1,17 @@
+<SuccessResponse>
+    <Head>
+        <RequestId></RequestId>
+        <RequestAction>FeedCount</RequestAction>
+        <ResponseType>FeedCount</ResponseType>
+        <Timestamp>2015-07-01T11:11:11+0000</Timestamp>
+    </Head>
+    <Body>
+        <FeedCount>
+            <Total>59</Total>
+            <Queued>10</Queued>
+            <Processing>2</Processing>
+            <Finished>46</Finished>
+            <Canceled>1</Canceled>
+        </FeedCount>
+    </Body>
+</SuccessResponse>

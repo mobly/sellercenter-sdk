@@ -10,7 +10,7 @@
         'GetOrders' => [
             'name' => 'GetOrders',
             'description' => 'The GetOrders action returns a list of orderItems created or updated during a time frame',
-            'deserialize' => 'SellerCenter\SDK\Order\Orders',
+            'deserialize' => SellerCenter\SDK\Order\Orders::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -51,7 +51,7 @@
         'GetOrder' => [
             'name' => 'GetOrder',
             'description' => 'The GetOrder action returns an order by SellerCenter OrderId',
-            'deserialize' => 'SellerCenter\SDK\Order\Orders',
+            'deserialize' => SellerCenter\SDK\Order\Orders::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -67,7 +67,7 @@
         'GetOrderItems' => [
             'name' => 'GetOrderItems',
             'description' => 'The GetOrderItems action returns order items based on the OrderId',
-            'deserialize' => 'SellerCenter\SDK\Order\OrderItems',
+            'deserialize' => SellerCenter\SDK\Order\OrderItems::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -83,7 +83,7 @@
         'SetStatusToCanceled' => [
             'name' => 'SetStatusToCanceled',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been canceled',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
+            'deserialize' => SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -109,7 +109,7 @@
         'SetStatusToReadyToShip' => [
             'name' => 'SetStatusToReadyToShip',
             'description' => 'Informs SellerCenter that the item was ready to ship',
-            'deserialize' => 'SellerCenter\SDK\Order\StatusToReadyToShip',
+            'deserialize' => SellerCenter\SDK\Order\StatusToReadyToShip::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -140,7 +140,7 @@
         'SetStatusToShipped' => [
             'name' => 'SetStatusToShipped',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been shipped',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
+            'deserialize' => SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -156,7 +156,7 @@
         'SetStatusToFailedDelivery' => [
             'name' => 'SetStatusToFailedDelivery',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been failed',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
+            'deserialize' => SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -172,7 +172,7 @@
         'SetStatusToDelivered' => [
             'name' => 'SetStatusToDelivered',
             'description' => 'Informs SellerCenter that an item with Id OrderItemId has been delivered',
-            'deserialize' => 'SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse',
+            'deserialize' => SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -188,7 +188,7 @@
         'GetFailureReasons' => [
             'name' => 'GetFailureReasons',
             'description' => 'Returns all failed reasons for SetToCancelled or SetToFailedDelivert calls',
-            'deserialize' => 'SellerCenter\SDK\Order\FailureReason',
+            'deserialize' => SellerCenter\SDK\Order\FailureReason::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
@@ -199,7 +199,7 @@
         'GetShipmentProviders' => [
             'name' => 'GetShipmentProviders',
             'description' => 'Returns all active shipping providers',
-            'deserialize' => 'SellerCenter\SDK\Order\ShipmentProviders',
+            'deserialize' => \SellerCenter\SDK\ShipmentProvider\ShipmentProviderCollection::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',

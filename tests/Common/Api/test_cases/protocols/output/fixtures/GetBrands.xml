@@ -1,0 +1,20 @@
+<SuccessResponse>
+    <Head>
+        <RequestId/>
+        <RequestAction>GetBrands</RequestAction>
+        <ResponseType>Brands</ResponseType>
+        <Timestamp>2015-07-01T11:11:11+0000</Timestamp>
+    </Head>
+    <Body>
+        <Brands>
+            <Brand>
+                <Name>Commodore</Name>
+                <GlobalIdentifier/>
+            </Brand>
+            <Brand>
+                <Name>Atari</Name>
+                <GlobalIdentifier/>
+            </Brand>
+        </Brands>
+    </Body>
+</SuccessResponse>

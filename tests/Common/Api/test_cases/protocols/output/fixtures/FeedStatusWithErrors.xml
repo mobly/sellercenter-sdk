@@ -1,0 +1,34 @@
+<SuccessResponse>
+    <Head>
+        <RequestId/>
+        <RequestAction>FeedStatus</RequestAction>
+        <ResponseType>FeedDetail</ResponseType>
+        <Timestamp>2015-07-06T15:00:14+0200</Timestamp>
+        <RequestParameters>
+            <FeedID>883bdfe3-950f-4390-9a80-41437b69808c</FeedID>
+        </RequestParameters>
+    </Head>
+    <Body>
+        <FeedDetail>
+            <Feed><![CDATA[0bb1d1b2-6ab0-48a8-9595-80a77099be1e]]></Feed>
+            <Status><![CDATA[Finished]]></Status>
+            <Action><![CDATA[ProductUpdate]]></Action>
+            <CreationDate><![CDATA[2015-09-10 13:28:05]]></CreationDate>
+            <UpdatedDate><![CDATA[2015-09-10 13:28:08]]></UpdatedDate>
+            <Source><![CDATA[api]]></Source>
+            <TotalRecords>2</TotalRecords>
+            <ProcessedRecords>2</ProcessedRecords>
+            <FailedRecords>2</FailedRecords>
+            <FeedErrors>
+                <Error>
+                    <Code>0</Code>
+                    <Message><![CDATA[Field Capacity, TypeRa, Team (for Seller SKU: 1000030588) with value 'Invalid Field' has a problem: Field(s) Capacity, TypeRa, Team is/are not part of the attribute set Closets of the primary category 504]]></Message>
+                </Error>
+                <Error>
+                    <Code>0</Code>
+                    <Message><![CDATA[Field Capacity (for Seller SKU: 1000031415) with value 'Invalid Field' has a problem: Field(s) Capacity is/are not part of the attribute set Closets of the primary category 504]]></Message>
+                </Error>
+            </FeedErrors>
+        </FeedDetail>
+    </Body>
+</SuccessResponse>

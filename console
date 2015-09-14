@@ -3,9 +3,9 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-use SellerCenter\SDK\Console\VersionCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
-$application->add(new VersionCommand());
+$application->add(new SellerCenter\SDK\Console\VersionCommand());
+$application->add(new SellerCenter\SDK\Console\UpdateSerializedFixturesFromXmlCommand());
 $application->run();
