@@ -3,7 +3,6 @@
 use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\ToArrayInterface;
 use InvalidArgumentException;
-use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class GetShipmentProviders

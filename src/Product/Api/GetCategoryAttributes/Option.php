@@ -28,6 +28,7 @@ class Option
      * @var bool
      * @JMS\SerializedName("isDefault")
      * @JMS\Type("string")
+     * @JMS\Accessor(getter="isDefault",setter="setDefault")
      */
     private $isDefault;
 
@@ -84,7 +85,7 @@ class Option
      *
      * @return Option
      */
-    public function setIsDefault($isDefault)
+    public function setDefault($isDefault)
     {
         $this->isDefault = $isDefault;
 
