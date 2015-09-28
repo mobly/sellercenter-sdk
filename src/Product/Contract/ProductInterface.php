@@ -103,7 +103,7 @@ interface ProductInterface extends ServiceClientInterface
     /**
      * @param int $attributeSet Id of the AttributeSet(s)
      *
-     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
+     * @return \SellerCenter\SDK\Product\Api\GetCategoriesByAttributeSet\Response
      */
     public function getCategoriesByAttributeSet($attributeSet);
 }
