@@ -11,6 +11,7 @@ use MyCLabs\Enum\Enum;
  * @method static FeedStatusEnum PROCESSING()
  * @method static FeedStatusEnum FINISHED()
  * @method static FeedStatusEnum CANCELED()
+ * @method static FeedStatusEnum ERROR()
  */
 class FeedStatusEnum extends Enum
 {
@@ -18,4 +19,5 @@ class FeedStatusEnum extends Enum
     const PROCESSING = 'Processing';
     const FINISHED = 'Finished';
     const CANCELED = 'Canceled';
+    const ERROR = 'Error';
 }
