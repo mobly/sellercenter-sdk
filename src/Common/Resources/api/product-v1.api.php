@@ -47,6 +47,11 @@
                     'location' => 'query',
                     'required' => false,
                 ],
+                'SkuSellerList' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
             ]
         ],
         'ProductCreate' => [

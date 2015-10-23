@@ -94,17 +94,7 @@ trait PriceTrait
      */
     public function setSaleEndDate($saleEndDate)
     {
-        if (!empty($saleEndDate)) {
-            if (!($saleEndDate instanceof \DateTime)) {
-                throw new InvalidArgumentException(
-                    'Sale end date is not an instance of DateTime'
-                );
-            }
-
-            $this->saleEndDate = $saleEndDate;
-        }
-
-        return $this;
+        return $this->setDate('saleEndDate', $saleEndDate);
     }
 
     /**
@@ -150,15 +140,30 @@ trait PriceTrait
      */
     public function setSaleStartDate($saleStartDate)
     {
-        if (!empty($saleStartDate)) {
-            if (!($saleStartDate instanceof \DateTime)) {
-                throw new InvalidArgumentException(
-                    'Sale start date is not an instance of DateTime'
-                );
-            }
+        return $this->setDate('saleStartDate', $saleStartDate);
+    }
 
-            $this->saleStartDate = $saleStartDate;
+    /**
+     * @param $property
+     * @param $value
+     *
+     * @return $this
+     */
+    private function setDate($property, $value)
+    {
+        if (!$value instanceof \DateTime) {
+            if (\DateTime::createFromFormat('Y-m-d H:i:s', $value) instanceof \DateTime) {
+                $value = \DateTime::createFromFormat('Y-m-d H:i:s', $value);
+            } elseif (\DateTime::createFromFormat(DATE_ISO8601, $value) instanceof \DateTime) {
+                $value = \DateTime::createFromFormat(DATE_ISO8601, $value);
+            }
         }
+
+        if (!$value instanceof \DateTime) {
+            throw new InvalidArgumentException('Property "' . $property . '"" is not an instance of DateTime');
+        }
+
+        $this->$property = $value;
 
         return $this;
     }
