@@ -151,6 +151,10 @@ trait PriceTrait
      */
     private function setDate($property, $value)
     {
+        if (empty($value)) {
+            return $this;
+        }
+
         if (!$value instanceof \DateTime) {
             if (\DateTime::createFromFormat('Y-m-d H:i:s', $value) instanceof \DateTime) {
                 $value = \DateTime::createFromFormat('Y-m-d H:i:s', $value);
