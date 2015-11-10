@@ -150,7 +150,11 @@ trait PriceTrait
      */
     public function getSaleStartDateString()
     {
-        return $this->getSaleStartDate()->format('Y-m-d H:i:s');
+        if ($this->saleStartDate instanceof \DateTime) {
+            return $this->getSaleStartDate()->format('Y-m-d H:i:s');
+        }
+
+        return null;
     }
 
     /**
@@ -158,7 +162,11 @@ trait PriceTrait
      */
     public function getSaleEndDateString()
     {
-        return $this->getSaleEndDate()->format('Y-m-d H:i:s');
+        if ($this->saleEndDate instanceof \DateTime) {
+            return $this->getSaleEndDate()->format('Y-m-d H:i:s');
+        }
+
+        return null;
     }
 
     /**
