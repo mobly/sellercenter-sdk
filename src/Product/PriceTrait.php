@@ -38,6 +38,7 @@ trait PriceTrait
      * @JMS\SerializedName("SaleStartDate")
      * @JMS\Type("string")
      * @JMS\AccessType("public_method")
+     * @JMS\Accessor(getter="getSaleStartDateString")
      */
     protected $saleStartDate;
 
@@ -48,6 +49,7 @@ trait PriceTrait
      * @JMS\SerializedName("SaleEndDate")
      * @JMS\Type("string")
      * @JMS\AccessType("public_method")
+     * @JMS\Accessor(getter="getSaleEndDateString")
      */
     protected $saleEndDate;
 
@@ -141,6 +143,22 @@ trait PriceTrait
     public function setSaleStartDate($saleStartDate)
     {
         return $this->setDate('saleStartDate', $saleStartDate);
+    }
+
+    /**
+     * @return string
+     */
+    public function getSaleStartDateString()
+    {
+        return $this->getSaleStartDate()->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * @return string
+     */
+    public function getSaleEndDateString()
+    {
+        return $this->getSaleEndDate()->format('Y-m-d H:i:s');
     }
 
     /**
