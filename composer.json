@@ -27,7 +27,7 @@
         "guzzlehttp/guzzle-services": "0.*",
         "doctrine/collections": "1.*",
         "zendframework/zend-uri": "2.*",
-        "mtdowling/jmespath.php": "~1.1",
+        "mtdowling/jmespath.php": "~2.0",
         "jms/serializer": "~1.0",
         "myclabs/php-enum": "~1.0"
     },

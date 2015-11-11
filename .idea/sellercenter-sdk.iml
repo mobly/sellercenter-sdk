@@ -9,6 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/logs" />
       <excludeFolder url="file://$MODULE_DIR$/build/pdepend" />
       <excludeFolder url="file://$MODULE_DIR$/build/phpdox" />
+      <excludeFolder url="file://$MODULE_DIR$/build/provision" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/collections" />
@@ -71,6 +72,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-code" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-escaper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-eventmanager" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-stdlib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-uri" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-validator" />
@@ -132,6 +134,7 @@
           <root url="file://$MODULE_DIR$/vendor/sebastian/global-state" />
           <root url="file://$MODULE_DIR$/vendor/guzzlehttp/ringphp" />
           <root url="file://$MODULE_DIR$/vendor/myclabs/php-enum" />
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
           <root url="file://$MODULE_DIR$/vendor/satooshi/php-coveralls" />
           <root url="file://$MODULE_DIR$/vendor/jms/metadata" />
           <root url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
@@ -199,6 +202,7 @@
           <root url="file://$MODULE_DIR$/vendor/sebastian/global-state" />
           <root url="file://$MODULE_DIR$/vendor/guzzlehttp/ringphp" />
           <root url="file://$MODULE_DIR$/vendor/myclabs/php-enum" />
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
           <root url="file://$MODULE_DIR$/vendor/satooshi/php-coveralls" />
           <root url="file://$MODULE_DIR$/vendor/jms/metadata" />
           <root url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
