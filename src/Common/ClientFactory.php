@@ -240,6 +240,12 @@ class ClientFactory
             );
         }
 
+        if (isset($args['defaults']) && is_array($args)) {
+            foreach ($args['defaults'] as $defaultName => $defaultValue) {
+                $args['client']->setDefaultOption($defaultName, $defaultValue);
+            }
+        }
+
         // Make sure the user agent is prefixed by the SDK version
         $args['client']->setDefaultOption(
             'headers/User-Agent',
