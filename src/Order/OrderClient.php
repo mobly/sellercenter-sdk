@@ -8,6 +8,7 @@ use SellerCenter\SDK\Order\Contract\StatusInterface;
 use SellerCenter\SDK\Order\Status\ToCancel;
 use SellerCenter\SDK\Order\Status\ToDelivered;
 use SellerCenter\SDK\Order\Status\ToFailedDelivery;
+use SellerCenter\SDK\Order\Status\ToPackedByMarketplace;
 use SellerCenter\SDK\Order\Status\ToReadyToShip;
 use SellerCenter\SDK\Order\Status\ToShipped;
 use SellerCenter\SDK\ShipmentProvider\ShipmentProviderCollection;
@@ -122,6 +123,22 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
             'OrderItemId' => $order->getOrderItemId(),
             'Reason' => $order->getReason(),
             'ReasonDetail' => $order->getReasonDetail(),
+        ];
+
+        return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
+    }
+
+    /**
+     * @param ToPackedByMarketplace $order
+     *
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
+     */
+    public function setStatusToPackedByMarketplace(ToPackedByMarketplace $order)
+    {
+        $data = [
+            'OrderItemIds' => json_encode($order->getOrderItemIds()),
+            'DeliveryType' => $order->getDeliveryType()->getValue(),
+            'ShippingProvider' => $order->getShippingProvider(),
         ];
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));

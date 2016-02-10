@@ -106,6 +106,32 @@
                 ],
             ]
         ],
+        'setStatusToPackedByMarketplace' => [
+            'name' => 'setStatusToPackedByMarketplace',
+            'description' => 'Informs SellerCenter that the item was packed by marketplace',
+            'deserialize' => SellerCenter\SDK\Order\StatusToPackedByMarketplace::class,
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/',
+            ],
+            'parameters' => [
+                'OrderItemIds' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => true,
+                ],
+                'DeliveryType' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => true,
+                ],
+                'ShippingProvider' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
+            ]
+        ],
         'SetStatusToReadyToShip' => [
             'name' => 'SetStatusToReadyToShip',
             'description' => 'Informs SellerCenter that the item was ready to ship',

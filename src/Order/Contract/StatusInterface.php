@@ -4,6 +4,7 @@ use GuzzleHttp\Command\ServiceClientInterface;
 use SellerCenter\SDK\Order\Status\ToCancel;
 use SellerCenter\SDK\Order\Status\ToDelivered;
 use SellerCenter\SDK\Order\Status\ToFailedDelivery;
+use SellerCenter\SDK\Order\Status\ToPackedByMarketplace;
 use SellerCenter\SDK\Order\Status\ToReadyToShip;
 use SellerCenter\SDK\Order\Status\ToShipped;
 
@@ -43,4 +44,11 @@ interface StatusInterface extends ServiceClientInterface
      * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
      */
     public function setStatusToDelivered(ToDelivered $order);
+
+    /**
+     * @param ToPackedByMarketplace $order
+     *
+     * @return \SellerCenter\SDK\Common\Api\Response\Success\SuccessResponse
+     */
+    public function setStatusToPackedByMarketplace(ToPackedByMarketplace $order);
 }
