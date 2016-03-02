@@ -14,7 +14,7 @@ class Body extends \SellerCenter\SDK\Common\Api\Response\Success\Body implements
 {
     /**
      * @var ShipmentProviderCollection
-     * @JMS\SerializedName("GetShipmentProviders")
+     * @JMS\SerializedName("ShipmentProviders")
      * @JMS\Type("ArrayCollection<SellerCenter\SDK\ShipmentProvider\ShipmentProvider>")
      * @JMS\XmlList(entry="ShipmentProvider")
      */
