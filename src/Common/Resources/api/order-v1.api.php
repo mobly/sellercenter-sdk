@@ -106,7 +106,7 @@
                 ],
             ]
         ],
-        'setStatusToPackedByMarketplace' => [
+        'SetStatusToPackedByMarketplace' => [
             'name' => 'setStatusToPackedByMarketplace',
             'description' => 'Informs SellerCenter that the item was packed by marketplace',
             'deserialize' => SellerCenter\SDK\Order\StatusToPackedByMarketplace::class,
@@ -225,7 +225,7 @@
         'GetShipmentProviders' => [
             'name' => 'GetShipmentProviders',
             'description' => 'Returns all active shipping providers',
-            'deserialize' => \SellerCenter\SDK\ShipmentProvider\ShipmentProviderCollection::class,
+            'deserialize' => \SellerCenter\SDK\ShipmentProvider\Api\GetShipmentProviders\Response::class,
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/',
