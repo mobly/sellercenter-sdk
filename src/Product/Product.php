@@ -572,6 +572,7 @@ class Product implements ToArrayInterface
     {
         $data = [
             'SellerSku' => $this->getSellerSku(),
+            'SalePrice' => '',
         ];
 
         if (!empty($this->parentSku)) {
