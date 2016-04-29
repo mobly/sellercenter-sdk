@@ -29,7 +29,7 @@ trait PriceTrait
      * @JMS\Type("double")
      * @JMS\AccessType("public_method")
      */
-    protected $salePrice;
+    protected $salePrice = '';
 
     /**
      * Starting date for the sale
@@ -154,7 +154,7 @@ trait PriceTrait
             return $this->getSaleStartDate()->format('Y-m-d H:i:s');
         }
 
-        return null;
+        return '';
     }
 
     /**
@@ -166,7 +166,7 @@ trait PriceTrait
             return $this->getSaleEndDate()->format('Y-m-d H:i:s');
         }
 
-        return null;
+        return '';
     }
 
     /**
