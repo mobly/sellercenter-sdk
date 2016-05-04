@@ -114,7 +114,7 @@ trait PriceTrait
      */
     public function setSalePrice($salePrice)
     {
-        if (!is_float($salePrice)) {
+        if (null !== $salePrice && !is_float($salePrice)) {
             throw new InvalidArgumentException(
                 'Sale price is not a valid float, ' . gettype($salePrice) . ' passed'
             );
