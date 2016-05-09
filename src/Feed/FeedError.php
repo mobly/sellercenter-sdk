@@ -25,6 +25,13 @@ class FeedError
     protected $message;
 
     /**
+     * @var string
+     * @JMS\SerializedName("SellerSku")
+     * @JMS\Type("string")
+     */
+    protected $sellerSku;
+
+    /**
      * @return mixed
      */
     public function getCode()
@@ -60,6 +67,26 @@ class FeedError
     public function setMessage($message)
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSellerSku()
+    {
+        return $this->sellerSku;
+    }
+
+    /**
+     * @param mixed $sellerSku
+     *
+     * @return FeedError
+     */
+    public function setSellerSku($sellerSku)
+    {
+        $this->sellerSku = $sellerSku;
 
         return $this;
     }
