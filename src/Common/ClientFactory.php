@@ -53,6 +53,18 @@ class ClientFactory
     ];
 
     /**
+     * @param array $args
+     * @return RawRequestClient
+     */
+    public function createRawClient(array $args = [])
+    {
+        $endpointProvider = RulesEndpointProvider::fromDefaults();
+        $this->handleEndpointProvider($endpointProvider, $args);
+
+        return new RawRequestClient($args);
+    }
+
+    /**
      * Constructs a new factory object used for building services.
      *
      * @param array $args
