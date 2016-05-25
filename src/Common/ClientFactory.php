@@ -11,6 +11,7 @@ use SellerCenter\SDK\Common\Credentials\CredentialsInterface;
 use SellerCenter\SDK\Common\Signature\SignatureV1;
 use SellerCenter\SDK\Common\Signature\SignatureInterface;
 use SellerCenter\SDK\Common\Subscriber\Signature;
+use SellerCenter\SDK\RawRequest\RawRequestClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Event\ProcessEvent;
 use GuzzleHttp\Utils;
@@ -51,6 +52,18 @@ class ClientFactory
         'client'            => 1,
         'debug'             => 2,
     ];
+
+    /**
+     * @param array $args
+     * @return RawRequestClient
+     */
+    public function createRawClient(array $args = [])
+    {
+        $endpointProvider = RulesEndpointProvider::fromDefaults();
+        $this->handleEndpointProvider($endpointProvider, $args);
+
+        return new RawRequestClient($args);
+    }
 
     /**
      * Constructs a new factory object used for building services.
