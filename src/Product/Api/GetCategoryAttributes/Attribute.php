@@ -62,6 +62,13 @@ class Attribute
     private $exampleValue;
 
     /**
+     * @var string
+     * @JMS\SerializedName("FeedName")
+     * @JMS\Type("string")
+     */
+    private $feedName;
+
+    /**
      * @var ArrayCollection
      * @JMS\SerializedName("Options")
      * @JMS\Type("ArrayCollection<SellerCenter\SDK\Product\Api\GetCategoryAttributes\Option>")
@@ -205,6 +212,26 @@ class Attribute
     public function setExampleValue($exampleValue)
     {
         $this->exampleValue = $exampleValue;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFeedName()
+    {
+        return $this->feedName;
+    }
+
+    /**
+     * @param string $feedName
+     *
+     * @return Attribute
+     */
+    public function setFeedName($feedName)
+    {
+        $this->feedName = $feedName;
 
         return $this;
     }
