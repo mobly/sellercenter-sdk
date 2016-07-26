@@ -22,10 +22,16 @@ class Attribute implements ToArrayInterface
     protected $value;
 
     /**
+     * @var integer
+     */
+    protected $fkCatalogAttributeSet;
+
+    /**
      * @param string $name
      * @param string $value
+     * @var integer $fkCatalogAttributeSet
      */
-    public function __construct($name = null, $value = null)
+    public function __construct($name = null, $value = null, $fkCatalogAttributeSet = null)
     {
         if (!empty($name) && !is_string($name)) {
             throw new InvalidArgumentException('Invalid attribute name');
@@ -37,6 +43,7 @@ class Attribute implements ToArrayInterface
 
         $this->name = $name;
         $this->value = $value;
+        $this->fkCatalogAttributeSet = $fkCatalogAttributeSet;
     }
 
     /**
@@ -87,6 +94,26 @@ class Attribute implements ToArrayInterface
         }
 
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getFkCatalogAttributeSet()
+    {
+        return $this->fkCatalogAttributeSet;
+    }
+
+    /**
+     * @param integer $fkCatalogAttributeSet
+     *
+     * @return Attribute
+     */
+    public function setFkCatalogAttributeSet($fkCatalogAttributeSet)
+    {
+        $this->fkCatalogAttributeSet = $fkCatalogAttributeSet;
 
         return $this;
     }
