@@ -35,7 +35,7 @@ class ProductCollection extends ArrayCollection implements ToArrayInterface
      */
     public function add($element)
     {
-        if (!$element instanceof Product) {
+        if (!$element instanceof AbstractProduct) {
             throw new \InvalidArgumentException('Element is not an instance of Product');
         }
 
