@@ -570,6 +570,7 @@ class Product extends AbstractProduct implements ToArrayInterface
     {
         $data = [
             'SellerSku' => $this->getSellerSku(),
+            'SalePrice' => '',
         ];
 
         if (!empty($this->parentSku)) {

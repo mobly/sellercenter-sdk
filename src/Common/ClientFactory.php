@@ -11,6 +11,7 @@ use SellerCenter\SDK\Common\Credentials\CredentialsInterface;
 use SellerCenter\SDK\Common\Signature\SignatureV1;
 use SellerCenter\SDK\Common\Signature\SignatureInterface;
 use SellerCenter\SDK\Common\Subscriber\Signature;
+use SellerCenter\SDK\RawRequest\RawRequestClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Event\ProcessEvent;
 use GuzzleHttp\Utils;

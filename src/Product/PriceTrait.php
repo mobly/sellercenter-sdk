@@ -29,7 +29,7 @@ trait PriceTrait
      * @JMS\Type("double")
      * @JMS\AccessType("public_method")
      */
-    protected $salePrice;
+    protected $salePrice = '';
 
     /**
      * Starting date for the sale
@@ -114,7 +114,7 @@ trait PriceTrait
      */
     public function setSalePrice($salePrice)
     {
-        if (!is_float($salePrice)) {
+        if (null !== $salePrice && !is_float($salePrice)) {
             throw new InvalidArgumentException(
                 'Sale price is not a valid float, ' . gettype($salePrice) . ' passed'
             );
@@ -154,7 +154,7 @@ trait PriceTrait
             return $this->getSaleStartDate()->format('Y-m-d H:i:s');
         }
 
-        return null;
+        return '';
     }
 
     /**
@@ -166,7 +166,7 @@ trait PriceTrait
             return $this->getSaleEndDate()->format('Y-m-d H:i:s');
         }
 
-        return null;
+        return '';
     }
 
     /**

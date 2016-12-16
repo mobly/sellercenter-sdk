@@ -303,11 +303,12 @@ class SdkClient extends AbstractClient implements SdkClientInterface
         $exceptionClass = $this->commandException;
         return new $exceptionClass(
             sprintf(
-                'Error executing %s::%s() on "%s"; %s',
+                'Error executing %s::%s() on "%s"; %s %s',
                 get_class($this),
                 lcfirst($transaction->command->getName()),
                 $url,
-                $serviceError
+                $serviceError,
+                $transaction->exception->getTraceAsString()
             ),
             $transaction,
             $transaction->exception
