@@ -15,10 +15,8 @@ use JMS\Serializer\Annotation as JMS;
  * @JMS\XmlRoot("Product")
  * @JMS\AccessorOrder("custom", custom = {"SellerSku", "Name"})
  */
-class Product implements ToArrayInterface
+class Product extends AbstractProduct implements ToArrayInterface
 {
-    use SellerSkuTrait;
-
     use ShopSkuTrait;
 
     use PriceTrait;
