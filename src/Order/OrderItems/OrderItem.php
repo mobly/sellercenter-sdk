@@ -149,4 +149,27 @@ class OrderItem
      * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
      */
     protected $updatedAt;
+
+    /**
+     * @var int
+     * @JMS\SerializedName("ShopId")
+     * @JMS\Type("integer")
+     */
+    protected $shopId;
+
+    /**
+     * @return string
+     */
+    public function getSku()
+    {
+        return $this->sku;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getShopId()
+    {
+        return $this->shopId;
+    }
 }
