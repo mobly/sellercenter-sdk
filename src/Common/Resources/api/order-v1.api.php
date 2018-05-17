@@ -46,6 +46,11 @@
                     'location' => 'query',
                     'required' => false,
                 ],
+                'Status' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
             ]
         ],
         'GetOrder' => [

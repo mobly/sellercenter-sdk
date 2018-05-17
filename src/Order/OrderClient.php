@@ -43,7 +43,8 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
         DateTime $updatedAfter = null,
         DateTime $updatedBefore = null,
         $limit = null,
-        $offset = null
+        $offset = null,
+        $status = null
     ) {
         $data = [];
         if (!empty($createdAfter)) {
@@ -64,6 +65,10 @@ class OrderClient extends SdkClient implements RetrieveInterface, OrderInterface
         if (!empty($offset)) {
             $data['Offset'] = (int) $offset;
         }
+        if (!empty($status)) {
+            $data['Status'] = $status;
+        }
+
 
         return $this->execute($this->getCommand(ucfirst(__FUNCTION__), $data));
     }

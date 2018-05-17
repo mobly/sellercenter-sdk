@@ -25,6 +25,13 @@ class OrderItem
     protected $orderId;
 
     /**
+     * @var int
+     * @JMS\SerializedName("ShopId")
+     * @JMS\Type("integer")
+     */
+    protected $shopId;
+
+    /**
      * @var string
      * @JMS\SerializedName("Name")
      * @JMS\Type("string")
@@ -150,26 +157,18 @@ class OrderItem
      */
     protected $updatedAt;
 
-    /**
-     * @var int
-     * @JMS\SerializedName("ShopId")
-     * @JMS\Type("integer")
-     */
-    protected $shopId;
-
-    /**
-     * @return string
-     */
-    public function getSku()
-    {
-        return $this->sku;
-    }
-
-    /**
-     * @return integer
-     */
     public function getShopId()
     {
         return $this->shopId;
+    }
+
+    public function getOrderItemId()
+    {
+        return $this->orderItemId;
+    }
+
+    public function getSku()
+    {
+        return $this->sku;
     }
 }
