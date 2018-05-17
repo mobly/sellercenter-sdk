@@ -15,6 +15,7 @@
             "homepage": "http://www.mobly.com.br"
         }
     ],
+
     "autoload": {
         "psr-4": {
             "SellerCenter\\SDK\\": "src/"
