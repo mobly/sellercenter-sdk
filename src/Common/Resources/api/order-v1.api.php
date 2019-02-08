@@ -198,6 +198,16 @@
                     'location' => 'query',
                     'required' => true,
                 ],
+                'Reason' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => true,
+                ],
+                'ReasonDetail' => [
+                    'type' => 'string',
+                    'location' => 'query',
+                    'required' => false,
+                ],
             ]
         ],
         'SetStatusToDelivered' => [
