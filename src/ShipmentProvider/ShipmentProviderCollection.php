@@ -1,7 +1,7 @@
 <?php namespace SellerCenter\SDK\ShipmentProvider;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 use InvalidArgumentException;
 
 /**

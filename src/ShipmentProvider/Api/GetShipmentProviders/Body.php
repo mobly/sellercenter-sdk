@@ -1,6 +1,6 @@
 <?php namespace SellerCenter\SDK\ShipmentProvider\Api\GetShipmentProviders;
 
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 use JMS\Serializer\Annotation as JMS;
 use SellerCenter\SDK\ShipmentProvider\ShipmentProviderCollection;
 

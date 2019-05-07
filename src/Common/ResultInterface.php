@@ -2,7 +2,7 @@
 
 use ArrayAccess;
 use Countable;
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 use IteratorAggregate;
 
 /**

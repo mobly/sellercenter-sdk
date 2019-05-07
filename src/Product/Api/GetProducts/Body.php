@@ -1,6 +1,6 @@
 <?php namespace SellerCenter\SDK\Product\Api\GetProducts;
 
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 use JMS\Serializer\Annotation as JMS;
 use SellerCenter\SDK\Product\ProductCollection;
 

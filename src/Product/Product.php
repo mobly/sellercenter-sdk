@@ -1,6 +1,6 @@
 <?php namespace SellerCenter\SDK\Product;
 
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 use InvalidArgumentException;
 use LengthException;
 use OverflowException;
