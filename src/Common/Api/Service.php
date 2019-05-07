@@ -1,7 +1,7 @@
 <?php namespace SellerCenter\SDK\Common\Api;
 
 use ArrayAccess;
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 use InvalidArgumentException;
 use UnexpectedValueException;
 

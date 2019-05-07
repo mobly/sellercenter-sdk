@@ -1,7 +1,7 @@
 <?php namespace SellerCenter\SDK\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 use JMS\Serializer\Annotation as JMS;
 
 /**

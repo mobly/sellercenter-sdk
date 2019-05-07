@@ -1,6 +1,6 @@
 <?php namespace SellerCenter\SDK\Common\Credentials;
 
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp\Command\ToArrayInterface;
 
 /**
  * Interface CredentialsInterface
