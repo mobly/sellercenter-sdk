@@ -24,7 +24,7 @@
         "php": ">=5.5",
         "guzzlehttp/guzzle": "~6.0",
         "guzzlehttp/command": "~1.0",
-        "guzzlehttp/guzzle-services": "0.*",
+        "guzzlehttp/guzzle-services": "1.*",
         "doctrine/collections": "1.*",
         "zendframework/zend-uri": "2.*",
         "mtdowling/jmespath.php": "~2.0",
