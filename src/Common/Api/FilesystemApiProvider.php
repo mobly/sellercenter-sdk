@@ -1,6 +1,6 @@
 <?php namespace SellerCenter\SDK\Common\Api;
 
-use GuzzleHttp\Utils;
+use GuzzleHttp;
 
 /**
  * Class FilesystemApiProvider
@@ -112,7 +112,7 @@ class FilesystemApiProvider
 
         $path = "{$this->path}/{$service}-{$version}.{$type}.json";
         if (file_exists($path)) {
-            return Utils::jsonDecode(file_get_contents($path), true);
+            return GuzzleHttp::jsonDecode(file_get_contents($path), true);
         }
 
         throw new \RuntimeException('Cannot load file: ' . $path);

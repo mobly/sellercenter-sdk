@@ -1,7 +1,7 @@
 <?php namespace SellerCenter\SDK\Common;
 
 use SellerCenter\SDK\Common\Exception\UnresolvedEndpointException;
-use GuzzleHttp\Utils;
+use GuzzleHttp;
 
 /**
  * Class RulesEndpointProvider
@@ -81,7 +81,7 @@ class RulesEndpointProvider
     private function expand(array $config, array $args)
     {
         $scheme = isset($args['scheme']) ? $args['scheme'] : 'https';
-        $config['endpoint'] = $scheme . '://' . Utils::uriTemplate($config['endpoint'], $args);
+        $config['endpoint'] = $scheme . '://' . GuzzleHttp::uriTemplate($config['endpoint'], $args);
 
         return $config;
     }

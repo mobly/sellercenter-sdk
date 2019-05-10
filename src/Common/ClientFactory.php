@@ -14,7 +14,7 @@ use SellerCenter\SDK\Common\Subscriber\Signature;
 use SellerCenter\SDK\RawRequest\RawRequestClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Event\ProcessEvent;
-use GuzzleHttp\Utils;
+use GuzzleHttp;
 
 /**
  * Class ClientFactory
@@ -262,7 +262,7 @@ class ClientFactory
         // Make sure the user agent is prefixed by the SDK version
         $args['client']->setDefaultOption(
             'headers/User-Agent',
-            'sellercenter-sdk-php/' . Sdk::VERSION . ' ' . Utils::getDefaultUserAgent()
+            'sellercenter-sdk-php/' . Sdk::VERSION . ' ' . GuzzleHttp::getDefaultUserAgent()
         );
     }
 
