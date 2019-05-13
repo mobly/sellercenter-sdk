@@ -10,7 +10,10 @@ return [
             'endpoint' => 'sellercenter-api-staging.mobly.com.br',
             'signatureVersion' => 'v1'
         ],
-
+        'mobly-local/*' => [
+            'endpoint' => 'seller-api.mobly.local',
+            'signatureVersion' => 'v1'
+        ],
         'dafiti-br/production' => [
             'endpoint' => 'sellercenter-api.dafiti.com.br',
             'signatureVersion' => 'v1'

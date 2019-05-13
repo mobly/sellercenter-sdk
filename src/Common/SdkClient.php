@@ -1,5 +1,6 @@
 <?php namespace SellerCenter\SDK\Common;
 
+use GuzzleHttp\Command\ServiceClient;
 use SellerCenter\SDK\Common\Exception\SdkException;
 use SellerCenter\SDK\Common\Waiter\ResourceWaiter;
 use SellerCenter\SDK\Common\Waiter\Waiter;
@@ -7,7 +8,6 @@ use SellerCenter\SDK\Sdk;
 use SellerCenter\SDK\Common\Api\Service;
 use SellerCenter\SDK\Common\Credentials\CredentialsInterface;
 use SellerCenter\SDK\Common\Signature\SignatureInterface;
-use GuzzleHttp\Command\AbstractClient;
 use GuzzleHttp\Command\Command;
 use GuzzleHttp\Command\CommandInterface;
 use GuzzleHttp\Command\CommandTransaction;
@@ -20,7 +20,7 @@ use UnexpectedValueException;
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-class SdkClient extends AbstractClient implements SdkClientInterface
+class SdkClient extends ServiceClient implements SdkClientInterface
 {
     /** @var CredentialsInterface Api credentials */
     private $credentials;
