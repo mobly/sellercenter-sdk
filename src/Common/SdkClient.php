@@ -1,6 +1,6 @@
 <?php namespace SellerCenter\SDK\Common;
 
-use GuzzleHttp\Command\ServiceClient;
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use SellerCenter\SDK\Common\Exception\SdkException;
 use SellerCenter\SDK\Common\Waiter\ResourceWaiter;
 use SellerCenter\SDK\Common\Waiter\Waiter;
@@ -20,7 +20,7 @@ use UnexpectedValueException;
  * @package SellerCenter\SDK\Common
  * @author  Daniel Costa
  */
-class SdkClient extends ServiceClient implements SdkClientInterface
+class SdkClient extends GuzzleClient implements SdkClientInterface
 {
     /** @var CredentialsInterface Api credentials */
     private $credentials;
